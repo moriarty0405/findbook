@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <link href="@Url.Content("~/Content/style.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="top_div">
+	    <a name="return_top"></a>
+	    <div class="top_header">
+		    <!--==============================logo================================-->
+		    <a href="index.html" class="top_logo_img"></a>
+		    <!--==============================nav================================-->
+		    <div class="top_nav"><a href="index.html" class="selected">翻书</a>
+			    <a href="#" class="">最新</a>
+			    <a href="#" class="">推荐</a>
+			    <a href="#" class="">活动</a>
+			    <a href="#" class="">交流</a>
+		    </div>
+		    <!--=============================search=================================-->
+		    <div class="search">
+			    <form method="post" action="#" class="searchform">
+				    <input type="text"  placeholder="搜索..." class="search_txt"/>
+				    <input type="button" class="search_btn" value=""/>
+			    </form>
+			    <a href="login.html">登录</a><p class="pipe">|</p><a href="register.html">注册</a>
+		    </div>
+	    </div>
+    </div>
+    
+    <div>
+        @RenderBody()        
+    </div>
+
+    <div class="footer">
+	    <div class="footer_content">
+		    <span style=" font-family:'微软雅黑'; font-size:36px; color:#999;">翻书网</span>&nbsp;
+		    <span style=" font-family:'微软雅黑'; font-size:16px; color:#999; letter-spacing:1px;">属于whut的课本馆,在这里找到你最期盼的那一本书</span>
+		    <table>
+			    <tbody>
+				    <tr><td><a href="#">关于我们</a>|</td><td><a href="#">常见问题</a>|</td><td><a href="#">免责声明</a>|</td><td><a href="#">友情链接</a>|</td><td><a href="#">联系我们</a>|</td><td><a href="#">微博</a></td></tr>
+			    </tbody>
+		    </table>
+	    </div>
+    </div>
+
+    <script type="text/javascript" runat="server" src="script.js"></script>
+    <script type="text/javascript" runat="server" src="jquery-1.6.3.min.js"></script>
+    <script type="text/javascript" runat="server" src="jquery.featureCarousel.js"></script>
+</body>
+</html>

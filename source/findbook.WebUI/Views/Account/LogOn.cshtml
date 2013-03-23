@@ -1,0 +1,40 @@
+﻿@model findbook.WebUI.Models.Account.LogOnModel
+
+@{
+    ViewBag.Title = "登陆";
+}
+
+<div class="content">
+	<div class="loginbg">
+		<div class="login_div">
+			<div class="login">
+				@using (Html.BeginForm("LogOn", "Account", FormMethod.Post)) { 
+				    <span>登录</span>
+				    <p>-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+				    <p>
+                        @Html.LabelFor(m => m.UserName)
+                        @Html.TextBoxFor(m => m.UserName)
+				        <a href="register.html" class="register_login" style="font-size:20px;">>>没有账号请注册</a>
+			            </p>
+			        <p>
+				        @Html.LabelFor(m => m.Password)
+                        @Html.TextBoxFor(m => m.Password)
+			        </p>
+			        <p>
+				        @Html.CheckBoxFor(m => m.RememberMe)
+                        @Html.LabelFor(m => m.RememberMe)
+			        </p>
+				    <p>
+				    <a href="#">忘记密码?</a>
+				        <input type="submit" name="go" id="go" value="登录">
+			        </p>
+				    <div style="height:35px;"></div>
+				}
+			</div>	
+		</div>
+	</div>
+</div>
+
+
+
+
