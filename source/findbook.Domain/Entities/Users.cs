@@ -40,5 +40,6 @@ namespace findbook.Domain.Entities {
                 public string userPage { get; set; }
 
                 public string ZT { get; set; }
+
          }
 }

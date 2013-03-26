@@ -12,5 +12,6 @@ namespace findbook.Domain.Concrete {
                 public IQueryable<Users> Users {
                         get { return context.Users; }
                 }
+
         }
 }

@@ -14,14 +14,15 @@
 				    <p>
                         @Html.LabelFor(m => m.UserName)
                         @Html.TextBoxFor(m => m.UserName)
-				        <a href="register.html" class="register_login" style="font-size:20px;">>>没有账号请注册</a>
+				        @*<a href="register.html" class="register_login" style="font-size:20px;">>>没有账号请注册</a>*@
+                        @Html.ActionLink(">>>没有账号请注册", "Register", null, new { @class = "register_login"})
 			            </p>
 			        <p>
 				        @Html.LabelFor(m => m.Password)
                         @Html.TextBoxFor(m => m.Password)
 			        </p>
 			        <p>
-				        @Html.CheckBoxFor(m => m.RememberMe)
+				        @Html.CheckBoxFor(m => m.RememberMe, new { @class = "select_no_br"})
                         @Html.LabelFor(m => m.RememberMe)
 			        </p>
 				    <p>

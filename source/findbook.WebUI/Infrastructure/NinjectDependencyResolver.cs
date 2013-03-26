@@ -7,8 +7,6 @@ using Ninject.Syntax;
 using System.Configuration;
 using findbook.Domain.Abstract;
 using findbook.Domain.Concrete;
-using findbook.WebUI.Infrastructure.Abstract;
-using findbook.WebUI.Infrastructure.Concrete;
 
 namespace SportsStore.WebUI.Infrastructure {
         public class NinjectDependencyResolver : IDependencyResolver {
@@ -33,8 +31,6 @@ namespace SportsStore.WebUI.Infrastructure {
                 private void AddBindings() {
                         // put additional bindings here
                         Bind<IUsersRepository>().To<EFUsersRepository>();
-
-                        Bind<IAuthProvider>().To<FormsAuthProvider>();
                 }
         }
 }

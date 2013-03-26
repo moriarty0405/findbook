@@ -1,0 +1,98 @@
+﻿@model findbook.WebUI.Models.Account.RegisterModel
+
+@{
+    ViewBag.Title = "注册";
+}
+
+<div class="content">
+	<div class="loginbg">
+		<div class="login_div">
+			<div class="login">
+				@using (Html.BeginForm("Register", "Account", FormMethod.Post)) {
+                        <span>注册</span>
+				        <p>-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+				        <p>
+				            @Html.LabelFor(m => m.UserName)
+				            @Html.TextBoxFor(m => m.UserName)
+				            @*<a href="login.html" class="register_login" style="font-size:20px;">>>已有账号请登录</a>*@
+                            @Html.ActionLink(">>>已有账号请登录", "LogOn", null, new { @class = "register_login" })
+			            </p>
+			            <p>
+				            @Html.LabelFor(m => m.NewPassword)
+                            @Html.TextBoxFor(m => m.NewPassword)
+			            </p>
+				        <p>
+				            @Html.LabelFor(m => m.ConfirmPassword)
+                            @Html.TextBoxFor(m => m.ConfirmPassword)
+			            </p>
+				        <p>
+				            @Html.LabelFor(m => m.Email)
+                            @Html.TextBoxFor(m => m.Email)
+			            </p>
+				        @*<p>
+				        <label for="phone">手机（方便需要课本的同学联系，非必填）</label>
+				        <input type="text" name="phone" id="phone" placeholder="">
+			            </p>*@
+				        <p class="gender_radio">
+				            @Html.LabelFor(m => m.Sex)
+				            @*<input type="radio" name="gender" value="男"/>男*@
+                            @Html.RadioButtonFor(m => m.Sex, "男")
+                            <span>男</span>
+                            @Html.RadioButtonFor(m => m.Sex, "女")
+                            <span>女</span>
+
+				            @*<input type="radio" name="gender" value="女"/>女*@
+				        </p>
+				        <p>
+				        @*<label for="campus">*校区</label>*@
+                            @Html.LabelFor(m => m.XQ)
+                            @Html.DropDownListFor(m => m.XQ, new SelectList(new[] { "南湖校区", "鉴湖校区", "西院", "东院", "余家头校区" }), new { @class = "select_padding" })
+				        @*<select name="campus" required>
+					        <option value="1">南湖校区</option>
+					        <option value="2">鉴湖校区</option>
+					        <option value="2">西院校区</option>
+					        <option value="2">东院校区</option>
+					        <option value="2">余家头校区</option>
+				        </select>*@
+				        </p>
+				        <p>
+				        @*<label for="college_major">*学院专业</label>*@
+                            @Html.LabelFor(m => m.XY)
+                            
+
+                            @Html.DropDownListFor(m => m.XY, new SelectList(new[] { "管理学院", "外语学院", "材料学院", "航海学院", "外语学院" }), new { @class = "select_padding"})
+				        @*<select name="college" onChange="getMajor()">
+					        <option value="0" selected="selected">请选择学院</option>
+					        <option value="1">管理学院</option>
+					        <option value="2">外语学院</option>
+					        <option value="3">材料学院</option>
+					        <option value="4">航海学院</option>
+					        <option value="5">外语学院</option>
+					        <option value="6">外语学院</option>
+					        <option value="7">外语学院</option>
+					        <option value="8">外语学院</option>
+					        <option value="9">外语学院</option>
+					        <option value="10">外语学院</option>
+					        <option value="11">外语学院</option>
+				        </select>*@
+				        @*<select name="major">
+					        <option value="0" selected="selected">请选择专业</option>
+				        </select>*@
+                            @Html.LabelFor(m => m.ZY)
+                            @Html.DropDownListFor(m => m.ZY, new SelectList(new[] { "会计", "信管" }), new { @class = "select_padding" })
+			            </p>
+			            <p>
+				        @*<input type="checkbox" name="remember" id="remember" required>*@
+				            @Html.CheckBoxFor(m => m.read , new { @class = "select_no_br"})
+                            @Html.Label("我已认真于都并同意服务协议")
+
+                        @*<label for="remember">我已认真阅读并同意<a href="#">服务协议</a></label>*@
+			            </p>
+				        <p>
+				        <input type="submit" name="go" id="go" value="注册">
+			            </p>                          
+                   }
+			</div>	
+		</div>
+	</div>
+</div>
