@@ -81,12 +81,10 @@
                             @Html.LabelFor(m => m.ZY)
                             @Html.DropDownListFor(m => m.ZY, new SelectList(new[] { "会计", "信管" }), new { @class = "select_padding" })
 			            </p>
-			            <p>
+			            <p style="margin-top:8px;">
 				        @*<input type="checkbox" name="remember" id="remember" required>*@
 				            @Html.CheckBoxFor(m => m.read , new { @class = "select_no_br"})
-                            @Html.Label("我已认真于都并同意服务协议")
-
-                        @*<label for="remember">我已认真阅读并同意<a href="#">服务协议</a></label>*@
+                            <label for="remember" style="padding:0;margin:0 0 12px 0;">我已认真阅读并同意<a href="#" style="font-size:14px;padding:0;">服务协议</a></label>
 			            </p>
 				        <p>
 				        <input type="submit" name="go" id="go" value="注册">

@@ -1,7 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using findbook.Domain.Abstract;
+using findbook.Domain.Entities;
 
 namespace findbook.WebUI.Models.Account {
         public class LogOnModel {
+                private IUsersRepository userRepository;
+
+                public LogOnModel(IUsersRepository ur) {
+                        userRepository = ur;
+                }
+
                 [Required]
                 [Display(Name = "用户名")]
                 public string UserName { get; set; }
