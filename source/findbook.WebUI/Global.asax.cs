@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
-using SportsStore.WebUI.Infrastructure;
+using findbook.WebUI.Infrastructure;
+using System;
+using System.Security.Principal;
+using findbook.Domain.Concrete;
+using System.Web.Security;
 
 namespace findbook.WebUI
 {
@@ -13,8 +13,12 @@ namespace findbook.WebUI
 
     public class MvcApplication : System.Web.HttpApplication
     {
-        public static void RegisterGlobalFilters(GlobalFilterCollection filters)
-        {
+        //无参构造函数，用户验证用户权限
+        public MvcApplication() {
+            AuthorizeRequest += new EventHandler(MvcApplication_AuthorizeRequest);
+        }
+
+        public static void RegisterGlobalFilters(GlobalFilterCollection filters) {
             filters.Add(new HandleErrorAttribute());
         }
 
@@ -25,7 +29,7 @@ namespace findbook.WebUI
             routes.MapRoute(
                 "Default", // 路由名称
                 "{controller}/{action}/{id}", // 带有参数的 URL
-                new { controller = "Account", action = "LogOn", id = UrlParameter.Optional } // 参数默认值
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // 参数默认值
             );
 
         }
@@ -37,7 +41,16 @@ namespace findbook.WebUI
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
 
-            DependencyResolver.SetResolver(new NinjectDependencyResolver());
+            ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
+        }
+
+        //确定登录用户的角色权限
+        void MvcApplication_AuthorizeRequest(object sender, EventArgs e) {
+            var id = Context.User.Identity as FormsIdentity;
+            if (id != null && id.IsAuthenticated) {
+                var roles = id.Ticket.UserData.Split(',');
+                Context.User = new GenericPrincipal(id, roles);
+            }
         }
     }
 }

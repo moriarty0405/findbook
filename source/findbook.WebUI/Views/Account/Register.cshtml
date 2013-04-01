@@ -19,11 +19,11 @@
 			            </p>
 			            <p>
 				            @Html.LabelFor(m => m.NewPassword)
-                            @Html.TextBoxFor(m => m.NewPassword)
+                            @Html.PasswordFor(m => m.NewPassword)
 			            </p>
 				        <p>
 				            @Html.LabelFor(m => m.ConfirmPassword)
-                            @Html.TextBoxFor(m => m.ConfirmPassword)
+                            @Html.PasswordFor(m => m.ConfirmPassword)
 			            </p>
 				        <p>
 				            @Html.LabelFor(m => m.Email)
@@ -87,7 +87,7 @@
                             <label for="remember" style="padding:0;margin:0 0 12px 0;">我已认真阅读并同意<a href="#" style="font-size:14px;padding:0;">服务协议</a></label>
 			            </p>
 				        <p>
-				        <input type="submit" name="go" id="go" value="注册">
+				            <input type="submit" name="go" id="go" value="注册" >
 			            </p>                          
                    }
 			</div>	
