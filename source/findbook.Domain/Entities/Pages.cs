@@ -9,7 +9,7 @@ namespace findbook.Domain.Entities {
         [Key]
         public string pageID { get; set; }
 
-        public int visitTimes { get; set; }
+        public string visitTimes { get; set; }
 
         public string userName { get; set; }
 

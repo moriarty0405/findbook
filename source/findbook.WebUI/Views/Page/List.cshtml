@@ -1,47 +1,66 @@
-﻿@model findbook.Domain.Entities.Pages
+﻿@model findbook.WebUI.Models.PageViewModel
 
 @{
-    ViewBag.Title = "个人主页";
+    if (Model.Users.userName.Equals(Context.User.Identity.Name)) {
+        //自己看自己
+        ViewBag.Title = "我的主页";
+    } else {
+        //别人看自己
+        ViewBag.Title = Model.Users.userNickName + "的主页";
+    }
 }
 
 <div class="content">
 	<!--个人信息-->
 	<div class="personal_info">
-		<div class="personal_img">
-			<img src="images/author.jpg" width="220px" height="220px" />
-		</div>
+        <div class="personal_img">
+	        <img src="../../Content/Images/users/author.jpg" width="220px" height="220px" />
+        </div>
 		<div class="psesonal_introduction">
 			<p>
-				<span class="personal_name">Jone</span>&nbsp;&nbsp;<span><img src="images/gender.png" />男</span>
+				<span class="personal_name">
+                    @Model.Users.userNickName
+                </span>&nbsp;&nbsp;
+                <span>
+                    @{
+                        string sex = Model.Users.userSex;
+                        if (sex.Equals("0")) {
+                            sex = "男";
+                        } else {
+                            sex = "女";
+                        }  
+                    } 
+                    <img src="../../Content/Images/web/gender.png" />@sex
+                </span>
 			</p>
-			<img class="hr1" src="images/hr.gif" width="220px"/>
+			<img class="hr1" src="../../Content/Images/web/hr.gif" width="220px"/>
 			<p class="c17">
-				<a href="#"><img src="images/contact_ico.png" width="16px" height="16px"/>&nbsp;给Ta发私信</a>
+				<a href="#"><img src="../../Content/Images/web/contact_ico.png" width="16px" height="16px"/>&nbsp;给Ta发私信</a>
 			</p>
-			<img class="hr1" src="images/hr.gif" width="220px"/>
+			<img class="hr1" src="../../Content/Images/web/hr.gif" width="220px"/>
 			<p>
-				校区：<span>南湖新校区</span>
+				校区：<span>@Model.Users.XQ</span>
 			</p>
-			<img class="hr1" src="images/hr.gif" width="220px"/>
+			<img class="hr1" src="../../Content/Images/web/hr.gif" width="220px"/>
 			<p>
-				学院专业：<span>管理学院</span>-<span>信息管理与信息系统</span>
+				学院专业：<span>@Model.Users.userXY</span>-<span>@Model.Users.userZY</span>
 			</p>
-			<img class="hr1" src="images/hr.gif" width="220px"/>
+			<img class="hr1" src="../../Content/Images/web/hr.gif" width="220px"/>
 			<p>
-				年级：<span>大一</span>
+				年级：<span>@Model.Users.userGrade</span>
 			</p>
-			<img class="hr1" src="images/hr.gif" width="220px"/>
+			<img class="hr1" src="../../Content/Images/web/hr.gif" width="220px"/>
 			<p>
-				<span>QQ：219102919(可保密)</span>
+				<span>@Model.Users.userQQ</span>
 			</p>
-			<img class="hr1" src="images/hr.gif" width="220px"/>
+			<img class="hr1" src="../../Content/Images/web/hr.gif" width="220px"/>
 			<p>
-				<span>电话:15828121192(可保密)</span>
+				<span>@Model.Users.userPhone</span>
 			</p>
 		</div>
 		<div class="page-description">
-			<div class="fangwenshu">访问数:<span>1000</span></div>
-			<div class="c15"><span>这里是个人主页的描述以及介绍.</span></div>
+			<div class="fangwenshu">访问数:<span>@Model.Pages.visitTimes</span></div>
+			<div class="c15"><span>@Model.Pages.pageDesc</span></div>
 			<div class="tags">
 				<p class="c16">Ta的标签</p>
 				<div class="tag"><p>计算机</p><p>计算机</p><p>计算机</p><p>计算机</p><p>计算机</p><p>计算机</p><p>计算机</p><p>计算机</p><p>计算机</p><p>计算机</p><p>计算机</p></div>

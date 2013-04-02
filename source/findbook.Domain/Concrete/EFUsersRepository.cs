@@ -78,7 +78,7 @@ namespace findbook.Domain.Concrete {
                     Value = ZY
             };
 
-            context.Database.ExecuteSqlCommand("exec [dbo].[create_user] @userName, @userPw, @mail, @sex, @XQ, @XY, @ZY", parameters);
+            context.Database.ExecuteSqlCommand("exec [dbo].[sp_create_user] @userName, @userPw, @mail, @sex, @XQ, @XY, @ZY", parameters);
         }
 
     }

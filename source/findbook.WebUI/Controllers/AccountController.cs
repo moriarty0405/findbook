@@ -37,6 +37,7 @@ namespace findbook.WebUI.Controllers
                         FormsAuthentication.FormsCookieName,
                         FormsAuthentication.Encrypt(ticket));
                     Response.Cookies.Add(cookie);
+                    Session["userID"] = user.userID;
 
                     if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
                         && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\")) {
