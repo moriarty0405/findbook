@@ -5,7 +5,7 @@ using System.Text;
 using findbook.Domain.Entities;
 
 namespace findbook.Domain.Abstract {
-    public interface IPagesRepository {
-        IQueryable<Pages> Pages {get;}
+    public interface IBooksRepository {
+        IQueryable<Books> Books { get; }
     }
 }

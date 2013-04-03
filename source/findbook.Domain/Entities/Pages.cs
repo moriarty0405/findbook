@@ -16,5 +16,9 @@ namespace findbook.Domain.Entities {
         public string userNickName { get; set; }
 
         public string pageDesc { get; set; }
+
+        public int lNumber { get; set; }
+
+        public string ZT { get; set; }
     }
 }

@@ -1,7 +1,10 @@
 ﻿@model findbook.WebUI.Models.PageViewModel
 
 @{
-    if (Model.Users.userName.Equals(Context.User.Identity.Name)) {
+    //确定是不是自己的主页
+    bool myPage = Model.Users.userName.Equals(Context.User.Identity.Name);
+    
+    if (myPage) {
         //自己看自己
         ViewBag.Title = "我的主页";
     } else {
@@ -31,12 +34,24 @@
                         }  
                     } 
                     <img src="../../Content/Images/web/gender.png" />@sex
+
+                    @if (myPage) { 
+                        <a href="#" target="_blank">修改个人资料</a>
+                    }
                 </span>
 			</p>
 			<img class="hr1" src="../../Content/Images/web/hr.gif" width="220px"/>
-			<p class="c17">
-				<a href="#"><img src="../../Content/Images/web/contact_ico.png" width="16px" height="16px"/>&nbsp;给Ta发私信</a>
-			</p>
+            @if (myPage) {
+                <p>
+				    <span class="c17"><a href="#"><img src="../../Content/Images/web/askfor_icon.png" width="16px" height="16px"/>&nbsp;发布求购令</a></span>
+				    <span class="c18"><a href="#">上传图书</a></span>
+			    </p>
+            } else { 
+                <p class="c17">
+				    <a href="#"><img src="../../Content/Images/web/contact_ico.png" width="16px" height="16px"/>&nbsp;给Ta发私信</a>
+			    </p>
+            }
+			
 			<img class="hr1" src="../../Content/Images/web/hr.gif" width="220px"/>
 			<p>
 				校区：<span>@Model.Users.XQ</span>
@@ -68,198 +83,155 @@
 		</div>
 	</div>
 	<!--个人上传-->
-		<div class="personal_upload">
-			<div class="c01">Ta的上传</div>
-			<div class="personal_upload_li">
-				<ul>
-					<li>
-						<a href="#" target="_blank"><img src="images/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; /></a>
-						<div class="c02">
-							<p class="c03"><a href="#" title="大学英语1" target="_blank">大学英语1</a></p>
-							<p ><span>管理学院</span>-<span>信管专业</span>-<span class="remain">2</span>本</p>
-							<p>作者:<span>李毅</span></p>
-								<p>出版社:<span>武汉理工大学出版社</span></p>
-							<p class="time">3小时前上传</p>
-							<p class="c04">
-								<span>100</span><a href="#">评论</a>
-								<span>100</span><a href="#">推荐</a>
-								<span class="c19"><a href="#">修改</a>&nbsp;&nbsp;<a href="#">删除</a></span>
-							</p>
-						</div>	
-					</li>
-					<li>
-						<a href="#" target="_blank"><img src="images/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; /></a>
-						<div class="c02">
-							<p class="c03"><a href="#" title="大学英语1" target="_blank">大学英语1</a></p>
-							<p ><span>管理学院</span>-<span>信管专业</span>-<span class="remain">2</span>本</p>
-							<p>作者:<span>李毅</span></p>
-								<p>出版社:<span>武汉理工大学出版社</span></p>
-							<p class="time">3小时前上传</p>
-							<p class="c04">
-								<span>100</span><a href="#">评论</a>
-								<span>100</span><a href="#">推荐</a>
-								<span class="c19"><a href="#">修改</a>&nbsp;&nbsp;<a href="#">删除</a></span>
-							</p>
-						</div>	
-					</li>
-					<li>
-						<a href="#" target="_blank"><img src="images/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; /></a>
-						<div class="c02">
-							<p class="c03"><a href="#" title="大学英语1" target="_blank">大学英语1</a></p>
-							<p ><span>管理学院</span>-<span>信管专业</span>-<span class="remain">2</span>本</p>
-							<p>作者:<span>李毅</span></p>
-								<p>出版社:<span>武汉理工大学出版社</span></p>
-							<p class="time">3小时前上传</p>
-							<p class="c04">
-								<span>100</span><a href="#">评论</a>
-								<span>100</span><a href="#">推荐</a>
-								<span class="c19"><a href="#">修改</a>&nbsp;&nbsp;<a href="#">删除</a></span>
-							</p>
-						</div>	
-					</li>
-					<li>
-						<a href="#" target="_blank"><img src="images/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; /></a>
-						<div class="c02">
-							<p class="c03"><a href="#" title="大学英语1" target="_blank">大学英语1</a></p>
-							<p ><span>管理学院</span>-<span>信管专业</span>-<span class="remain">2</span>本</p>
-							<p>作者:<span>李毅</span></p>
-								<p>出版社:<span>武汉理工大学出版社</span></p>
-							<p class="time">3小时前上传</p>
-							<p class="c04">
-								<span>100</span><a href="#">评论</a>
-								<span>100</span><a href="#">推荐</a>
-								<span class="c19"><a href="#">修改</a>&nbsp;&nbsp;<a href="#">删除</a></span>
-							</p>
-						</div>	
-					</li>
-					<li>
-						<a href="#" target="_blank"><img src="images/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; /></a>
-						<div class="c02">
-							<p class="c03"><a href="#" title="大学英语1" target="_blank">大学英语1</a></p>
-							<p ><span>管理学院</span>-<span>信管专业</span>-<span class="remain">2</span>本</p>
-							<p class="time">3小时前上传</p>
-							<p class="c04">
-								<span>100</span><a href="#">评论</a>
-								<span>100</span><a href="#">推荐</a>
-							</p>
-						</div>	
-					</li>
-					<li>
-						<a href="#" target="_blank"><img src="images/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; /></a>
-						<div class="c02">
-							<p class="c03"><a href="#" title="大学英语1" target="_blank">大学英语1</a></p>
-							<p ><span>管理学院</span>-<span>信管专业</span>-<span class="remain">2</span>本</p>
-							<p class="time">3小时前上传</p>
-							<p class="c04">
-								<span>100</span><a href="#">评论</a>
-								<span>100</span><a href="#">推荐</a>
-							</p>
-						</div>	
-					</li>
-					<li>
-						<a href="#" target="_blank"><img src="images/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; /></a>
-						<div class="c02">
-							<p class="c03"><a href="#" title="大学英语1" target="_blank">大学英语1</a></p>
-							<p ><span>管理学院</span>-<span>信管专业</span>-<span class="remain">2</span>本</p>
-							<p class="time">3小时前上传</p>
-							<p class="c04">
-								<span>100</span><a href="#">评论</a>
-								<span>100</span><a href="#">推荐</a>
-							</p>
-						</div>	
-					</li>
-					<li>
-						<a href="#" target="_blank"><img src="images/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; /></a>
-						<div class="c02">
-							<p class="c03"><a href="#" title="大学英语1" target="_blank">大学英语1</a></p>
-							<p ><span>管理学院</span>-<span>信管专业</span>-<span class="remain">2</span>本</p>
-							<p class="time">3小时前上传</p>
-							<p class="c04">
-								<span>100</span><a href="#">评论</a>
-								<span>100</span><a href="#">推荐</a>
-							</p>
-						</div>	
-					</li>
-				</ul>
-			</div>
+	<div class="personal_upload">
+        @{
+            if (myPage) {
+                //自己看自己
+                <div class="c01">我的上传</div>
+            } else {
+                //别人看自己
+                <div class="c01">Ta的上传</div>
+            }
+        }
+		
+		<div class="personal_upload_li">
+			<ul>
+				<li>
+					<a href="#" target="_blank"><img src="images/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; /></a>
+					<div class="c02">
+						<p class="c03"><a href="#" title="大学英语1" target="_blank">大学英语1</a></p>
+						<p ><span>管理学院</span>-<span>信管专业</span>-<span class="remain">2</span>本</p>
+						<p>作者:<span>李毅</span></p>
+							<p>出版社:<span>武汉理工大学出版社</span></p>
+						<p class="time">3小时前上传</p>
+						<p class="c04">
+							<span>100</span><a href="#">评论</a>
+							<span>100</span><a href="#">推荐</a>
+							<span class="c19"><a href="#">修改</a>&nbsp;&nbsp;<a href="#">删除</a></span>
+						</p>
+					</div>	
+				</li>
+				<li>
+					<a href="#" target="_blank"><img src="images/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; /></a>
+					<div class="c02">
+						<p class="c03"><a href="#" title="大学英语1" target="_blank">大学英语1</a></p>
+						<p ><span>管理学院</span>-<span>信管专业</span>-<span class="remain">2</span>本</p>
+						<p>作者:<span>李毅</span></p>
+							<p>出版社:<span>武汉理工大学出版社</span></p>
+						<p class="time">3小时前上传</p>
+						<p class="c04">
+							<span>100</span><a href="#">评论</a>
+							<span>100</span><a href="#">推荐</a>
+							<span class="c19"><a href="#">修改</a>&nbsp;&nbsp;<a href="#">删除</a></span>
+						</p>
+					</div>	
+				</li>
+				<li>
+					<a href="#" target="_blank"><img src="images/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; /></a>
+					<div class="c02">
+						<p class="c03"><a href="#" title="大学英语1" target="_blank">大学英语1</a></p>
+						<p ><span>管理学院</span>-<span>信管专业</span>-<span class="remain">2</span>本</p>
+						<p>作者:<span>李毅</span></p>
+							<p>出版社:<span>武汉理工大学出版社</span></p>
+						<p class="time">3小时前上传</p>
+						<p class="c04">
+							<span>100</span><a href="#">评论</a>
+							<span>100</span><a href="#">推荐</a>
+							<span class="c19"><a href="#">修改</a>&nbsp;&nbsp;<a href="#">删除</a></span>
+						</p>
+					</div>	
+				</li>
+				<li>
+					<a href="#" target="_blank"><img src="images/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; /></a>
+					<div class="c02">
+						<p class="c03"><a href="#" title="大学英语1" target="_blank">大学英语1</a></p>
+						<p ><span>管理学院</span>-<span>信管专业</span>-<span class="remain">2</span>本</p>
+						<p>作者:<span>李毅</span></p>
+							<p>出版社:<span>武汉理工大学出版社</span></p>
+						<p class="time">3小时前上传</p>
+						<p class="c04">
+							<span>100</span><a href="#">评论</a>
+							<span>100</span><a href="#">推荐</a>
+							<span class="c19"><a href="#">修改</a>&nbsp;&nbsp;<a href="#">删除</a></span>
+						</p>
+					</div>	
+				</li>
+				<li>
+					<a href="#" target="_blank"><img src="images/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; /></a>
+					<div class="c02">
+						<p class="c03"><a href="#" title="大学英语1" target="_blank">大学英语1</a></p>
+						<p ><span>管理学院</span>-<span>信管专业</span>-<span class="remain">2</span>本</p>
+						<p class="time">3小时前上传</p>
+						<p class="c04">
+							<span>100</span><a href="#">评论</a>
+							<span>100</span><a href="#">推荐</a>
+						</p>
+					</div>	
+				</li>
+				<li>
+					<a href="#" target="_blank"><img src="images/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; /></a>
+					<div class="c02">
+						<p class="c03"><a href="#" title="大学英语1" target="_blank">大学英语1</a></p>
+						<p ><span>管理学院</span>-<span>信管专业</span>-<span class="remain">2</span>本</p>
+						<p class="time">3小时前上传</p>
+						<p class="c04">
+							<span>100</span><a href="#">评论</a>
+							<span>100</span><a href="#">推荐</a>
+						</p>
+					</div>	
+				</li>
+				<li>
+					<a href="#" target="_blank"><img src="images/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; /></a>
+					<div class="c02">
+						<p class="c03"><a href="#" title="大学英语1" target="_blank">大学英语1</a></p>
+						<p ><span>管理学院</span>-<span>信管专业</span>-<span class="remain">2</span>本</p>
+						<p class="time">3小时前上传</p>
+						<p class="c04">
+							<span>100</span><a href="#">评论</a>
+							<span>100</span><a href="#">推荐</a>
+						</p>
+					</div>	
+				</li>
+				<li>
+					<a href="#" target="_blank"><img src="images/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; /></a>
+					<div class="c02">
+						<p class="c03"><a href="#" title="大学英语1" target="_blank">大学英语1</a></p>
+						<p ><span>管理学院</span>-<span>信管专业</span>-<span class="remain">2</span>本</p>
+						<p class="time">3小时前上传</p>
+						<p class="c04">
+							<span>100</span><a href="#">评论</a>
+							<span>100</span><a href="#">推荐</a>
+						</p>
+					</div>	
+				</li>
+			</ul>
 		</div>
+	</div>
 	
 	<!--评论-->
 	<div class="comment_zone">
 		<div class="comment_zone_inner">
-			<p style="color:#666;font-size:14px;font-weight:bold;">给Ta留言</p>
+			<p style="color:#666;font-size:14px;font-weight:bold;">
+                @{  
+                    string host = "";
+                    if (myPage) {
+                        //自己看自己
+                        host = "给我的留言";
+                    } else {
+                        //别人看自己
+                        host = "给Ta留言";
+                    }
+
+                    host = host + "  共" + Model.Pages.lNumber + "条";
+                }
+                
+                @host
+            </p>
 			<!--评论-->
 			<ul>
-				<li>
-					<img class="hr1" src="images/hr.gif" width="580px"/>
-					<div class="user_comment_img">
-						<a href="#" target="_blank"><img src="images/author.jpg" width="40px" height="40px"/></a>		
-					</div>
-					<div class="user_comment_content">
-						<a href="#" target="_blank">Jone</a>
-						<p class="comment_content">这里是用户对于主页的留言.</p>
-						<p class="comment_content_time">3小时前.</p>
-					</div>
-					<div class="agree">
-						<a href="#"><img src="images/recommend_ico.png" width="16px" height="16px"/><span>10</span></a>
-					</div>
-				</li>
-				<li>
-					<img class="hr1" src="images/hr.gif" width="580px"/>
-					<div class="user_comment_img">
-						<a href="#" target="_blank"><img src="images/author.jpg" width="40px" height="40px"/></a>		
-					</div>
-					<div class="user_comment_content">
-						<a href="#" target="_blank">Jone</a>
-						<p class="comment_content">这里是用户对于主页的留言.</p>
-						<p class="comment_content_time">3小时前.</p>
-					</div>
-					<div class="agree">
-						<a href="#"><img src="images/recommend_ico.png" width="16px" height="16px"/><span>10</span></a>
-					</div>
-				</li>
-				<li>
-					<img class="hr1" src="images/hr.gif" width="580px"/>
-					<div class="user_comment_img">
-						<a href="#" target="_blank"><img src="images/author.jpg" width="40px" height="40px"/></a>		
-					</div>
-					<div class="user_comment_content">
-						<a href="#" target="_blank">Jone</a>
-						<p class="comment_content">这里是用户对于主页的留言.</p>
-						<p class="comment_content_time">3小时前.</p>
-					</div>
-					<div class="agree">
-						<a href="#"><img src="images/recommend_ico.png" width="16px" height="16px"/><span>10</span></a>
-					</div>
-				</li>
-				<li>
-					<img class="hr1" src="images/hr.gif" width="580px"/>
-					<div class="user_comment_img">
-						<a href="#" target="_blank"><img src="images/author.jpg" width="40px" height="40px"/></a>		
-					</div>
-					<div class="user_comment_content">
-						<a href="#" target="_blank">Jone</a>
-						<p class="comment_content">这里是用户对于主页的留言.</p>
-						<p class="comment_content_time">3小时前.</p>
-					</div>
-					<div class="agree">
-						<a href="#"><img src="images/recommend_ico.png" width="16px" height="16px"/><span>10</span></a>
-					</div>
-				</li>
-				<li>
-					<img class="hr1" src="images/hr.gif" width="580px"/>
-					<div class="user_comment_img">
-						<a href="#" target="_blank"><img src="images/author.jpg" width="40px" height="40px"/></a>		
-					</div>
-					<div class="user_comment_content">
-						<a href="#" target="_blank">Jone</a>
-						<p class="comment_content">这里是用户对于主页的留言.</p>
-						<p class="comment_content_time">3小时前.</p>
-					</div>
-					<div class="agree">
-						<a href="#"><img src="images/recommend_ico.png" width="16px" height="16px"/><span>10</span></a>
-					</div>
-				</li>
+				@foreach(var m in Model.LeaveComments) {
+                    Html.RenderPartial("LeaveComments", m);
+                }
 			</ul>
 			<div class="comment_box">
 				<form>

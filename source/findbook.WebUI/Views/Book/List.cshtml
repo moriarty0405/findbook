@@ -1,0 +1,102 @@
+﻿@model findbook.WebUI.Models.BookViewModel
+
+@{
+    ViewBag.Title = "图书信息";
+}
+
+<div class="content">
+	<!--课本展示-->
+	<div class="book_show">
+		<div class="book_info">
+			<h1>@Model.Books.bookName</h1>
+			<p><span>@Model.Books.bookXY</span>-<span>@Model.Books.bookZY</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作者:<span>@Model.Books.author</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;出版社:<span>@Model.Books.pub</span></p>
+			<p><span>@Model.Books.bookIntr.</span></p>
+		</div>
+		<div class="book_img_show">		
+			<img src="../../Content/Images/books/book.jpg" width="320px" height="250px" />	
+		</div>
+		<div class="author_info">
+			<p>
+				<a href="#"><img src="../../Content/Images/users/author.jpg" width=30px height=30px/></a>
+				<a href="#" class="author_name">Jone</a>
+				<span class="time">
+                    @{
+                        //计算时差
+                        string diff = Model.DateDiff(Model.Books.upTime);
+                        diff = diff + "前上传";   
+                    }
+
+                    @diff
+                </span>	
+			</p>
+				<img class="hr1" src="../../Content/Images/web/hr.gif" width="210px"/>
+			<p>
+				QQ:272727111(可保密)
+			</p>
+				<img class="hr1" src="../../Content/Images/web/hr.gif" width="210px"/>
+			<p>
+				<img src="../../Content/Images/web/phone_icon.png" width="16px" height="16px" />15323429300(可保密)
+			</p>
+				<img class="hr1" src="../../Content/Images/web/hr.gif" width="210px"/>
+			<p>
+				<a href="#"><img src="../../Content/Images/web/contact_ico.png" width="16px" height="16px"/>&nbsp;给Ta发私信</a>
+			</p>
+				<img class="hr1" src="../../Content/Images/web/hr.gif" width="210px"/>
+			<p>
+				<img src="../../Content/Images/web/comment_ico.png" width="16px" height="16px"/>
+				<span>@Model.Books.cNumber</span>评论				
+			</p>
+				<img class="hr1" src="../../Content/Images/web/hr.gif" width="210px"/>
+			<p>
+				<img src="../../Content/Images/web/recommend_ico.png" width="16px" height="16px"/>
+				<span>@Model.Books.recNumber</span><a href="#">推荐</a>
+			</p>
+				<img class="hr1" src="../../Content/Images/web/hr.gif" width="210px"/>
+			<p>
+				还剩<span class="remain">@Model.Books.remNumber</span>本
+			</p>
+				<img class="hr1" src="../../Content/Images/web/hr.gif" width="210px"/>
+			<p>
+				售价:￥<span class="price_info">@Model.Books.bookPrice</span>
+			</p>
+		</div>
+		<div class="popular_info">
+			<p>热门推荐</p>
+			<img class="hr1" src="images/hr.gif" width="340px"/>
+			<div>
+			  	<ul>
+					<li><a href="book_show.html" target="_blank"><img src="images/book.jpg" width="90px" height="90px" title="大学英语1"/></a></li>
+					<li><a href="book_show.html" target="_blank"><img src="images/book.jpg" width="90px" height="90px" title="大学英语1"/></a></li>
+					<li><a href="book_show.html" target="_blank"><img src="images/book.jpg" width="90px" height="90px" title="大学英语1"/></a></li>
+				</ul>
+			</div>
+			<p>免费课本</p>
+			<img class="hr1" src="images/hr.gif" width="340px"/>
+			<div>
+			  	<ul>
+					<li><a href="book_show.html" target="_blank"><img src="images/book.jpg" width="90px" height="90px" title="大学英语1"/></a><img class="free_01" src="images/free.png" width="30px" height="30px" border="0"/></li>
+					<li><a href="book_show.html" target="_blank"><img src="images/book.jpg" width="90px" height="90px" title="大学英语1"/></a><img class="free_01" src="images/free.png" width="30px" height="30px" border="0"/></li>
+					<li><a href="book_show.html" target="_blank"><img src="images/book.jpg" width="90px" height="90px" title="大学英语1"/></a><img class="free_01" src="images/free.png" width="30px" height="30px" border="0"/></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!--评论-->
+	<div class="comment_zone">
+		<div class="comment_zone_inner">
+			<p style="color:#666;font-size:14px;font-weight:bold;">100条评论</p>
+			<!--评论-->
+			<ul>
+				@foreach(var m in Model.BookComments) {
+                    Html.RenderPartial("BookComments", m);
+                }
+			</ul>
+			<div class="comment_box">
+				<form>
+					<textarea rows="6" cols="93"></textarea>
+					<input type="submit" value="评论"></input>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

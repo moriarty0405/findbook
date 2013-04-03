@@ -22,6 +22,9 @@ namespace findbook.WebUI.Infrastructure {
             // put additional bindings here
             ninjectKernel.Bind<IUsersRepository>().To<EFUsersRepository>();
             ninjectKernel.Bind<IPagesRepository>().To<EFPagesRepository>();
+            ninjectKernel.Bind<IBooksRepository>().To<EFBooksRepository>();
+            ninjectKernel.Bind<IBookCommentsRepository>().To<EFBookCommentsRepository>();
+            ninjectKernel.Bind<ILeaveCommentsRepository>().To<EFLeaveCommentsRepository>();
         }
     }
 }

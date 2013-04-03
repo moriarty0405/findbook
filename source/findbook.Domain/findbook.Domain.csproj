@@ -49,13 +49,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IBookCommentsRepository.cs" />
+    <Compile Include="Abstract\IBooksRepository.cs" />
+    <Compile Include="Abstract\ILeaveCommentsRepository.cs" />
     <Compile Include="Abstract\IPagesRepository.cs" />
     <Compile Include="Abstract\IUsersRepository.cs" />
+    <Compile Include="Concrete\EFBookCommentsRepository.cs" />
+    <Compile Include="Concrete\EFBooksRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
+    <Compile Include="Concrete\EFLeaveCommentsRepository.cs" />
     <Compile Include="Concrete\EFPagesRepository.cs" />
     <Compile Include="Concrete\EFUsersRepository.cs" />
+    <Compile Include="Entities\BookComments.cs" />
+    <Compile Include="Entities\Books.cs" />
+    <Compile Include="Entities\LeaveComments.cs" />
     <Compile Include="Entities\Pages.cs" />
     <Compile Include="Entities\Users.cs" />
+    <Compile Include="Helpers\TimeHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
