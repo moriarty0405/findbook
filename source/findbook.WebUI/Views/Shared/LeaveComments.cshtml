@@ -1,5 +1,8 @@
 ﻿@model findbook.Domain.Entities.LeaveComments
-           
+
+@{
+    string dateDiff = Model.DateDiff(Model.lcTime) + "前";       
+}        
 <li>
 	<img class="hr1" src="../../Content/Images/web/hr.gif" width="580px"/>
 	<div class="user_comment_img">
@@ -8,7 +11,7 @@
 	<div class="user_comment_content">
 		<a href="#" target="_blank">@Model.lUserName</a>
 		<p class="comment_content">@Model.lBody</p>
-		<p class="comment_content_time">@Model.DateDiff(Model.lcTime)</p>
+		<p class="comment_content_time">@dateDiff</p>
 	</div>
 	<div class="agree">
 		<a href="#"><img src="../../Content/Images/web/recommend_ico.png" width="16px" height="16px"/><span>10</span></a>

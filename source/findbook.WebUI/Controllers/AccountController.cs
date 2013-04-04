@@ -9,10 +9,10 @@ using System.Web;
 namespace findbook.WebUI.Controllers
 {
     public class AccountController : Controller {
-        private IUsersRepository userRepository;
+        private IUsersRepository ur;
 
-        public AccountController(IUsersRepository ur) {
-            userRepository = ur;
+        public AccountController(IUsersRepository userRepository) {
+            ur = userRepository;
         }
 
         public ViewResult LogOn() {
@@ -22,7 +22,9 @@ namespace findbook.WebUI.Controllers
         [HttpPost]
         public ActionResult LogOn(LogOnModel model, string returnUrl) {
             if (ModelState.IsValid) {
-                Users user = userRepository.GetByNameAndPassword(model.UserName, model.Password);
+
+                #region 向cookie中写入信息
+                Users user = ur.GetByNameAndPassword(model.UserName, model.Password);
 
                 if (user != null) {
                     FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
@@ -36,8 +38,18 @@ namespace findbook.WebUI.Controllers
                     HttpCookie cookie = new HttpCookie(
                         FormsAuthentication.FormsCookieName,
                         FormsAuthentication.Encrypt(ticket));
+
                     Response.Cookies.Add(cookie);
-                    Session["userID"] = user.userID;
+
+                    //向cookie中写入用户信息
+                    HttpCookie u = new HttpCookie("user");
+                    u["userID"] = user.userID;
+                    u["userName"] = user.userName;
+
+                    Response.Cookies.Add(u);
+
+                    //Session["userID"] = user.userID;
+                #endregion
 
                     if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
                         && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\")) {
@@ -70,7 +82,7 @@ namespace findbook.WebUI.Controllers
 
             if (ModelState.IsValid) {
                 //尝试创建用户
-                userRepository.CreateUser(model.UserName, model.NewPassword, model.Email, model.Sex, model.XQ, model.XY, model.ZY);
+                ur.CreateUser(model.UserName, model.NewPassword, model.Email, model.Sex, model.XQ, model.XY, model.ZY);
                 status = 1;
 
                 if (status == 1) {

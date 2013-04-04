@@ -31,7 +31,7 @@ namespace findbook.Domain.Entities {
 
         public int bookSale { get; set; }
 
-        public double bookPrice { get; set; }
+        public decimal bookPrice { get; set; }
 
         public string author { get; set; }
 

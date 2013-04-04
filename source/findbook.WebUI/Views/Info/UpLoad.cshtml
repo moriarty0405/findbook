@@ -1,0 +1,80 @@
+﻿@model findbook.Domain.Entities.Books
+
+@{
+    ViewBag.Title = "上传图书";
+    Layout = "~/Views/Shared/_InfoLayout.cshtml";
+}
+
+<div class="tab-pane active" id="tab1">
+	<div class="post_book">
+		<div class="post_book_inner">
+			@using (Html.BeginForm("UpLoad", "Info", FormMethod.Post)) { 
+                <table>
+					<tbody>
+						<tr><td class="c13">发布课本</td><td></td></tr>
+						<tr>
+                            <td class="c14">课本图片:</td>
+                            <td>
+                                <img src="../../Content/Images/books/book.jpg" width="200px" height="170px" />
+                                <input type="file" />
+                            </td>
+                        </tr>
+						<tr>
+                            <td class="c14">课本名:</td>
+                            <td>
+                                @Html.TextBoxFor(m => m.bookName)
+                            </td>
+                        </tr>
+						<tr>
+                            <td class="c14">作者:</td>
+                            <td>
+                                @Html.TextBoxFor(m => m.author)
+                            </td>
+                        </tr>
+						<tr>
+                            <td class="c14">出版社:</td>
+                            <td>
+                                @Html.TextBoxFor(m => m.pub)
+                            </td>
+                        </tr>
+						<tr>
+                        <td class="c14">数量:</td>
+                            <td>
+                                @Html.TextBoxFor(m => m.bookSale)
+                            </td>
+                        </tr>
+						<tr>
+                            <td class="c14">课本单价:</td>
+                            <td>
+                                @Html.TextBoxFor(m => m.bookPrice)
+                            </td>
+                        </tr>
+						<tr>
+                        <td class="c14"><p>课本所属&nbsp;</p>学院专业:</td>
+                            <td>
+						        @Html.DropDownListFor(m => m.bookXY, 
+                                        new SelectList(new[] { 
+                                            "管理学院", "外语学院", "材料学院", "航海学院", "外语学院" }),
+                                        new { @class = "select_padding"})
+						        
+                                @Html.DropDownListFor(m => m.bookZY, 
+                                        new SelectList(new[] { "会计", "信管" }), 
+                                        new { @class = "select_padding" })
+                            </td>
+                        </tr>
+						<tr>
+                            <td class="c14">备注：</td>
+                            <td>
+                                @Html.TextAreaFor(m => m.bookIntr)
+                            </td>
+                        </tr>
+						<tr>
+                            <td class="c14"><input type="submit" value="发布" /></td>
+                            <td></td>
+                        </tr>
+					</tbody>
+				</table>               
+            }
+		</div>
+	</div>
+</div>

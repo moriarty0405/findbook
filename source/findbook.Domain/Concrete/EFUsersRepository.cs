@@ -27,7 +27,7 @@ namespace findbook.Domain.Concrete {
         }
 
         public void CreateUser(string userName, string userPw, string mail, string sex, string XQ, string XY, string ZY) {
-            //存储过程传入参数
+            #region 定义存储过程参数
             SqlParameter[] parameters = new SqlParameter[7];
                         
             parameters[0] = new SqlParameter {
@@ -77,6 +77,7 @@ namespace findbook.Domain.Concrete {
                     ParameterName = "ZY",
                     Value = ZY
             };
+            #endregion
 
             context.Database.ExecuteSqlCommand("exec [dbo].[sp_create_user] @userName, @userPw, @mail, @sex, @XQ, @XY, @ZY", parameters);
         }

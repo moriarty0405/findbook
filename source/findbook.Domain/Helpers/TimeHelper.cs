@@ -12,12 +12,13 @@ namespace findbook.Domain.Helpers {
             TimeSpan tsNow = new TimeSpan(DateTime.Now.Ticks);
             TimeSpan tsUp = new TimeSpan(upTime.Ticks);
             TimeSpan ts = tsNow.Subtract(tsUp).Duration();
+            double totalSecond = ts.Seconds + ts.Minutes * 60 + ts.Hours * 3600 + ts.Days * 86400;
 
-            if (ts.Seconds <= 60)
+            if (totalSecond <= 60)
                 dateDiff = ts.Seconds.ToString() + "秒";
-            else if (ts.Minutes <= 60)
+            else if (totalSecond <= 3600)
                 dateDiff = ts.Minutes.ToString() + "分";
-            else if (ts.Hours <= 24)
+            else if (totalSecond <= 86400)
                 dateDiff = ts.Hours.ToString() + "小时";
             else if (ts.Days <= 30)
                 dateDiff = ts.Days.ToString() + "天";

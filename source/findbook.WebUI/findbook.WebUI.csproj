@@ -75,6 +75,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InfoController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -211,10 +212,16 @@
     <Content Include="Views\Shared\BookComments.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\LeaveCommets.cshtml" />
+    <Content Include="Views\Shared\LeaveComments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\BookShow.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_InfoLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Info\UpLoad.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

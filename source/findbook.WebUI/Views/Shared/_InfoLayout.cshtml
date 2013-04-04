@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="content">
+	<div class="tabbable" id="myTab"> <!-- Only required for left/right tabs -->
+	  <ul class="nav nav-tabs">
+		<li class="active"><a href="#tab1" data-toggle="tab">发布课本</a></li>
+		<li><a href="#tab2" data-toggle="tab">发布求购</a></li>
+		<li><a href="#tab3" data-toggle="tab">个人资料</a></li>
+		<li><a href="#tab4" data-toggle="tab">修改密码</a></li>
+		<li><a href="#tab5" data-toggle="tab">我的消息</a></li>
+	  </ul>
+	  <div class="tab-content">
+		@RenderBody()
+	  </div>
+	</div>
+</div>

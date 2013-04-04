@@ -46,7 +46,10 @@
 				        <p>
 				        @*<label for="campus">*校区</label>*@
                             @Html.LabelFor(m => m.XQ)
-                            @Html.DropDownListFor(m => m.XQ, new SelectList(new[] { "南湖校区", "鉴湖校区", "西院", "东院", "余家头校区" }), new { @class = "select_padding" })
+                            @Html.DropDownListFor(m => m.XQ, 
+                                new SelectList(new[] { 
+                                    "南湖校区", "鉴湖校区", "西院", "东院", "余家头校区" }), 
+                                new { @class = "select_padding" })
 				        @*<select name="campus" required>
 					        <option value="1">南湖校区</option>
 					        <option value="2">鉴湖校区</option>
@@ -60,7 +63,10 @@
                             @Html.LabelFor(m => m.XY)
                             
 
-                            @Html.DropDownListFor(m => m.XY, new SelectList(new[] { "管理学院", "外语学院", "材料学院", "航海学院", "外语学院" }), new { @class = "select_padding"})
+                            @Html.DropDownListFor(m => m.XY, 
+                                new SelectList(new[] { 
+                                    "管理学院", "外语学院", "材料学院", "航海学院", "外语学院" }),
+                                new { @class = "select_padding"})
 				        @*<select name="college" onChange="getMajor()">
 					        <option value="0" selected="selected">请选择学院</option>
 					        <option value="1">管理学院</option>
@@ -79,7 +85,9 @@
 					        <option value="0" selected="selected">请选择专业</option>
 				        </select>*@
                             @Html.LabelFor(m => m.ZY)
-                            @Html.DropDownListFor(m => m.ZY, new SelectList(new[] { "会计", "信管" }), new { @class = "select_padding" })
+                            @Html.DropDownListFor(m => m.ZY, 
+                                new SelectList(new[] { "会计", "信管" }), 
+                                new { @class = "select_padding" })
 			            </p>
 			            <p style="margin-top:8px;">
 				        @*<input type="checkbox" name="remember" id="remember" required>*@

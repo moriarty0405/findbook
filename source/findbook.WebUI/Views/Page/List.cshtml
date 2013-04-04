@@ -1,8 +1,14 @@
 ﻿@model findbook.WebUI.Models.PageViewModel
 
 @{
+    //string userID = (string)Context.Session["userID"];
+    
+    //从cookie中获取userID
+    HttpCookie cookie = Request.Cookies["user"];
+    string userID = cookie["userID"].ToString();  
+          
     //确定是不是自己的主页
-    bool myPage = Model.Users.userName.Equals(Context.User.Identity.Name);
+    bool myPage = Model.Users.userID.Equals(userID);
     
     if (myPage) {
         //自己看自己
@@ -44,7 +50,14 @@
             @if (myPage) {
                 <p>
 				    <span class="c17"><a href="#"><img src="../../Content/Images/web/askfor_icon.png" width="16px" height="16px"/>&nbsp;发布求购令</a></span>
-				    <span class="c18"><a href="#">上传图书</a></span>
+
+				    <span class="c18">
+                        @Html.RouteLink("上传图书", new {
+                                    Controller = "Info",
+                                    Action = "UpLoad",
+                                    userID = userID
+                                    })
+                    </span>
 			    </p>
             } else { 
                 <p class="c17">

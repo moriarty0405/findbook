@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using findbook.Domain.Helpers;
+using System.ComponentModel.DataAnnotations;
 
 namespace findbook.Domain.Entities {
     public class LeaveComments : TimeHelper {
+        [Key]
         public string leaComID { get; set; }
 
         public string lUserID { get; set; }
