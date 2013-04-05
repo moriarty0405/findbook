@@ -41,5 +41,7 @@ namespace findbook.Domain.Entities {
 
         public string ZT { get; set; }
 
+        public string intro { get; set; }
+
     }
 }

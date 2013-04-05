@@ -1,17 +1,55 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
+    //获取userID
+    HttpCookie cookie = Request.Cookies["user"];
+    string userID = cookie["userID"].ToString();
 }
-
 
 
 <div class="content">
 	<div class="tabbable" id="myTab"> <!-- Only required for left/right tabs -->
 	  <ul class="nav nav-tabs">
-		<li class="active"><a href="#tab1" data-toggle="tab">发布课本</a></li>
-		<li><a href="#tab2" data-toggle="tab">发布求购</a></li>
-		<li><a href="#tab3" data-toggle="tab">个人资料</a></li>
-		<li><a href="#tab4" data-toggle="tab">修改密码</a></li>
-		<li><a href="#tab5" data-toggle="tab">我的消息</a></li>
+		<li id="UpLoad">
+            @*<a href="#tab1" data-toggle="tab">发布课本</a>*@
+            @Html.RouteLink("上传图书", new {
+                                    Controller = "Info",
+                                    Action = "UpLoad",
+                                    userID = userID
+                                    })
+        </li>
+		<li id="Want">
+            @*<a href="#tab2" data-toggle="tab">发布求购</a>*@
+            @Html.RouteLink("发布求购", new {
+                                    Controller = "Info",
+                                    Action = "Want",
+                                    userID = userID
+                                    })
+        </li>
+		<li id="Profile">
+            @*<a href="#tab3" data-toggle="tab">个人资料</a>*@
+            @Html.RouteLink("我的资料", new {
+                                    Controller = "Info",
+                                    Action = "Profile",
+                                    userID = userID
+                                    })
+        </li>
+		<li id="PassWord">
+            @*<a href="#tab4" data-toggle="tab">修改密码</a>*@
+            @Html.RouteLink("修改密码", new {
+                                    Controller = "Info",
+                                    Action = "PassWord",
+                                    userID = userID
+                                    })
+        </li>
+		<li id="SysMessage">
+            @*<a href="#tab5" data-toggle="tab">我的消息</a>*@
+            @Html.RouteLink("我的消息", new {
+                                    Controller = "Info",
+                                    Action = "SysMessage",
+                                    userID = userID
+                                    })
+        </li>
 	  </ul>
 	  <div class="tab-content">
 		@RenderBody()

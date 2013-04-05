@@ -13,5 +13,8 @@ namespace findbook.Domain.Abstract {
 
         //用于验证用户，并写入cookie
         Users GetByNameAndPassword(string name, string password);
+
+        //保存修改
+        void SaveUser();
     }
 }

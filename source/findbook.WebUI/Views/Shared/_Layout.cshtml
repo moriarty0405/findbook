@@ -60,7 +60,14 @@
                                     userID = userID
                                     })
                             </li>
-					        <li><a href="#">私信</a></li>
+					        <li>
+                                @*<a href="#">私信</a>*@
+                                @Html.RouteLink("私信", new {
+                                    Controller = "Private",
+                                    Action = "List",
+                                    userID = userID
+                                    })
+                            </li>
 					        <li><a href="#">消息</a></li>
 					        <li><a href="#">设置</a></li>
 					        <li>@Html.ActionLink("退出", "LogOff", "Account")</li>

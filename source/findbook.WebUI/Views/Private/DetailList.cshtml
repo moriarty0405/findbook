@@ -1,0 +1,29 @@
+﻿@model findbook.WebUI.Models.PrivateView
+
+@{
+    ViewBag.Title = "私信";
+}
+
+<div class="content">
+	<!--私信-->
+	<div class="sixin">
+		<p><a href="#" target="_blank">《返回私信首页</a></p>
+		<p><span class="c05">发私信给</span><span class="c06">Jone</span>:</p>
+		<div class="comment_box">
+			<form>
+				<textarea rows="6" cols="93"></textarea>
+				<input type="submit" value="发送"></input>
+			</form>
+		</div>
+	</div>
+	<div class="comment_zone">
+		<div class="comment_zone_inner">
+			<!--评论-->
+			<ul>
+                @foreach (var m in Model.Privates) {
+                    Html.RenderPartial("PrivateDetail", m);
+                }
+			</ul>
+		</div>
+	</div>
+</div>

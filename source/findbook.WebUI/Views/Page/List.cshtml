@@ -42,21 +42,35 @@
                     <img src="../../Content/Images/web/gender.png" />@sex
 
                     @if (myPage) { 
-                        <a href="#" target="_blank">修改个人资料</a>
+                        @*<a href="#" target="_blank">修改个人资料</a>*@
+                        @Html.RouteLink("修改个人资料", new {
+                           Controller = "Info",
+                           Action = "Profile",
+                           userID = userID
+                       })
                     }
                 </span>
 			</p>
 			<img class="hr1" src="../../Content/Images/web/hr.gif" width="220px"/>
             @if (myPage) {
                 <p>
-				    <span class="c17"><a href="#"><img src="../../Content/Images/web/askfor_icon.png" width="16px" height="16px"/>&nbsp;发布求购令</a></span>
+				    <span class="c17">
+                        <img src="../../Content/Images/web/askfor_icon.png" width="16px" height="16px"/>
+                        <a href="#">
+                            @Html.RouteLink("发布求购令", new {
+                                Controller = "Info",
+                                Action = "Want",
+                                userID = userID
+                            })
+                        </a>
+                    </span>
 
 				    <span class="c18">
                         @Html.RouteLink("上传图书", new {
-                                    Controller = "Info",
-                                    Action = "UpLoad",
-                                    userID = userID
-                                    })
+                           Controller = "Info",
+                           Action = "UpLoad",
+                           userID = userID
+                       })
                     </span>
 			    </p>
             } else { 

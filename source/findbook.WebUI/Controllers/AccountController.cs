@@ -15,6 +15,7 @@ namespace findbook.WebUI.Controllers
             ur = userRepository;
         }
 
+        #region 登录
         public ViewResult LogOn() {
             return View();
         }
@@ -64,6 +65,7 @@ namespace findbook.WebUI.Controllers
 
             return View(model);
         }
+        #endregion
 
         public ActionResult LogOff() {
             //删除用户验证信息
@@ -72,6 +74,7 @@ namespace findbook.WebUI.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        #region 注册
         public ViewResult Register() {
             return View();
         }
@@ -96,5 +99,6 @@ namespace findbook.WebUI.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+        #endregion
     }
 }

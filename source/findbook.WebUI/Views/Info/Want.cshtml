@@ -1,0 +1,56 @@
+﻿@model findbook.Domain.Entities.Wanted
+
+@{
+    ViewBag.Title = "发布求购";
+    Layout = "~/Views/Shared/_InfoLayout.cshtml";
+}
+
+<script type="text/javascript">
+    $(function () {
+        $("#Want").addClass("active")
+    })     
+</script>
+
+<div class="tab-pane active" id="tab2">
+	<div class="post_qiugou">
+		<div class="post_qiugou_inner">
+			@using(Html.BeginForm("Want", "Info", FormMethod.Post)) {
+				<table>
+					<tbody>
+						<tr><td class="c13">发布求购</td><td></td></tr>
+						<tr>
+                        <td class="c20">课本名：</td>
+                            <td>
+                                @Html.TextBoxFor(m => m.bookName)
+                            </td>
+                        </tr>
+						<tr>
+                            <td class="c20">作者：</td>
+                            <td>
+                                @Html.TextBoxFor(m => m.author)
+                            </td>
+                        </tr>
+						<tr>
+                            <td class="c20">出版社：</td>
+                            <td>
+                                @Html.TextBoxFor(m => m.pub)
+                            </td>
+                        </tr>
+						<tr>
+                            <td class="c20">课本数：</td>
+                            <td>
+                                @Html.TextBoxFor(m => m.num)
+                            </td>
+                        </tr>
+						<tr>
+                            <td class="c20">
+                                <input type="submit" value="发布" />
+                            </td>
+                            <td></td>
+                        </tr>
+					</tbody>
+				</table>	
+			}
+		</div>
+	</div>
+</div>

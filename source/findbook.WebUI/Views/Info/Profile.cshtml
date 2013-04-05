@@ -1,0 +1,109 @@
+﻿@model findbook.Domain.Entities.Users
+
+@{
+    ViewBag.Title = "我的资料";
+    Layout = "~/Views/Shared/_InfoLayout.cshtml";
+}
+
+@*设置navigator中的标签为active*@
+<script type="text/javascript">
+    $(function () {
+        $("#Profile").addClass("active")
+    })     
+</script>
+
+<div class="tab-pane active" id="tab3">  
+	<div class="xiugai_info">
+		@using (Html.BeginForm("Profile", "Info", FormMethod.Post)) {
+			<table>
+				<tbody>
+					<tr>
+						<td class="c08">个人资料</td><td class="c10"></td>
+					</tr>
+					<tr>
+						<td class="c09">个人头像:</td>
+                        <td class="c10">
+                            <img src="../../Content/Images/users/author.jpg" width="80px" height="80px" />
+                            <input type="file" />
+                        </td>
+					</tr>
+					<tr>
+						<td class="c09">昵称:</td>
+                        <td class="c10">
+                            @Html.TextBoxFor(m => m.userNickName)
+                        </td>
+					</tr>
+					<tr>
+						<td class="c09">性别:</td><td class="c10">
+                            @Html.RadioButtonFor(m => m.userSex, "男")
+                            <span>男</span>
+                            @Html.RadioButtonFor(m => m.userSex, "女")
+                            <span>女</span>
+                        </td>
+					</tr>
+					<tr>
+						<td class="c09">校区:</td>
+                        <td class="c10">
+						    @Html.DropDownListFor(m => m.XQ,
+                                new SelectList(new[] { 
+                                    "南湖校区", "鉴湖校区", "西院", "东院", "余家头校区" }),
+                                new { @class = "select_padding" })
+						</td>
+					</tr>
+					<tr>
+						<td class="c09">学院专业:</td>
+						<td class="c10">
+						    @Html.DropDownListFor(m => m.userXY,
+                                new SelectList(new[] { 
+                                    "管理学院", "外语学院", "材料学院", "航海学院", "外语学院" }),
+                                new { @class = "select_padding" })
+
+						    @Html.DropDownListFor(m => m.userZY,
+                                new SelectList(new[] { "会计", "信管" }),
+                                new { @class = "select_padding" })
+						</td>
+					</tr>
+					<tr>
+						<td class="c09">年级:</td>
+                        <td class="c10">
+							@Html.DropDownListFor(m => m.userZY,
+                                new SelectList(new[] { "大一", "大二", "大三", "大四", "其他" }),
+                                new { @class = "select_padding" })
+						</td>
+					</tr>
+					<tr>
+						<td class="c09">QQ:</td>
+                        <td class="c10">
+                            @Html.TextBoxFor(m => m.userQQ)
+                        </td>
+					</tr>
+					<tr>
+						<td class="c09">电话:</td>
+                        <td class="c10">
+                            @Html.TextBoxFor(m => m.userPhone)
+                        </td>
+					</tr>
+					<tr>
+						<td class="c09">邮箱:</td>
+                        <td class="c10">
+                            <input type="text" value="111@111.com"/>
+                        </td>
+					</tr>
+					<tr>
+						<td class="c09">一句话介绍:</td>
+                        <td class="c10">
+                            @Html.TextBoxFor(m => m.intro)
+                        </td>
+					</tr>
+					<tr>
+						<td class="c09">
+                            <a href="#">取消修改</a></td>
+                        <td class="c10">
+                            <input type="submit" value="保存"/>
+                        </td>
+					</tr>
+				</tbody>
+			</table>
+         }
+	</div>
+</div>

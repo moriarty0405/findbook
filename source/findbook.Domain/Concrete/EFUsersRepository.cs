@@ -82,5 +82,9 @@ namespace findbook.Domain.Concrete {
             context.Database.ExecuteSqlCommand("exec [dbo].[sp_create_user] @userName, @userPw, @mail, @sex, @XQ, @XY, @ZY", parameters);
         }
 
+        public void SaveUser() {
+            context.SaveChanges();
+        }
+
     }
 }

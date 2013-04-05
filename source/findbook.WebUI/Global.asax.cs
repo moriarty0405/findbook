@@ -39,6 +39,18 @@ namespace findbook.WebUI
             );
 
             routes.MapRoute(
+                "Private-List",
+                "Private-List/{userID}",
+                new { controller = "Private", action = "List", userID = "" }
+            );
+
+            routes.MapRoute(
+                "Private-Detail",
+                "Private-Detail/{userID}/{pmID}",
+                new { controller = "Private", action = "Detail", userID = "", pmID = "" }
+            );
+
+            routes.MapRoute(
                 "Default", // 路由名称
                 "{controller}/{action}", // 带有参数的 URL
                 new { controller = "Home", action = "Index" } // 参数默认值

@@ -1,0 +1,18 @@
+﻿@model findbook.WebUI.Models.PrivateView
+           
+<li>
+	<img class="hr1" src="../../Content/Images/web/hr.gif" width="580px"/>
+	<div class="user_comment_img">
+		<a href="#" target="_blank"><img src="../../Content/Images/users/author.jpg" width="40px" height="40px"/></a>		
+	</div>
+	<div class="user_comment_content">
+		<a href="#" target="_blank">@Model.PrivateDetail.sUserName</a>
+		<p class="comment_content">@Model.PrivateDetail.pmBody</p>
+		<p class="comment_content_time">@Model.PrivateDetail.sTime</p>
+	</div>
+	<div class="comment_content_reply">
+		<a href="#" target="_blank">回复</a>|
+		<a href="#">删除</a>
+	</div>
+</li>
+

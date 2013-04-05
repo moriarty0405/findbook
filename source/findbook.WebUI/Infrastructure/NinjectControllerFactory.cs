@@ -25,6 +25,10 @@ namespace findbook.WebUI.Infrastructure {
             ninjectKernel.Bind<IBooksRepository>().To<EFBooksRepository>();
             ninjectKernel.Bind<IBookCommentsRepository>().To<EFBookCommentsRepository>();
             ninjectKernel.Bind<ILeaveCommentsRepository>().To<EFLeaveCommentsRepository>();
+            ninjectKernel.Bind<IPwModifyRepository>().To<EFPwModifyRepository>();
+            ninjectKernel.Bind<ISystemMessagesRepository>().To<EFSystemMessagesRepository>();
+            ninjectKernel.Bind<IWantedRepository>().To<EFWantedRepository>();
+            ninjectKernel.Bind<IPrivatesRepository>().To<EFPrivatesRepository>();
         }
     }
 }
