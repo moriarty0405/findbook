@@ -5,7 +5,8 @@
     
     //从cookie中获取userID
     HttpCookie cookie = Request.Cookies["user"];
-    string userID = cookie["userID"].ToString();  
+    string userID = cookie["userID"].ToString();
+    string userName = cookie["userName"].ToString();  
           
     //确定是不是自己的主页
     bool myPage = Model.Users.userID.Equals(userID);
@@ -153,17 +154,18 @@
                 @host
             </p>
 			<!--评论-->
-			<ul>
-				@foreach(var m in Model.LeaveComments) {
-                    Html.RenderPartial("LeaveComments", m);
-                }
-			</ul>
 			<div class="comment_box">
-				<form action="/Page/LeaveCommet" method="post">
-					<textarea id="lBody" rows="6" cols="93"></textarea>
-					<input type="submit" value="留言"></input>
-                </form>
+				@using (Ajax.BeginForm("List", new { Controller = "Page", Action = "List", userID = Model.Users.userID, userName = Model.Users.userName }, new AjaxOptions{})) {
+                    <ul id="LeaveComments">
+				        @foreach (var m in Model.LeaveComments) {
+                            Html.RenderPartial("LeaveComments", m);
+                        }
+			        </ul>
+					<textarea name="lBody" rows="6" cols="93"></textarea>
+					<input type="submit" value="留言"/>
+    }
 			</div>
 		</div>
 	</div>
 </div>
+

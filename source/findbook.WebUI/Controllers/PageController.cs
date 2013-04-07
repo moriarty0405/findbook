@@ -22,7 +22,7 @@ namespace findbook.WebUI.Controllers
             br = bookRepository;
         }
 
-        public ActionResult List(string userID)
+        public ActionResult List(string userID, string returnURL, string userName)
         {
             PageViewModel pvm = new PageViewModel {
                 //传入View中的是用户点击查看主页的当前用户
@@ -43,25 +43,19 @@ namespace findbook.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult LeaveComment() {
-            //从cookie中取出lUser的信息
+        public ActionResult List(string userID, string userName) {
+            //从cookie中获取userID
             HttpCookie cookie = Request.Cookies["user"];
             string lUserID = cookie["userID"].ToString();
             string lUserName = cookie["userName"].ToString();
 
-            //从Request中取出信息
-            string lBody = Request["lBody"];
-            string hUserID = Session["hUserID"].ToString();
+            string lBody = HttpContext.Request["lBody"];
 
-            //利用ur，取出hUserName
-            Users user = ur.Users.FirstOrDefault(u => u.userID.Equals(hUserID));
-            string hUserName = user.userName;
-
-            if (lcr.LeaveComment(lUserID, lUserName, hUserID, hUserName, lBody)) {
-                return RedirectToAction("List", "Page");
+            if (lcr.LeaveComment(lUserID, lUserName, userID, userName, lBody)) {
+                return List(userID, null, null);
             }
-            
-            return View();
+
+            return List(userID, null, null);
         }
 
 

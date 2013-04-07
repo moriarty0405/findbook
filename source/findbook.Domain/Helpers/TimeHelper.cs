@@ -12,7 +12,7 @@ namespace findbook.Domain.Helpers {
             TimeSpan tsNow = new TimeSpan(DateTime.Now.Ticks);
             TimeSpan tsUp = new TimeSpan(upTime.Ticks);
             TimeSpan ts = tsNow.Subtract(tsUp).Duration();
-            double totalSecond = ts.Seconds + ts.Minutes * 60 + ts.Hours * 3600;
+            double totalSecond = ts.Seconds + ts.Minutes * 60 + ts.Hours * 3600 + ts.Days * 86400;
 
             if (totalSecond <= 60)
                 dateDiff = ts.Seconds.ToString() + "秒前";

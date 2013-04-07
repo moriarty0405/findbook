@@ -55,7 +55,7 @@ namespace findbook.Domain.Concrete {
             #endregion
 
             context.Database.ExecuteSqlCommand("exec dbo.sp_leave_comment @lUserID, @lUserName, @hUserID, @hUserName, @lBody", parameters);
-            status = false;
+            status = true;
             
             return status;
         }
