@@ -16,6 +16,9 @@
     } else {
         //别人看自己
         ViewBag.Title = Model.Users.userNickName + "的主页";
+        
+        //将对方的信息写到session中
+        Context.Session["hUserID"] = userID;
     }
 }
 
@@ -123,114 +126,9 @@
 		
 		<div class="personal_upload_li">
 			<ul>
-				<li>
-					<a href="#" target="_blank"><img src="images/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; /></a>
-					<div class="c02">
-						<p class="c03"><a href="#" title="大学英语1" target="_blank">大学英语1</a></p>
-						<p ><span>管理学院</span>-<span>信管专业</span>-<span class="remain">2</span>本</p>
-						<p>作者:<span>李毅</span></p>
-							<p>出版社:<span>武汉理工大学出版社</span></p>
-						<p class="time">3小时前上传</p>
-						<p class="c04">
-							<span>100</span><a href="#">评论</a>
-							<span>100</span><a href="#">推荐</a>
-							<span class="c19"><a href="#">修改</a>&nbsp;&nbsp;<a href="#">删除</a></span>
-						</p>
-					</div>	
-				</li>
-				<li>
-					<a href="#" target="_blank"><img src="images/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; /></a>
-					<div class="c02">
-						<p class="c03"><a href="#" title="大学英语1" target="_blank">大学英语1</a></p>
-						<p ><span>管理学院</span>-<span>信管专业</span>-<span class="remain">2</span>本</p>
-						<p>作者:<span>李毅</span></p>
-							<p>出版社:<span>武汉理工大学出版社</span></p>
-						<p class="time">3小时前上传</p>
-						<p class="c04">
-							<span>100</span><a href="#">评论</a>
-							<span>100</span><a href="#">推荐</a>
-							<span class="c19"><a href="#">修改</a>&nbsp;&nbsp;<a href="#">删除</a></span>
-						</p>
-					</div>	
-				</li>
-				<li>
-					<a href="#" target="_blank"><img src="images/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; /></a>
-					<div class="c02">
-						<p class="c03"><a href="#" title="大学英语1" target="_blank">大学英语1</a></p>
-						<p ><span>管理学院</span>-<span>信管专业</span>-<span class="remain">2</span>本</p>
-						<p>作者:<span>李毅</span></p>
-							<p>出版社:<span>武汉理工大学出版社</span></p>
-						<p class="time">3小时前上传</p>
-						<p class="c04">
-							<span>100</span><a href="#">评论</a>
-							<span>100</span><a href="#">推荐</a>
-							<span class="c19"><a href="#">修改</a>&nbsp;&nbsp;<a href="#">删除</a></span>
-						</p>
-					</div>	
-				</li>
-				<li>
-					<a href="#" target="_blank"><img src="images/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; /></a>
-					<div class="c02">
-						<p class="c03"><a href="#" title="大学英语1" target="_blank">大学英语1</a></p>
-						<p ><span>管理学院</span>-<span>信管专业</span>-<span class="remain">2</span>本</p>
-						<p>作者:<span>李毅</span></p>
-							<p>出版社:<span>武汉理工大学出版社</span></p>
-						<p class="time">3小时前上传</p>
-						<p class="c04">
-							<span>100</span><a href="#">评论</a>
-							<span>100</span><a href="#">推荐</a>
-							<span class="c19"><a href="#">修改</a>&nbsp;&nbsp;<a href="#">删除</a></span>
-						</p>
-					</div>	
-				</li>
-				<li>
-					<a href="#" target="_blank"><img src="images/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; /></a>
-					<div class="c02">
-						<p class="c03"><a href="#" title="大学英语1" target="_blank">大学英语1</a></p>
-						<p ><span>管理学院</span>-<span>信管专业</span>-<span class="remain">2</span>本</p>
-						<p class="time">3小时前上传</p>
-						<p class="c04">
-							<span>100</span><a href="#">评论</a>
-							<span>100</span><a href="#">推荐</a>
-						</p>
-					</div>	
-				</li>
-				<li>
-					<a href="#" target="_blank"><img src="images/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; /></a>
-					<div class="c02">
-						<p class="c03"><a href="#" title="大学英语1" target="_blank">大学英语1</a></p>
-						<p ><span>管理学院</span>-<span>信管专业</span>-<span class="remain">2</span>本</p>
-						<p class="time">3小时前上传</p>
-						<p class="c04">
-							<span>100</span><a href="#">评论</a>
-							<span>100</span><a href="#">推荐</a>
-						</p>
-					</div>	
-				</li>
-				<li>
-					<a href="#" target="_blank"><img src="images/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; /></a>
-					<div class="c02">
-						<p class="c03"><a href="#" title="大学英语1" target="_blank">大学英语1</a></p>
-						<p ><span>管理学院</span>-<span>信管专业</span>-<span class="remain">2</span>本</p>
-						<p class="time">3小时前上传</p>
-						<p class="c04">
-							<span>100</span><a href="#">评论</a>
-							<span>100</span><a href="#">推荐</a>
-						</p>
-					</div>	
-				</li>
-				<li>
-					<a href="#" target="_blank"><img src="images/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; /></a>
-					<div class="c02">
-						<p class="c03"><a href="#" title="大学英语1" target="_blank">大学英语1</a></p>
-						<p ><span>管理学院</span>-<span>信管专业</span>-<span class="remain">2</span>本</p>
-						<p class="time">3小时前上传</p>
-						<p class="c04">
-							<span>100</span><a href="#">评论</a>
-							<span>100</span><a href="#">推荐</a>
-						</p>
-					</div>	
-				</li>
+				@foreach (var m in Model.Books) {
+                    Html.RenderPartial("BookUploaded", m);
+                }
 			</ul>
 		</div>
 	</div>
@@ -261,10 +159,10 @@
                 }
 			</ul>
 			<div class="comment_box">
-				<form>
-					<textarea rows="6" cols="93"></textarea>
+				<form action="/Page/LeaveCommet" method="post">
+					<textarea id="lBody" rows="6" cols="93"></textarea>
 					<input type="submit" value="留言"></input>
-				</form>
+                </form>
 			</div>
 		</div>
 	</div>

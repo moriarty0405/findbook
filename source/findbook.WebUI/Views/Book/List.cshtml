@@ -23,7 +23,7 @@
                     @{
                         //计算时差
                         string diff = Model.DateDiff(Model.Books.upTime);
-                        diff = diff + "前上传";   
+                        diff = diff + "上传";   
                     }
 
                     @diff
@@ -57,26 +57,26 @@
 			</p>
 				<img class="hr1" src="../../Content/Images/web/hr.gif" width="210px"/>
 			<p>
-				售价:￥<span class="price_info">@Model.Books.bookPrice</span>
+				售价:￥<span class="price_info">@Model.Books.bookPrice.ToString("0.0")</span>
 			</p>
 		</div>
 		<div class="popular_info">
 			<p>热门推荐</p>
-			<img class="hr1" src="images/hr.gif" width="340px"/>
+			<img class="hr1" src="../../Content/Images/web/hr.gif" width="340px"/>
 			<div>
 			  	<ul>
-					<li><a href="book_show.html" target="_blank"><img src="images/book.jpg" width="90px" height="90px" title="大学英语1"/></a></li>
-					<li><a href="book_show.html" target="_blank"><img src="images/book.jpg" width="90px" height="90px" title="大学英语1"/></a></li>
-					<li><a href="book_show.html" target="_blank"><img src="images/book.jpg" width="90px" height="90px" title="大学英语1"/></a></li>
+					<li><a href="book_show.html" target="_blank"><img src="../../Content/Images/books/book.jpg" width="90px" height="90px" title="大学英语1"/></a></li>
+					<li><a href="book_show.html" target="_blank"><img src="../../Content/Images/books/book.jpg" width="90px" height="90px" title="大学英语1"/></a></li>
+					<li><a href="book_show.html" target="_blank"><img src="../../Content/Images/books/book.jpg" width="90px" height="90px" title="大学英语1"/></a></li>
 				</ul>
 			</div>
 			<p>免费课本</p>
-			<img class="hr1" src="images/hr.gif" width="340px"/>
+			<img class="hr1" src="../../Content/Images/web/hr.gif" width="340px"/>
 			<div>
 			  	<ul>
-					<li><a href="book_show.html" target="_blank"><img src="images/book.jpg" width="90px" height="90px" title="大学英语1"/></a><img class="free_01" src="images/free.png" width="30px" height="30px" border="0"/></li>
-					<li><a href="book_show.html" target="_blank"><img src="images/book.jpg" width="90px" height="90px" title="大学英语1"/></a><img class="free_01" src="images/free.png" width="30px" height="30px" border="0"/></li>
-					<li><a href="book_show.html" target="_blank"><img src="images/book.jpg" width="90px" height="90px" title="大学英语1"/></a><img class="free_01" src="images/free.png" width="30px" height="30px" border="0"/></li>
+					<li><a href="book_show.html" target="_blank"><img src="../../Content/Images/books/book.jpg" width="90px" height="90px" title="大学英语1"/></a><img class="free_01" src="../../Content/Images/web/free.png" width="30px" height="30px" border="0"/></li>
+					<li><a href="book_show.html" target="_blank"><img src="../../Content/Images/books/book.jpg" width="90px" height="90px" title="大学英语1"/></a><img class="free_01" src="../../Content/Images/web/free.png" width="30px" height="30px" border="0"/></li>
+					<li><a href="book_show.html" target="_blank"><img src="../../Content/Images/books/book.jpg" width="90px" height="90px" title="大学英语1"/></a><img class="free_01" src="../../Content/Images/web/free.png" width="30px" height="30px" border="0"/></li>
 				</ul>
 			</div>
 		</div>
@@ -84,7 +84,10 @@
 	<!--评论-->
 	<div class="comment_zone">
 		<div class="comment_zone_inner">
-			<p style="color:#666;font-size:14px;font-weight:bold;">100条评论</p>
+            @{
+                string comment ="共有  " + Model.Books.cNumber + "条评论";
+                }
+			<p style="color:#666;font-size:14px;font-weight:bold;">@comment</p>
 			<!--评论-->
 			<ul>
 				@foreach(var m in Model.BookComments) {

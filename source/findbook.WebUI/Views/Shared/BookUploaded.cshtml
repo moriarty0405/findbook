@@ -1,0 +1,34 @@
+﻿@model findbook.Domain.Entities.Books
+
+@*<script type="text/javascript">
+    $(function () {
+        var bookID = "@Model.bookID";
+        $("#image").click(function () {
+            window.load("/Book/List?bookID=" + bookID)
+        })
+    }) 
+</script>*@
+
+<li>
+    <img id="image" src="../../Content/Images/books/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; />
+    
+	<div class="c02">
+		<p class="c03">
+            @*<a href="#" title="大学英语1" target="_blank">@Model.bookName</a>*@
+            @Html.RouteLink(Model.bookName, new {
+                                    Controller = "Book",
+                                    Action = "List",
+                                    bookID = Model.bookID
+                                    })
+        </p>
+		<p ><span>@Model.bookXY</span>-<span>@Model.bookZY</span>-<span class="remain">@Model.remNumber</span>本</p>
+		<p>作者:<span>@Model.author</span></p>
+			<p>出版社:<span>@Model.pub</span></p>
+		<p class="time">@Model.DateDiff(Model.upTime)</p>
+		<p class="c04">
+			<span>@Model.cNumber</span><a href="#">评论</a>
+			<span>@Model.recNumber</span><a href="#">推荐</a>
+			<span class="c19"><a href="#">修改</a>&nbsp;&nbsp;<a href="#">删除</a></span>
+		</p>
+	</div>	
+</li>

@@ -16,7 +16,7 @@ namespace findbook.Domain.Entities {
 
         public string userID { get; set; }
 
-        public string useName { get; set; }
+        public string userName { get; set; }
 
         public DateTime cTime { get; set; }
 

@@ -11,5 +11,8 @@ namespace findbook.WebUI.Models {
 
         //留言信息
         public IEnumerable<LeaveComments> LeaveComments { get; set; }
+
+        //上传图书信息
+        public IEnumerable<Books> Books { get; set; }
     }
 }

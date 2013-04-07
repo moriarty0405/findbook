@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
+using findbook.Domain.Helpers;
 
 namespace findbook.Domain.Entities {
-    public class Books {
+    public class Books : TimeHelper {
         [Key]
         public string bookID { get; set; }
 

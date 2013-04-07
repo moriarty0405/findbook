@@ -39,6 +39,12 @@ namespace findbook.WebUI
             );
 
             routes.MapRoute(
+                "Book",
+                "Book/{bookID}",
+                new { controller = "Book", action = "List", bookID = "" }
+            );
+
+            routes.MapRoute(
                 "Private-List",
                 "Private-List/{userID}",
                 new { controller = "Private", action = "List", userID = "" }
