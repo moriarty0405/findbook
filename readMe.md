@@ -24,5 +24,5 @@ Findbookers
 Contact
 ------------------------------------------------------
 1.You can send an email to moriarty0405@gmail.com <br />
-2.You can send some priave messages to on [徐施福(g+)](plus.google.com/112959085844786221044) or on [@MoriartyXu(twitter)](https://twitter.com/MoriartyXu)<br />
+2.You can send some priave messages to on [徐施福(g+)](https://plus.google.com/112959085844786221044) or on [@MoriartyXu(twitter)](https://twitter.com/MoriartyXu)<br />
     
