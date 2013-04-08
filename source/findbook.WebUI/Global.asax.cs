@@ -45,21 +45,27 @@ namespace findbook.WebUI
             );
 
             routes.MapRoute(
+                "BookComment",
+                "Book/{bookID}/{userID}",
+                new { controller = "Book", action = "List", bookID = "", userID = "" }
+            );
+
+            routes.MapRoute(
                 "Book",
                 "Book/{bookID}",
                 new { controller = "Book", action = "List", bookID = "" }
             );
 
             routes.MapRoute(
-                "Private-List",
-                "Private-List/{userID}",
-                new { controller = "Private", action = "List", userID = "" }
+                "Private-Detail",
+                "Private-Detail/{rUserID}/{sUserID}",
+                new { controller = "Private", action = "DetailList", rUserID = "", sUserID = "" }
             );
 
             routes.MapRoute(
-                "Private-Detail",
-                "Private-Detail/{userID}/{pmID}",
-                new { controller = "Private", action = "Detail", userID = "", pmID = "" }
+                "Private-List",
+                "Private-List/{userID}",
+                new { controller = "Private", action = "List", userID = "" }
             );
 
             routes.MapRoute(

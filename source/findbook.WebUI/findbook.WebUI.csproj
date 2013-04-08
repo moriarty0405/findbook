@@ -105,6 +105,10 @@
     <Content Include="Content\Images\web\goTop.png" />
     <Content Include="Content\Images\web\gray_jean.png" />
     <Content Include="Content\Images\web\hr.gif" />
+    <Content Include="Content\Images\web\img_roll1.jpg" />
+    <Content Include="Content\Images\web\img_roll2.jpg" />
+    <Content Include="Content\Images\web\img_roll3.jpg" />
+    <Content Include="Content\Images\web\img_roll4.jpg" />
     <Content Include="Content\Images\web\like_icon.png" />
     <Content Include="Content\Images\web\logo.jpg" />
     <Content Include="Content\Images\web\logo2.jpg" />

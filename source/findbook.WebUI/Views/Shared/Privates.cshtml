@@ -1,4 +1,4 @@
-﻿@model findbook.WebUI.Models.PrivateView
+﻿@model findbook.Domain.Entities.Privates
 
 <li>
 	<img class="hr1" src="../../Content/Images/web/hr.gif" width="580px"/>
@@ -6,13 +6,25 @@
 		<a href="#" target="_blank"><img src="../../Content/Images/users/author.jpg" width="40px" height="40px"/></a>		
 	</div>
 	<div class="user_comment_content">
-		<a href="#" target="_blank">@Model.PrivateDetail.sUserName</a>
-		<p class="comment_content">@Model.PrivateDetail.pmBody</p>
-		<p class="comment_content_time">@Model.PrivateDetail.sTime</p>
+		<a href="#" target="_blank">@Model.sUserName</a>
+		<p class="comment_content">@Model.pmBody</p>
+		<p class="comment_content_time">@Model.sTime</p>
 	</div>
 	<div class="comment_content_reply">
-		<a href="#" target="_blank">共10条对话</a>|
-		<a href="#" target="_blank">回复</a>|
+		@*<a href="#" target="_blank">共10条对话</a>|*@
+        @Html.RouteLink("共10条对话|", new {
+                                    Controller = "Private",
+                                    Action = "DetailList",
+                                    rUserID = @Model.rUserID,
+                                    sUserID = @Model.sUserID
+                                    })
+		@*<a href="#" target="_blank">回复</a>|*@
+        @Html.RouteLink("回复|", new {
+                                    Controller = "Private",
+                                    Action = "DetailList",
+                                    rUserID = @Model.rUserID,
+                                    sUserID = @Model.sUserID
+                                    })
 		<a href="#">删除</a>
 	</div>
 </li>

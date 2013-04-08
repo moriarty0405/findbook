@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using findbook.Domain.Abstract;
 using findbook.WebUI.Models;
+using System.Web;
 
 namespace findbook.WebUI.Controllers
 {
@@ -27,6 +28,22 @@ namespace findbook.WebUI.Controllers
             };
 
             return View(bv);
+        }
+
+        [HttpPost]
+        public ActionResult List(string bookID, string userID) {
+            //从cookie中获取userID
+            HttpCookie cookie = Request.Cookies["user"];
+            string userName = cookie["userName"].ToString();
+
+            string bookName = br.Books.FirstOrDefault(b => b.bookID.Equals(bookID)).bookName;
+            string cBody = HttpContext.Request["cBody"];
+
+            if (bcr.Comment(bookID, bookName, userID, userName, cBody)) {
+                return List(bookID);
+            }
+            
+            return RedirectToAction("Index", "Home");
         }
 
     }

@@ -30,10 +30,11 @@ namespace findbook.WebUI.Controllers
             return View(pv);
         }
 
-        public ViewResult DetailList(string sUserID, string rUserID) {
-            //传入选中用户对当前用户的私信
+        public ViewResult DetailList(string rUserID, string sUserID) {
+            //传入选中用户对当前用户的私信,按时间排列
             PrivateView pv = new PrivateView() {
                 Privates = pr.Privates.Where(p => p.rUserID == rUserID && p.sUserID == sUserID)
+                                      .OrderByDescending(p => p.sTime)
             };
 
             return View(pv);

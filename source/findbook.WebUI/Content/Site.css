@@ -1,13 +1,118 @@
-﻿body {
-    padding-top: 60px;
-    padding-bottom: 40px;
-}
-
-.sidebar-nav {
-    padding: 9px 0;
-}
-
-.field-validation-error
+﻿
+.l_nav_div
 {
-    color: #B94A48;
+    width:960px;
+    margin:0 auto;
+    margin-top:25px;
+}
+
+/*左边导航*/
+.l_nav_div div.left_nav_div{
+float:left;
+box-shadow:0 1px 2px #ccc;
+margin-right:10px;
+display:block;
+zoom:1;
+}
+.l_nav_div div.detail_nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 230px; /* Width of Menu Items */
+  border-bottom: 1px solid #ccc;
+  }
+.l_nav_div div.detail_nav ul li {
+  position: relative;
+  padding: 8px 20px;
+border-top: 1px solid #eee; /* IE6 Bug */
+border-left: 1px solid #21de0c;
+border-right: 1px solid #21de0c;
+border-bottom: 0;
+  }
+  .college_list_title{
+  background:#21de0c;
+  color:#fff;
+  font-weight:bold;
+  font-size:14px;
+  border-top:0;
+  }
+.detail_nav li ul{
+  position: absolute;
+  left: 229px; /* Set 1px less than menu width */
+  top: -1px;
+  display: none;
+  background:#fff;
+  z-index:100;
+  }
+  /* Styles for Menu Items */
+.detail_nav ul li a {
+  display: block;
+  text-decoration: none;
+color: #777;
+font-size:16px;
+font-family:"微软雅黑";
+display:inline;
+  }
+.detail_nav ul li a:hover{
+color:#21de0c;
+}
+  /* Holly Hack. IE Requirement \*/
+/** html ul li { float: left; height: 1%; }*/
+/** html ul li a { height: 1%; }*/
+/* End */
+.detail_nav li:hover ul,.detail_nav li.over ul{ display: block; } /* The magic */
+/*头部滚动大图*/
+.img_roll{
+height:434px;
+padding:10px 0 0px 0;
+float:left;
+}
+.container {
+	width: 708px;
+    height:434px;
+	padding: 0;
+	margin: 0 auto;
+}
+.folio_block {
+width: 708px;
+ height:434px;
+}
+
+
+/*--Main Container--*/
+.main_view {
+	float: left;
+	position: relative;
+}
+/*--Window/Masking Styles--*/
+.window {
+	height:434px;	width: 708px;
+	overflow: hidden; /*--Hides anything outside of the set width/height--*/
+	position: relative;
+}
+.image_reel {
+	position: absolute;
+	top: 0; left: 0;
+}
+.image_reel img {float: left;}
+
+/*--Paging Styles--*/
+.paging {
+	position: absolute;
+	bottom: 10px; right: -25px;
+	width: 178px; height:47px;
+	z-index: 100; /*--Assures the paging stays on the top layer--*/
+	text-align: center;
+	line-height: 40px;
+	display: none; /*--Hidden by default, will be later shown with jQuery--*/
+}
+.paging a {
+	padding: 4px;
+	text-decoration: none;
+	color: #fff;
+}
+.paging a.active {
+	font-weight: bold; 
+	background: #21de0c; 
+	border: 1px solid #fff;
 }

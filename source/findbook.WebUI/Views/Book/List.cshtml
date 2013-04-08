@@ -2,6 +2,10 @@
 
 @{
     ViewBag.Title = "图书信息";
+    
+    //从cookie中获取userID
+    HttpCookie cookie = Request.Cookies["user"];
+    string userID = cookie["userID"].ToString();
 }
 
 <div class="content">
@@ -18,7 +22,13 @@
 		<div class="author_info">
 			<p>
 				<a href="#"><img src="../../Content/Images/users/author.jpg" width=30px height=30px/></a>
-				<a href="#" class="author_name">Jone</a>
+				@*<a href="#" class="author_name">Jone</a>*@
+                @Html.RouteLink(Model.Books.upUserNickName, new {
+                                    Controller = "Page",
+                                    Action = "List",
+                                    userID = userID
+                                    })
+
 				<span class="time">
                     @{
                         //计算时差
@@ -44,7 +54,7 @@
 				<img class="hr1" src="../../Content/Images/web/hr.gif" width="210px"/>
 			<p>
 				<img src="../../Content/Images/web/comment_ico.png" width="16px" height="16px"/>
-				<span>@Model.Books.cNumber</span>评论				
+				<span>@Model.Books.cNumber</span>条评论				
 			</p>
 				<img class="hr1" src="../../Content/Images/web/hr.gif" width="210px"/>
 			<p>
@@ -95,10 +105,10 @@
                 }
 			</ul>
 			<div class="comment_box">
-				<form>
-					<textarea rows="6" cols="93"></textarea>
+				@using (Ajax.BeginForm("List", new { Controller = "Book", Action = "List", bookID = Model.Books.bookID, userID = userID}, new AjaxOptions { })) {
+					<textarea name="cBody" rows="6" cols="93"></textarea>
 					<input type="submit" value="评论"></input>
-				</form>
+                }
 			</div>
 		</div>
 	</div>
