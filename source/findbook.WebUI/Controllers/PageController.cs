@@ -22,21 +22,34 @@ namespace findbook.WebUI.Controllers
             br = bookRepository;
         }
 
-        public ActionResult List(string userID)
+        public ActionResult List(string userID, int page = 1)
         {
+            int PageSize = 4;
+
             PageViewModel pvm = new PageViewModel {
                 //传入View中的是用户点击查看主页的当前用户
                 Users = ur.Users.FirstOrDefault(u => u.userID.Equals(userID)),
                 Pages = pr.Pages.FirstOrDefault(p => p.pageID.Equals(userID)),
 
-                //传入对当前用户的留言，按时间降序排列
+                //传入对当前用户的留言，按时间降序排列,并获取分页后当前页面的评论数
                 LeaveComments = lcr.LeaveComments
                             .Where(l => l.hUserID.Equals(userID))
-                            .OrderByDescending(l => l.lcTime),
-                
+                            .OrderByDescending(l => l.lcTime)
+                            .Skip((page - 1) * PageSize)
+                            .Take(PageSize),
+
                 //传入当前用户上传的图书
                 Books = br.Books.Where(b => b.upUserID.Equals(userID))
-                                .OrderByDescending(b => b.upTime)
+                                .OrderByDescending(b => b.upTime),
+
+                //分页信息
+                LC = new PageInfo { 
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalItems = lcr.LeaveComments
+                            .Where(l => l.hUserID.Equals(userID))        
+                            .Count()
+                }
             };
 
             return View(pvm);

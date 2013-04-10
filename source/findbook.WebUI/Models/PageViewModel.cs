@@ -14,5 +14,11 @@ namespace findbook.WebUI.Models {
 
         //上传图书信息
         public IEnumerable<Books> Books { get; set; }
+
+        //对留言的分页
+        public PageInfo LC { get; set; }
+
+        //对上传图书的分页
+        public PageInfo BK { get; set; }
     }
 }

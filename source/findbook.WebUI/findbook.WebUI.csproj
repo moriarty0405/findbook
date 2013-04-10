@@ -97,10 +97,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers\PagingHelpers.cs" />
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
     <Compile Include="Models\Account\LogOnModel.cs" />
     <Compile Include="Models\Account\RegisterModel.cs" />
     <Compile Include="Models\BookViewModel.cs" />
+    <Compile Include="Models\PageInfo.cs" />
     <Compile Include="Models\PageViewModel.cs" />
     <Compile Include="Models\PrivateView.cs" />
     <Compile Include="Models\SysMesView.cs" />

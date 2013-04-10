@@ -104,6 +104,11 @@
                     Html.RenderPartial("BookComments", m);
                 }
 			</ul>
+
+            <div class="pager">
+                        @Html.PageLinks(Model.BK, x => Url.Action("List", new {page = x}))
+                    </div>
+
 			<div class="comment_box">
 				@using (Ajax.BeginForm("List", new { Controller = "Book", Action = "List", bookID = Model.Books.bookID, userID = userID }, new AjaxOptions { UpdateTargetId = "target" })) {
 					<textarea name="cBody" rows="6" cols="93"></textarea>

@@ -16,7 +16,9 @@ namespace findbook.WebUI.Controllers
             bcr = bookCommentRepository;
         }
 
-        public ActionResult List(string bookID) {
+        public ActionResult List(string bookID, int page = 1) {
+            int PageSize = 4;
+
             BookViewModel bv = new BookViewModel {
                 //当前图书
                 Books = br.Books.FirstOrDefault(u => u.bookID.Equals(bookID)),
@@ -25,6 +27,16 @@ namespace findbook.WebUI.Controllers
                 BookComments = bcr.BookComments
                             .Where(b => b.bookID.Equals(bookID))
                             .OrderByDescending(b => b.cTime)
+                            .Skip((page - 1) * PageSize)
+                            .Take(PageSize),
+
+                BK = new PageInfo {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalItems = bcr.BookComments
+                            .Where(l => l.bookID.Equals(bookID))
+                            .Count()
+                }
             };
 
             return View(bv);

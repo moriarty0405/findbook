@@ -27,6 +27,12 @@ namespace findbook.WebUI
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "",
+                "Page/{userID}/{page}",
+                new { controller = "Page", action = "List", userID = "" }
+            );
+
+            routes.MapRoute(
                 "Page", 
                 "Page/{userID}",
                 new { controller = "Page", action = "List", userID = "" } 
@@ -36,6 +42,12 @@ namespace findbook.WebUI
                 "Info",                                         
                 "Info/{userID}/{action}",                            
                 new { controller = "Info", action = "", userID = "" }  
+            );
+
+            routes.MapRoute(
+                "",
+                "Book/{bookID}/{page}",
+                new { controller = "Book", action = "List", bookID = "" }
             );
 
             routes.MapRoute(

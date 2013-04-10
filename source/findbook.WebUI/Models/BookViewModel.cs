@@ -8,5 +8,7 @@ namespace findbook.WebUI.Models {
         public Books Books { get; set; }
 
         public IEnumerable<BookComments> BookComments { get; set; }
+
+        public PageInfo BK { get; set; }
     }
 }

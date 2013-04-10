@@ -161,6 +161,10 @@
                             Html.RenderPartial("LeaveComments", m);
                         }
 			        </ul>
+        
+                    <div class="pager">
+                        @Html.PageLinks(Model.LC, x => Url.Action("List", new {page = x}))
+                    </div>
 					<textarea name="lBody" rows="6" cols="93"></textarea>
 					<input type="submit" value="留言"/>
                 }
