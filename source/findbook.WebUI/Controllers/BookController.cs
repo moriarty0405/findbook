@@ -40,7 +40,11 @@ namespace findbook.WebUI.Controllers
             string cBody = HttpContext.Request["cBody"];
 
             if (bcr.Comment(bookID, bookName, userID, userName, cBody)) {
-                return List(bookID);
+                return RedirectToRoute(new {
+                                            Controller = "Book",
+                                            Action = "List",
+                                            bookID = bookID
+                                        });
             }
             
             return RedirectToAction("Index", "Home");

@@ -74,6 +74,8 @@
     <Compile Include="Entities\Pages.cs" />
     <Compile Include="Entities\Privates.cs" />
     <Compile Include="Entities\PwModify.cs" />
+    <Compile Include="Entities\SKeys.cs" />
+    <Compile Include="Entities\SRecords.cs" />
     <Compile Include="Entities\SystemMessages.cs" />
     <Compile Include="Entities\Users.cs" />
     <Compile Include="Entities\Wanted.cs" />

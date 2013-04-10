@@ -27,12 +27,6 @@ namespace findbook.WebUI
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                "LeaveCommet",
-                "Page/{userID}/{userName}",
-                new { controller = "Page", action = "List", userID = "", userName = "" }
-            );
-
-            routes.MapRoute(
                 "Page", 
                 "Page/{userID}",
                 new { controller = "Page", action = "List", userID = "" } 
@@ -42,12 +36,6 @@ namespace findbook.WebUI
                 "Info",                                         
                 "Info/{userID}/{action}",                            
                 new { controller = "Info", action = "", userID = "" }  
-            );
-
-            routes.MapRoute(
-                "BookComment",
-                "Book/{bookID}/{userID}",
-                new { controller = "Book", action = "List", bookID = "", userID = "" }
             );
 
             routes.MapRoute(

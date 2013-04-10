@@ -99,13 +99,13 @@
                 }
 			<p style="color:#666;font-size:14px;font-weight:bold;">@comment</p>
 			<!--评论-->
-			<ul>
+			<ul id="target">
 				@foreach(var m in Model.BookComments) {
                     Html.RenderPartial("BookComments", m);
                 }
 			</ul>
 			<div class="comment_box">
-				@using (Ajax.BeginForm("List", new { Controller = "Book", Action = "List", bookID = Model.Books.bookID, userID = userID}, new AjaxOptions { })) {
+				@using (Ajax.BeginForm("List", new { Controller = "Book", Action = "List", bookID = Model.Books.bookID, userID = userID }, new AjaxOptions { UpdateTargetId = "target" })) {
 					<textarea name="cBody" rows="6" cols="93"></textarea>
 					<input type="submit" value="评论"></input>
                 }

@@ -22,7 +22,7 @@ namespace findbook.WebUI.Controllers
             br = bookRepository;
         }
 
-        public ActionResult List(string userID, string returnURL, string userName)
+        public ActionResult List(string userID)
         {
             PageViewModel pvm = new PageViewModel {
                 //传入View中的是用户点击查看主页的当前用户
@@ -52,10 +52,14 @@ namespace findbook.WebUI.Controllers
             string lBody = HttpContext.Request["lBody"];
 
             if (lcr.LeaveComment(lUserID, lUserName, userID, userName, lBody)) {
-                return List(userID, null, null);
+                return RedirectToRoute(new {
+                    Controller = "Page",
+                    Action = "List",
+                    userID = userID
+                });
             }
 
-            return List(userID, null, null);
+            return RedirectToAction("Index", "Home");
         }
 
 
