@@ -20,5 +20,11 @@ namespace findbook.Domain.Concrete {
         public DbSet<Wanted> Wanted { get; set; }
 
         public DbSet<Privates> Privates { get; set; }
+
+        public DbSet<SRecords> SRecords { get; set; }
+
+        public DbSet<SKeys> SKeys { get; set; }
+
+        public DbSet<GPrivates> GPrivates { get; set; }
     }
 }

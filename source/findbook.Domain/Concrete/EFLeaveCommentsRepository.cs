@@ -59,5 +59,60 @@ namespace findbook.Domain.Concrete {
             
             return status;
         }
+
+        public bool ReplyLC(string aUserID, string aUserName, string lUserID, string lUserName, string hUserID, string hUserName, string lBody) {
+            bool status = false;
+
+            #region 初始化参数
+            SqlParameter[] parameters = new SqlParameter[7];
+
+            parameters[0] = new SqlParameter {
+                DbType = DbType.String,
+                ParameterName = "lUserID",
+                Value = lUserID
+            };
+
+            parameters[1] = new SqlParameter {
+                DbType = DbType.String,
+                ParameterName = "lUserName",
+                Value = lUserName
+            };
+
+            parameters[2] = new SqlParameter {
+                DbType = DbType.String,
+                ParameterName = "hUserID",
+                Value = hUserID
+            };
+
+            parameters[3] = new SqlParameter {
+                DbType = DbType.String,
+                ParameterName = "hUserName",
+                Value = hUserName
+            };
+
+            parameters[4] = new SqlParameter {
+                DbType = DbType.String,
+                ParameterName = "lBody",
+                Value = lBody
+            };
+
+            parameters[5] = new SqlParameter {
+                DbType = DbType.String,
+                ParameterName = "aUserID",
+                Value = aUserID
+            };
+
+            parameters[6] = new SqlParameter {
+                DbType = DbType.String,
+                ParameterName = "aUserName",
+                Value = aUserName
+            };
+            #endregion
+
+            context.Database.ExecuteSqlCommand("exec dbo.sp_leave_comment @lUserID, @lUserName, @hUserID, @hUserName, @lBody, @aUserID, @aUserName", parameters);
+            status = true;
+
+            return status;
+        }
     }
 }

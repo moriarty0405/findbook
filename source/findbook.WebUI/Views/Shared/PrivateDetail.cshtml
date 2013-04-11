@@ -6,7 +6,12 @@
 		<a href="#" target="_blank"><img src="../../Content/Images/users/author.jpg" width="40px" height="40px"/></a>		
 	</div>
 	<div class="user_comment_content">
-		<a href="#" target="_blank">@Model.sUserName</a>
+		@*<a href="#" target="_blank">@Model.sUserName</a>*@
+        @Html.RouteLink(Model.sUserName, new {
+                                        Controller = "Page",
+                                        Action = "List",
+                                        userID = @Model.sUserID,
+                                    })
 		<p class="comment_content">@Model.pmBody</p>
 		<p class="comment_content_time">@Model.sTime</p>
 	</div>

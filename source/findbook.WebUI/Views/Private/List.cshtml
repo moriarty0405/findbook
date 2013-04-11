@@ -10,7 +10,7 @@
 		<div class="comment_zone_inner">
 			<p style="color:#666;font-size:14px;font-weight:bold;">我的私信</p>
 			<ul>
-				@foreach (var m in Model.Privates) {
+				@foreach (var m in Model.GPrivates) {
                     Html.RenderPartial("Privates", m);
                 }
 			</ul>

@@ -21,5 +21,7 @@ namespace findbook.Domain.Entities {
         public string sta { get; set; }
 
         public DateTime sTime { get; set; }
+
+        public string href { get; set; }
     }
 }

@@ -24,17 +24,52 @@
     <script src="@Url.Content("~/Scripts/jquery.form.js")" type="text/javascript"></script>
 </head>
 <body>
+    @{
+        bool authenticated = Context.User.Identity.IsAuthenticated;
+        
+        string userID = "";
+
+        if (authenticated) {
+            //从cookie中获取userID
+            HttpCookie cookie = Request.Cookies["user"];
+
+            userID = cookie["userID"].ToString();
+            //string userID = (string)Session["userID"];
+        }
+                                    
+    }
     <div class="top_div">
 	    <a name="return_top"></a>
 	    <div class="top_header">
 		    <!--==============================logo================================-->
-		    <a href="../Home/Index" class="top_logo_img"></a>
+		    @*<a href="Home/Index" class="top_logo_img"></a>*@
+            @Html.RouteLink(" ", new {
+                   Controller = "Home",
+                   Action = "Index"
+               }, new { @class = "top_logo_img" })
 		    <!--==============================nav================================-->
-		    <div class="top_nav"><a href="Home/Index" class="selected">翻书</a>
+		    <div class="top_nav">
+                @*<a href="Home/Index" class="selected">翻书</a>*@
+                @Html.RouteLink("翻书", new {
+                    Controller = "Home",
+                    Action = "Index"
+                   }, new { @class = "selected" })
+
 			    <a href="#" class="">最新</a>
 			    <a href="#" class="">推荐</a>
 			    <a href="#" class="">活动</a>
-			    <a href="#" class="">交流</a>
+			    @*<a href="#" class="">消息</a>*@
+                @{
+                    if (authenticated) {
+                        @*<a href="#">私信</a>*@
+                        @Html.RouteLink("消息", new {
+                            Controller = "Info",
+                            Action = "SysMessage",
+                            userID = userID
+                        })
+                    }
+                    }
+                
 		    </div>
 		    <!--=============================search=================================-->
 		    <div class="search">
@@ -42,43 +77,34 @@
 				    <input type="text"  placeholder="搜索..." class="search_txt"/>
 				    <input type="button" class="search_btn" value=""/>
 			    </form>
-                @if (Context.User.Identity.IsAuthenticated) {
+                @if (authenticated) {
                     <span class="user_login">
 				        <a href="#" target="_blank"><img src="../../Content/Images/users/author.jpg" width="30px" height="30px" border="0"/>@Context.User.Identity.Name</a>
 				        <ul class="user_login_ul">
 					        <li>
-                                @{
-                                    //从cookie中获取userID
-                                    HttpCookie cookie = Request.Cookies["user"];
-                                    
-                                    string userID = cookie["userID"].ToString();
-                                    //string userID = (string)Session["userID"];
-                                    
-                                }
-
                                 @Html.RouteLink("我的主页", new {
-                                    Controller = "Page",
-                                    Action = "List",
-                                    userID = userID
-                                    })
+                                   Controller = "Page",
+                                   Action = "List",
+                                   userID = userID
+                                })
                             </li>
 					        <li>
                                 @*<a href="#">私信</a>*@
                                 @Html.RouteLink("私信", new {
-                                    Controller = "Private",
-                                    Action = "List",
-                                    userID = userID
-                                    })
+                                   Controller = "Private",
+                                   Action = "List",
+                                   userID = userID
+                               })
                             </li>
 					        @*<li><a href="#">消息</a></li>*@
 					        @*<li><a href="#">用户中心</a></li>*@
                             <li>
                                 @*<a href="#">私信</a>*@
                                 @Html.RouteLink("用户中心", new {
-                                    Controller = "Info",
-                                    Action = "Profile",
-                                    userID = userID
-                                    })
+                                   Controller = "Info",
+                                   Action = "Profile",
+                                   userID = userID
+                               })
                             </li>
 
 					        <li>@Html.ActionLink("退出", "LogOff", "Account")</li>

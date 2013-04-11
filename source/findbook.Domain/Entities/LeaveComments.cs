@@ -23,5 +23,13 @@ namespace findbook.Domain.Entities {
         public string ZT { get; set; }
 
         public string lBody { get; set; }
+
+        public int agreement { get; set; }
+
+        public string aUserID { get; set; }
+
+        public string aUserName { get; set; }
+
+        public string lcType { get; set; }
     }
 }

@@ -6,6 +6,8 @@ namespace findbook.Domain.Abstract {
         IQueryable<LeaveComments> LeaveComments { get; }
 
         bool LeaveComment(string lUserID, string lUserName, string hUserID, string hUserName, string lBody);
+
+        bool ReplyLC(string aUserID, string aUserName, string lUserID, string lUserName, string hUserID, string hUserName, string lBody);
     }
 
 

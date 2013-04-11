@@ -8,6 +8,8 @@ namespace findbook.WebUI.Models {
     public class PrivateView {
         public IEnumerable<Privates> Privates { get; set; }
 
+        public IEnumerable<GPrivates> GPrivates { get; set; }
+
         public Privates PrivateDetail { get; set; }
     }
 }

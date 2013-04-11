@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace findbook.Domain.Entities {
     public class SKeys {
+        [Key]
         public string sRecordID { get; set; }
 
         public string sKeysID { get; set; }

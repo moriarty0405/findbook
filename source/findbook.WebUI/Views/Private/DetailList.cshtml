@@ -2,12 +2,24 @@
 
 @{
     ViewBag.Title = "私信";
+
+    //从cookie中获取userID
+    HttpCookie cookie = Request.Cookies["user"];
+
+    string userID = cookie["userID"].ToString();
 }
 
 <div class="content">
 	<!--私信-->
 	<div class="sixin">
-		<p><a href="#" target="_blank">《返回私信首页</a></p>
+		<p>
+            @*<a href="#" target="_blank">《返回私信首页</a>*@
+            @Html.RouteLink("<<返回私信首页", new {
+                                        Controller = "Private",
+                                        Action = "List",
+                                        userID = userID
+                                    })
+        </p>
 		<p><span class="c05">发私信给</span><span class="c06">Jone</span>:</p>
 		<div class="comment_box">
 			<form>

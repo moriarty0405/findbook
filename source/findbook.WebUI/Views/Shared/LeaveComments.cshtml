@@ -6,12 +6,17 @@
 		<a href="#" target="_blank"><img src="../../Content/Images/users/author.jpg" width="40px" height="40px"/></a>		
 	</div>
 	<div class="user_comment_content">
-		<a href="#" target="_blank">@Model.lUserName</a>
+		@*<a href="#" target="_blank">@Model.lUserName</a>*@
+        @Html.RouteLink(@Model.lUserName, new {
+                                    Controller = "Page",
+                                    Action = "List",
+                                    userID = Model.lUserID
+                                    })
 		<p class="comment_content">@Model.lBody</p>
 		<p class="comment_content_time">@Model.DateDiff(Model.lcTime)</p>
 	</div>
 	<div class="agree">
-		<a href="#"><img src="../../Content/Images/web/recommend_ico.png" width="16px" height="16px"/><span>10</span></a>
+		<a href="#"><img src="../../Content/Images/web/recommend_ico.png" width="16px" height="16px"/><span>@Model.agreement</span></a>
 	</div>
 </li>
 
