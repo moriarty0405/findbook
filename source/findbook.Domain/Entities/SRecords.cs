@@ -9,10 +9,6 @@ namespace findbook.Domain.Entities {
         [Key]
         public string sRecordID { get; set; }
 
-        public string sKeysID { get; set; }
-
-        public string sKeysBody { get; set; }
-
         public string sBody { get; set; }
 
         public string userID { get; set; }
@@ -20,8 +16,6 @@ namespace findbook.Domain.Entities {
         public DateTime cTime { get; set; }
 
         public string ZT { get; set; }
-
-        public int cNumber { get; set; }
 
     }
 }
