@@ -74,15 +74,5 @@ namespace findbook.WebUI.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-
-        [HttpPost]
-        public ActionResult Reply(string hUserID, string lUserID, string aUserID) {
-
-
-            return RedirectToAction("Index", "Home");
-        }
-
-
-
     }
 }

@@ -5,9 +5,26 @@
 
     //从cookie中获取userID
     HttpCookie cookie = Request.Cookies["user"];
-
     string userID = cookie["userID"].ToString();
+
+    var User = Model.Privates.FirstOrDefault();
+    string rUserID = User.rUserID;
+    string rUserName = User.rUserName;
+    
+    if (rUserID.Equals(userID)) {
+        rUserID = User.sUserID;
+        rUserName = User.sUserName;
+    }
+
+    //将接受用户的信息写入Session
+    Session["rUserID"] = rUserID;
+    Session["rUserName"] = rUserName;
+
 }
+
+<script src="../../Scripts/MicrosoftAjax.js" type="text/javascript"></script>  
+<script src="../../Scripts/MicrosoftMvcAjax.js" type="text/javascript"></script>
+<script src="../../Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
 
 <div class="content">
 	<!--私信-->
@@ -22,10 +39,15 @@
         </p>
 		<p><span class="c05">发私信给</span><span class="c06">Jone</span>:</p>
 		<div class="comment_box">
-			<form>
-				<textarea rows="6" cols="93"></textarea>
+			@using (Ajax.BeginForm("SendPrivate", 
+                        new { 
+                            Controller = "Private", Action = "SendPrivate",
+                            sUserID = userID, rUserID = Session["rUserID"]
+                        }, 
+                        new AjaxOptions { UpdateTargetId = "target" })) {
+				<textarea rows="6" cols="93" name="pmBody"></textarea>
 				<input type="submit" value="发送"></input>
-			</form>
+			}
 		</div>
 	</div>
 	<div class="comment_zone">
@@ -33,7 +55,14 @@
 			<!--评论-->
 			<ul>
                 @foreach (var m in Model.Privates) {
-                    Html.RenderPartial("PrivateDetail", m);
+                    //发给我的私信
+                    if (m.rUserID.Equals(userID)) {
+                        Html.RenderPartial("ReceivedPrivateDetail", m);
+                    } else {                      
+                        //显示我发出的私信
+                        Html.RenderPartial("SentPrivateDetail", m);
+                    }
+                    
                 }
 			</ul>
 		</div>

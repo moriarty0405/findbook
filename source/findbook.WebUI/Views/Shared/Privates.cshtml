@@ -20,15 +20,13 @@
         @Html.RouteLink("共" + Model.pNumber +"条对话|", new {
                                     Controller = "Private",
                                     Action = "DetailList",
-                                    rUserID = @Model.rUserID,
-                                    sUserID = @Model.sUserID
+                                    anotherUserID = @Model.sUserID,
                                     })
 		@*<a href="#" target="_blank">回复</a>|*@
         @Html.RouteLink("回复|", new {
                                     Controller = "Private",
                                     Action = "DetailList",
-                                    rUserID = @Model.rUserID,
-                                    sUserID = @Model.sUserID
+                                    anotherUserID = @Model.sUserID,
                                     })
 		<a href="#">删除</a>
 	</div>

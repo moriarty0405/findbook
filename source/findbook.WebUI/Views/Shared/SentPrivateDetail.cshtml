@@ -1,0 +1,21 @@
+﻿@model findbook.Domain.Entities.Privates
+           
+<li>
+	<img class="hr1" src="../../Content/Images/web/hr.gif" width="580px"/>
+	<div class="user_comment_img">
+		<a href="#" target="_blank"><img src="../../Content/Images/users/author.jpg" width="40px" height="40px"/></a>		
+	</div>
+	<div class="user_comment_content">
+		@Html.RouteLink(Model.sUserName, new {
+                                        Controller = "Page",
+                                        Action = "List",
+                                        userID = @Model.sUserID,
+                                    })
+		<p class="comment_content">@Model.pmBody</p>
+		<p class="comment_content_time">@Model.sTime</p>
+	</div>
+	<div class="comment_content_reply">
+		<a href="#">删除</a>
+	</div>
+</li>
+

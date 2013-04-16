@@ -54,7 +54,7 @@ namespace findbook.Domain.Concrete {
             };
             #endregion
 
-            context.Database.ExecuteSqlCommand("exec dbo.sp_send_private @sUserID, @sUserName, rUserID, rUserName, @pmBody", parameters);
+            context.Database.ExecuteSqlCommand("exec dbo.sp_send_private @sUserID, @sUserName, @rUserID, @rUserName, @pmBody", parameters);
 
             status = true;
             return status;

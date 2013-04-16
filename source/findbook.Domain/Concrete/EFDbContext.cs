@@ -26,5 +26,9 @@ namespace findbook.Domain.Concrete {
         public DbSet<SKeys> SKeys { get; set; }
 
         public DbSet<GPrivates> GPrivates { get; set; }
+
+        public DbSet<XY> XY { get; set; }
+
+        public DbSet<ZY> ZY { get; set; }
     }
 }

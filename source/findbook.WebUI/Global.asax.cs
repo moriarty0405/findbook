@@ -58,8 +58,8 @@ namespace findbook.WebUI
 
             routes.MapRoute(
                 "Private-Detail",
-                "Private-Detail/{rUserID}/{sUserID}",
-                new { controller = "Private", action = "DetailList", rUserID = "", sUserID = "" }
+                "Private-Detail/{anotherUserID}",
+                new { controller = "Private", action = "DetailList", anotherUserID = "" }
             );
 
             routes.MapRoute(
