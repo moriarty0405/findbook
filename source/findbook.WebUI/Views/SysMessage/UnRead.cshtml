@@ -1,0 +1,30 @@
+﻿@model findbook.WebUI.Models.SysMesView
+
+@{
+    ViewBag.Title = "未读的消息";
+    Layout = "~/Views/Shared/_SysMesLayout.cshtml";
+}
+
+
+<script type="text/javascript">
+    $(function () {
+        @*设置navigator中的标签为active*@
+        $("#UnRead").addClass("active")
+    })     
+</script>
+
+<div class="tab-pane active" id="tab5">
+	<div class="my_message">
+		<p class="c21">未读的消息</p>
+		<br />
+		<hr />
+		<div class="message">
+			<ul>
+				@foreach (var m in Model.SystemMessages) {
+                    Html.RenderPartial("SystemMessages", m);
+                }
+			</ul>
+		</div>
+	</div>
+</div>
+

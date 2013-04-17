@@ -12,17 +12,15 @@ namespace findbook.WebUI.Controllers {
         private IWantedRepository wr;
         private IUsersRepository ur;
         private IPwModifyRepository pr;
-        private ISystemMessagesRepository smr;
+
 
         public InfoController(IBooksRepository bookRepository, IUsersRepository userRepository,
-            IPwModifyRepository pwModifyRepository, IWantedRepository wantedRepository,
-            ISystemMessagesRepository systemMessageRepository) {
+            IPwModifyRepository pwModifyRepository, IWantedRepository wantedRepository) {
 
             br = bookRepository;
             wr = wantedRepository;
             ur = userRepository;
             pr = pwModifyRepository;
-            smr = systemMessageRepository;
         }
 
         #region 上传图书
@@ -110,20 +108,5 @@ namespace findbook.WebUI.Controllers {
             return View(model);
         }
         #endregion
-
-        #region 系统消息
-        public ViewResult SysMessage(string userID) {
-            SysMesView smv = new SysMesView {
-                SystemMessages = smr.SystemMessages
-                            .Where(s => s.userID.Equals(userID))
-                            .OrderByDescending(s => s.sTime)
-            };
-
-            return View(smv);
-        }
-
-        #endregion
-
-
     }
 }

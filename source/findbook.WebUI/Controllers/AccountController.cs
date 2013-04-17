@@ -49,7 +49,8 @@ namespace findbook.WebUI.Controllers
 
                     Response.Cookies.Add(u);
 
-                    //Session["userID"] = user.userID;
+                    Session["logOnUserID"] = user.userID;
+                    Session["logOnUserName"] = user.userName;
                 #endregion
 
                     if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")

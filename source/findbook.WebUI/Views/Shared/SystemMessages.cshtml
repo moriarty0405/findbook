@@ -1,11 +1,19 @@
 ﻿@model findbook.Domain.Entities.SystemMessages
 
+<script type="text/javascript">
+    $(function () { 
+        $("#unRead").bind("click", function(){
+            var x = "<%=@Model.MarkReaded(Model.sysMesID)%>"
+        })
+    })
+</script>
+
 <li>
     <span>
         @Model.smBody
     </span>
     <span>
-        <a href="@Model.href">@Model.href</a>
+        <a id="unRead" href="@Model.href">@Model.href</a>
     </span>
     <span>
         @Model.sTime

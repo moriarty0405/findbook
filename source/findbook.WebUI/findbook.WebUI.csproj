@@ -95,6 +95,7 @@
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\PrivateController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\SysMessageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -252,7 +253,7 @@
     <Content Include="Views\Info\Want.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Info\SysMessage.cshtml" />
+    <Content Include="Views\SysMessage\UnRead.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Private\DetailList.cshtml" />
@@ -274,6 +275,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\SentPrivateDetail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_SysMesLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SysMessage\Read.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

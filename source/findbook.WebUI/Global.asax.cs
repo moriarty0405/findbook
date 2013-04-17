@@ -39,6 +39,18 @@ namespace findbook.WebUI
             );
 
             routes.MapRoute(
+                "UnSysMessage",
+                "UnReadMes/{userID}",
+                new { controller = "SysMessage", action = "UnRead", userID = "" }
+            );
+
+            routes.MapRoute(
+                "RSysMessage",
+                "ReadMes/{userID}",
+                new { controller = "SysMessage", action = "Read", userID = "" }
+            );
+
+            routes.MapRoute(
                 "Info",                                         
                 "Info/{userID}/{action}",                            
                 new { controller = "Info", action = "", userID = "" }  

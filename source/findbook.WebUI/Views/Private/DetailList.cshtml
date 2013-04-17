@@ -3,9 +3,12 @@
 @{
     ViewBag.Title = "私信";
 
-    //从cookie中获取userID
-    HttpCookie cookie = Request.Cookies["user"];
-    string userID = cookie["userID"].ToString();
+    ////从cookie中获取userID
+    //HttpCookie cookie = Request.Cookies["user"];
+    //string userID = cookie["userID"].ToString();
+
+    //从Session中获取userID
+    string userID = Session["logOnUserID"].ToString();
 
     var User = Model.Privates.FirstOrDefault();
     string rUserID = User.rUserID;
@@ -37,7 +40,7 @@
                                         userID = userID
                                     })
         </p>
-		<p><span class="c05">发私信给</span><span class="c06">Jone</span>:</p>
+		<p><span class="c05">发私信给</span><span class="c06">@rUserName</span>:</p>
 		<div class="comment_box">
 			@using (Ajax.BeginForm("SendPrivate", 
                         new { 

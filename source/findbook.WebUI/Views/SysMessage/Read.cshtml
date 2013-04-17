@@ -1,20 +1,20 @@
 ﻿@model findbook.WebUI.Models.SysMesView
 
 @{
-    ViewBag.Title = "我的消息";
-    Layout = "~/Views/Shared/_InfoLayout.cshtml";
+    ViewBag.Title = "已读的消息";
+    Layout = "~/Views/Shared/_SysMesLayout.cshtml";
 }
 
 @*设置navigator中的标签为active*@
 <script type="text/javascript">
     $(function () {
-        $("#SysMessage").addClass("active")
+        $("#Read").addClass("active")
     })     
 </script>
 
 <div class="tab-pane active" id="tab5">
 	<div class="my_message">
-		<p class="c21">我的消息</p>
+		<p class="c21">已读的消息</p>
 		<br />
 		<hr />
 		<div class="message">
@@ -26,4 +26,5 @@
 		</div>
 	</div>
 </div>
+
 

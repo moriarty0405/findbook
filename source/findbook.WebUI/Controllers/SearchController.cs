@@ -16,13 +16,13 @@ using System.Linq;
 
 namespace findbook.WebUI.Controllers {
     public class SearchController : Controller {
-        private ISRecordsRepository rr;
-        private ISKeysRepository kr;
+        //private ISRecordsRepository rr;
+        //private ISKeysRepository kr;
 
-        public SearchController(ISRecordsRepository recordRepository, ISKeysRepository keyRepository) {
-            rr = recordRepository;
-            kr = keyRepository;
-        }
+        //public SearchController(ISRecordsRepository recordRepository, ISKeysRepository keyRepository) {
+        //    rr = recordRepository;
+        //    kr = keyRepository;
+        //}
 
         #region 搜索
         public ActionResult Search(string kw) {
@@ -54,6 +54,7 @@ namespace findbook.WebUI.Controllers {
             ScoreDoc[] docs = collector.TopDocs(startRowIndex, pageSize).scoreDocs;
             
             //将搜索到的信息，装入数组中
+            List<Books> result = new List<Books>();
 
 
             return View(); 

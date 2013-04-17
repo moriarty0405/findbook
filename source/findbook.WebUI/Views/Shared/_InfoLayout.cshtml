@@ -42,14 +42,6 @@
                                     userID = userID
                                     })
         </li>
-		<li id="SysMessage">
-            @*<a href="#tab5" data-toggle="tab">我的消息</a>*@
-            @Html.RouteLink("我的消息", new {
-                                    Controller = "Info",
-                                    Action = "SysMessage",
-                                    userID = userID
-                                    })
-        </li>
 	  </ul>
 	  <div class="tab-content">
 		@RenderBody()

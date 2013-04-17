@@ -31,9 +31,12 @@ namespace findbook.WebUI.Controllers
 
         //传入参数为另一位用户的ID
         public ViewResult DetailList(string anotherUserID) {
-            //发送用户为当前用户，故可从cookie中获取userName
-            HttpCookie cookie = Request.Cookies["user"];
-            string sUserID = cookie["userID"].ToString();
+            ////发送用户为当前用户，故可从cookie中获取userName
+            //HttpCookie cookie = Request.Cookies["user"];
+            //string sUserID = cookie["userID"].ToString();
+
+            //发送用户为当前用户，故可从session中获取userName
+            string sUserID = Session["logOnUserID"].ToString();
             
             //传入选中用户对当前用户的私信,按时间排列
             PrivateView pv = new PrivateView() {
@@ -47,9 +50,12 @@ namespace findbook.WebUI.Controllers
 
         [HttpPost]
         public ActionResult SendPrivate(string sUserID, string rUserID) {
-            //发送用户为当前用户，故可从cookie中获取userName
-            HttpCookie cookie = Request.Cookies["user"];
-            string sUserName = cookie["userName"].ToString();
+            ////发送用户为当前用户，故可从cookie中获取userName
+            //HttpCookie cookie = Request.Cookies["user"];
+            //string sUserName = cookie["userName"].ToString();
+
+            //发送用户为当前用户，故可从session中获取userName
+            string sUserName = Session["logOnUserName"].ToString();
 
             //从session中获取接收用户的userName
             string rUserName = HttpContext.Session["rUserName"].ToString();
