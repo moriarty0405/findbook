@@ -13,19 +13,35 @@ using Lucene.Net.Store;
 using Lucene.Net.Search;
 using findbook.Domain.Entities;
 using System.Linq;
+using System;
+using findbook.WebUI.Models;
+using System.Drawing;
 
 namespace findbook.WebUI.Controllers {
     public class SearchController : Controller {
-        //private ISRecordsRepository rr;
-        //private ISKeysRepository kr;
+        private IUsersRepository ur;
+        private ISRecordsRepository rr;
 
-        //public SearchController(ISRecordsRepository recordRepository, ISKeysRepository keyRepository) {
-        //    rr = recordRepository;
-        //    kr = keyRepository;
-        //}
+        public SearchController(IUsersRepository userRepository, ISRecordsRepository searcordRepository) {
+            ur = userRepository;
+            rr = searcordRepository;
+        }
 
-        #region 搜索
-        public ActionResult Search(string kw) {
+        [HttpPost]
+        public ActionResult Show(string kw, string orderType = "0") {
+            ViewData["searchWord"] = kw;
+            SearchView sv = Search(kw);
+
+            return View(sv);
+        }
+
+        //搜索
+        public SearchView Search(string kw) {
+            //收集用户搜索输入
+            string userID =  HttpContext.Session["logOnUserID"].ToString();
+            rr.Collect(userID, kw);
+
+            #region 获取List<Book>
             //根据相对路径获取绝对路径
             string path = HttpContext.Server.MapPath("../Index");
 
@@ -36,8 +52,14 @@ namespace findbook.WebUI.Controllers {
             PhraseQuery query = new PhraseQuery();
 
             //分词
-            foreach (string word in Splitwords(kw)) {
+            List<string> sw = Splitwords(kw);
+            
+            foreach (string word in sw) {
                 query.Add(new Term("bookName", word));
+                query.Add(new Term("upUserNickName", word));
+                query.Add(new Term("bookIntr", word));
+                query.Add(new Term("author", word));
+                query.Add(new Term("pub", word));
             }
 
             //相聚100以内才算是查询到
@@ -54,23 +76,81 @@ namespace findbook.WebUI.Controllers {
             ScoreDoc[] docs = collector.TopDocs(startRowIndex, pageSize).scoreDocs;
             
             //将搜索到的信息，装入数组中
-            List<Books> result = new List<Books>();
+            List<Books> bookResult = new List<Books>();
+
+            //将搜索结果中的对象赋值到List<Books>中
+            for (int i = 0; i < docs.Length; i++) {
+                //取文档的编号，这个是主键，lucene.net分配
+                //检索结果中只有文档的id，如果要取Document，则需要Doc再去取
+                int docID = docs[i].doc;
+                Document doc = searcher.Doc(docID);
+
+                string bookID = doc.Get("bookID");
+                string bookName = doc.Get("bookName");
+                string upTime = doc.Get("upTime");
+                string upUserID = doc.Get("upUserID");
+                string upUserNickName = doc.Get("upUserNickName");
+                string recNumber = doc.Get("recNumber");
+                string remNumber = doc.Get("remNumber");
+                string bookIntr = doc.Get("bookIntr");
+                string bookPrice = doc.Get("bookPrice");
+                string author = doc.Get("author");
+                string pub = doc.Get("pub");
+                string cNumber = doc.Get("cNumber");
+
+                //高亮搜索结果
+                foreach (string word in sw) { 
+                    bookName = Preview(bookName, word);
+                    upUserNickName = Preview(upUserNickName, word);
+                    bookIntr = Preview(bookIntr, word);
+                    author = Preview(author, word);
+                    pub = Preview(pub, word);
+                }
+
+                //将搜索结果放入Book对象中
+                Books bk = new Books();
+                bk.author = author;
+                bk.bookID = bookID;
+                bk.bookIntr = bookIntr;
+                bk.bookName = bookName;
+                bk.bookPrice = Decimal.Parse(bookPrice);
+                bk.cNumber = Int32.Parse(cNumber);
+                bk.pub = pub;
+                bk.recNumber = Int32.Parse(recNumber);
+                bk.remNumber = Int32.Parse(remNumber);
+                bk.upTime = DateTime.Parse(upTime);
+                bk.upUserNickName = upUserNickName;
+                bk.upUserID = upUserID;
+
+                bookResult.Add(bk);
+            }
+
+            
+
+            #endregion
+
+            //获取匹配的用户
+            SearchView sv = new SearchView {
+                Books = bookResult,
+                Users = ur.Users.Where(u => u.userName.Contains(kw))
+            };
 
 
-            return View(); 
+
+            return sv; 
         }
-        #endregion
 
-        //高亮
+        #region 高亮
         private string Preview(string body, string keyword) {
             PanGu.HighLight.SimpleHTMLFormatter simpleHTMLFormatter = new PanGu.HighLight.SimpleHTMLFormatter("<font color=\"Red\">", "</font>");
             PanGu.HighLight.Highlighter highlighter = new PanGu.HighLight.Highlighter(simpleHTMLFormatter, new Segment());
             highlighter.FragmentSize = 1000;
             string bodyPreview = highlighter.GetBestFragment(keyword, body);
             return bodyPreview;
-        }   
+        }
+        #endregion
 
-        //分词
+        #region 分词
         public List<string> Splitwords(string word) {
             List<string> words = new List<string>();
             Analyzer analyzer = new PanGuAnalyzer();
@@ -81,6 +161,7 @@ namespace findbook.WebUI.Controllers {
             }
             return words;
         }
+        #endregion
 
         #region 创建索引
         public SqlDataReader OpenTable()  //创建索引1
@@ -88,7 +169,7 @@ namespace findbook.WebUI.Controllers {
             string connstr = ConfigurationManager.ConnectionStrings["EFDbContext"].ConnectionString;
             using (SqlConnection mycon = new SqlConnection(connstr)) {
                 mycon.Open();
-                using (SqlCommand mycom = new SqlCommand("select bookID, bookName, upUserID from Books", mycon)) {
+                using (SqlCommand mycom = new SqlCommand("select * from Books", mycon)) {
                     return mycom.ExecuteReader();
                 }
             }
@@ -103,9 +184,21 @@ namespace findbook.WebUI.Controllers {
             {
                 //建立索引字段
                 while (myred.Read()) {
+                    //向Document中添加字段
                     Document doc = new Document();
-                    doc.Add(new Field("bookID", myred["bookID"].ToString(), Field.Store.YES, Field.Index.ANALYZED));
-                    doc.Add(new Field("upUserID", myred["upUserID"].ToString(), Field.Store.YES, Field.Index.ANALYZED));
+                    doc.Add(new Field("bookID", myred["bookID"].ToString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
+                    doc.Add(new Field("bookName", myred["bookName"].ToString(), Field.Store.YES, Field.Index.ANALYZED));
+                    doc.Add(new Field("upTime", myred["upTime"].ToString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
+                    doc.Add(new Field("upUserID", myred["upUserID"].ToString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
+                    doc.Add(new Field("upUserNickName", myred["upUserNiceName"].ToString(), Field.Store.YES, Field.Index.ANALYZED));
+                    doc.Add(new Field("recNumber", myred["recNumber"].ToString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
+                    doc.Add(new Field("remNumber", myred["remNumber"].ToString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
+                    doc.Add(new Field("bookIntr", myred["bookIntr"].ToString(), Field.Store.YES, Field.Index.ANALYZED));
+                    doc.Add(new Field("bookPrice", myred["bookPrice"].ToString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
+                    doc.Add(new Field("author", myred["author"].ToString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
+                    doc.Add(new Field("pub", myred["pub"].ToString(), Field.Store.YES, Field.Index.ANALYZED));
+                    doc.Add(new Field("cNumber", myred["cNumber"].ToString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
+                    
                     writer.AddDocument(doc);
                 }
                 writer.Optimize();

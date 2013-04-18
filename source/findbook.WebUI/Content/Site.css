@@ -116,3 +116,123 @@ width: 708px;
 	background: #21de0c; 
 	border: 1px solid #fff;
 }
+
+<!--图书搜索后的页面-->
+<!--图书-->
+.book_search{
+width:960px;
+margin:0 auto;
+padding:20px;
+background:#fff;
+margin-top:40px;
+border:1px solid #eee;
+}
+.book_search_title a{
+text-decoration:none;
+color: #21de0c;
+float:left;
+padding-right:10px;
+}
+.book_search_title a:hover{
+text-decoration: underline;
+}
+.book_area ul li{
+border-bottom:1px solid #eee;
+}
+.book_area ul li img{
+border:0;
+}
+.c23{
+border:1px solid #eee;
+padding:10px;
+width:140px;
+margin:10px 60px 10px 10px;
+float:left;
+}
+.c24{
+padding-top:10px;
+font-size:14px;
+color:#666;
+padding-right:80px;
+float:left;
+}
+.c26 label strong{
+color:#21de0c;
+font-size:17px;
+padding-right:10px;
+}
+.c27{
+color:#21de0c;
+padding:0 4px;
+}
+.c28 a{
+text-decoration:none;
+color:#21de0c;
+}
+.c28 a:hover{
+text-decoration: underline;
+}
+.c29 label{
+color:#21de0c
+}
+.c29 a{
+color:#999;
+text-decoration:none;
+padding-left:4px;
+padding-right:8px;
+font-size:14px;
+}
+.c29 a:hover{
+color:#666;
+}
+.c30{
+border-left:1px solid #eee;
+float:left;
+padding-left:50px;
+margin-top:80px;
+}
+.c30 input[type=button]{
+border:0;
+background:#21de0c;
+padding:5px 18px;
+color:#fff;
+font-weight:bold;
+margin-top:10px;
+box-shadow:0 1px 2px #999;
+-moz-box-shadow:0 1px 2px #999;
+-webtik-box-shadow:0 1px 2px #999;
+}
+.c30 input[type=button]:hover{
+cursor:pointer;
+opacity:0.8;
+}
+.c30 input[type=button]:active{
+box-shadow:0 1px 2px #999 inset;
+-moz-box-shadow:0 1px 2px #999 inset;
+-webtik-box-shadow:0 1px 2px #999 inset;
+}
+<!--用户-->
+.c31{
+border:1px solid #eee;
+padding:10px;
+width:140px;
+margin:10px 60px 10px 10px;
+float:left;
+}
+.c32{
+padding-top:10px;
+font-size:14px;
+color:#666;
+padding-right:80px;
+float:left;
+}
+.c33{
+padding-right:4px;
+}
+.c34 a{
+color:#21de0c;
+text-decoration:none;
+}
+.c34 a:hover{
+text-decoration: underline;
+}

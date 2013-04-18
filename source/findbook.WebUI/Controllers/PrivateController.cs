@@ -65,11 +65,13 @@ namespace findbook.WebUI.Controllers
 
             //调用存储过程
             if (pr.SendPrivate(sUserID, sUserName, rUserID, rUserName, pmBody)) {
-                return RedirectToRoute(new {
-                                    Controller = "Private",
-                                    Action = "DetailList",
-                                    anotherUserID = rUserID
-                                });
+                    return RedirectToRoute(new {
+                        Controller = "Private",
+                        Action = "DetailList",
+                        anotherUserID = rUserID
+                    });
+
+                //return PartialView("SentPrivateDetail");
             }
 
             return RedirectToAction("Index", "Home");

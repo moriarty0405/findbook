@@ -1,0 +1,27 @@
+﻿@model findbook.WebUI.Models.SearchView
+
+@{
+    ViewBag.Title = "搜索结果";
+}
+
+<div class="content">
+	<div class="book_search">
+		<div class="book_search_title">
+			<a href="#">@ViewData["searchWord"]</a><h3>的搜索结果</h3>
+			<div style="border-bottom:2px solid #21de0c; padding-top:4px;"></div>
+		</div>
+		<div class="book_area">
+			<ul>
+				<!--搜索用户结果-->
+				@foreach (var m in Model.Users) {
+                    Html.RenderPartial("SearchUsers", m);
+                }
+				
+				<!--搜索课本结果-->
+				@foreach (var m in Model.Books) {
+                    Html.RenderPartial("SearchBooks", m);
+                }
+			</ul>
+		</div>
+	</div>
+</div>

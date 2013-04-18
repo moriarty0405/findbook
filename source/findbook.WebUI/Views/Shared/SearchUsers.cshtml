@@ -1,0 +1,29 @@
+﻿@model findbook.Domain.Entities.Users
+
+<li style="border-bottom:1px dotted #666;">
+    <div class="c31"><a href="#" target="_blank"><img src="images/author.jpg" width="140px" height="140px"/></a></div>
+    <div class="c32">
+	    <a href="#" target="_blank" class="c33">@Model.userNickName</a>
+        @{
+            string sex = "";
+            
+            if (Model.userSex.Equals("0")) {
+                sex = "男";
+            } else {
+                sex = "女";
+            }
+         
+        }
+        <label>@sex</label>
+	    <div class="c34"><a href="#">给Ta发私信</a></div>
+	    <div>校区：<label>@Model.XQ</label></div>
+	    <div>学院专业：<label>@Model.userXY</label>-<label>@Model.userZY</label></div>
+	    <div>年级：<label>@Model.userGrade</label></div>
+	    <div>QQ：<label>219102919(可保密)</label></div>
+	    <div>电话: <label>15828121192(可保密)</label></div>
+    </div>
+    <div class="c30">
+	    <div><a href="#">进入Ta的主页</a></div>
+    </div>
+    <div class="clear"></div>
+</li>

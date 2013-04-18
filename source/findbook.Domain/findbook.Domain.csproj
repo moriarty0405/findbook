@@ -105,6 +105,7 @@
     <Compile Include="Entities\Wanted.cs" />
     <Compile Include="Entities\XY.cs" />
     <Compile Include="Entities\ZY.cs" />
+    <Compile Include="Helpers\MessageHelper.cs" />
     <Compile Include="Helpers\TimeHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

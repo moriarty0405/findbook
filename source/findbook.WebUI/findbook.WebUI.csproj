@@ -271,9 +271,6 @@
     <Folder Include="Index\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Search\Search.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Shared\SentPrivateDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -281,6 +278,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\SysMessage\Read.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Search\Show.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\SearchUsers.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\SearchBooks.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

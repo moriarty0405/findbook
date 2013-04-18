@@ -1,0 +1,19 @@
+﻿@model findbook.Domain.Entities.Books
+
+<li>
+	<div class="c23"><a href="#" target="_blank"><img src="images/book.jpg" width="140px" height="170px" /></a></div>
+	<div class="c24">
+		<a href="#" target="_blank" class="c25">@Model.bookName</a>
+		<label>@Model.author</label>&nbsp;&nbsp;<label>@Model.pub</label>
+		<div class="c26"><label><strong>￥0.0</strong></label>目前还剩<label class="c27">@Model.remNumber</label>本</div>
+		<div><label>@Model.bookXY</label>-<label>@Model.bookZY</label></div>
+		<div class="c28">上传者:<a href="#" target="_blank">@Model.upUserNickName</a></div>
+		<div class="c29"><label>@Model.cNumber</label><a href="#">评论</a><label>@Model.recNumber</label><a href="#">推荐</a></div>
+		<div><label>@Model.DateDiff(Model.upTime)</label></div>
+	</div>
+	<div class="c30">
+		<div><a href="#">查看详细资料</a></div>
+		<input type="button" value="想买"/>
+	</div>
+	<div class="clear"></div>
+</li>
