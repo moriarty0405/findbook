@@ -16,19 +16,25 @@ using System.Linq;
 using System;
 using findbook.WebUI.Models;
 using System.Drawing;
+using System.Web;
 
 namespace findbook.WebUI.Controllers {
     public class SearchController : Controller {
         private IUsersRepository ur;
         private ISRecordsRepository rr;
+        private IBooksRepository br;
 
-        public SearchController(IUsersRepository userRepository, ISRecordsRepository searcordRepository) {
+        public SearchController(IUsersRepository userRepository, ISRecordsRepository searcordRepository,
+                                IBooksRepository bookRepository) {
             ur = userRepository;
             rr = searcordRepository;
+            br = bookRepository;
         }
 
         [HttpPost]
-        public ActionResult Show(string kw, string orderType = "0") {
+        public ActionResult Show(string orderType = "0") {
+            string kw = HttpContext.Request["kw"].ToString();
+
             ViewData["searchWord"] = kw;
             SearchView sv = Search(kw);
 
@@ -37,93 +43,99 @@ namespace findbook.WebUI.Controllers {
 
         //搜索
         public SearchView Search(string kw) {
-            //收集用户搜索输入
-            string userID =  HttpContext.Session["logOnUserID"].ToString();
-            rr.Collect(userID, kw);
+            //如果用户登陆则收集用户搜索输入
+            if (HttpContext.User.Identity.IsAuthenticated) {
+                //从cookie中获取userID
+                HttpCookie cookie = Request.Cookies["user"];
+                string userID = cookie["userID"].ToString();
+
+                //string userID = (string)Session["userID"];
+                rr.Collect(userID, kw);
+            }
 
             #region 获取List<Book>
-            //根据相对路径获取绝对路径
-            string path = HttpContext.Server.MapPath("../Index");
+            ////根据相对路径获取绝对路径
+            //string path = HttpContext.Server.MapPath("../Index");
 
-            //初始化参数
-            FSDirectory directory = FSDirectory.Open(new DirectoryInfo(path), new NoLockFactory());
-            IndexReader reader = IndexReader.Open(directory, true);
-            IndexSearcher searcher = new IndexSearcher(reader);
-            PhraseQuery query = new PhraseQuery();
+            ////初始化参数
+            //FSDirectory directory = FSDirectory.Open(new DirectoryInfo(path), new NoLockFactory());
+            //IndexReader reader = IndexReader.Open(directory, true);
+            //IndexSearcher searcher = new IndexSearcher(reader);
+            //PhraseQuery query = new PhraseQuery();
 
-            //分词
-            List<string> sw = Splitwords(kw);
+            ////分词
+            //List<string> sw = Splitwords(kw);
             
-            foreach (string word in sw) {
-                query.Add(new Term("bookName", word));
-                query.Add(new Term("upUserNickName", word));
-                query.Add(new Term("bookIntr", word));
-                query.Add(new Term("author", word));
-                query.Add(new Term("pub", word));
-            }
+            //foreach (string word in sw) {
+            //    query.Add(new Term("bookName", word));
+            //    query.Add(new Term("upUserNickName", word));
+            //    query.Add(new Term("bookIntr", word));
+            //    query.Add(new Term("author", word));
+            //    query.Add(new Term("pub", word));
+            //}
 
-            //相聚100以内才算是查询到
-            query.SetSlop(1000);
-            TopScoreDocCollector collector = TopScoreDocCollector.create(1024, true);//最大1024条记录
-            searcher.Search(query, null, collector);
+            ////相聚100以内才算是查询到
+            //query.SetSlop(1000);
+            //TopScoreDocCollector collector = TopScoreDocCollector.create(1024, true);//最大1024条记录
+            //searcher.Search(query, null, collector);
 
-            //搜索到的信息
-            int totalCount = collector.GetTotalHits();
-            int startRowIndex = 0;
-            int pageSize = 10;
+            ////搜索到的信息
+            //int totalCount = collector.GetTotalHits();
+            //int startRowIndex = 0;
+            //int pageSize = 10;
 
-            //分页,下标应该从0开始吧，0是第一条记录
-            ScoreDoc[] docs = collector.TopDocs(startRowIndex, pageSize).scoreDocs;
+            ////分页,下标应该从0开始吧，0是第一条记录
+            //ScoreDoc[] docs = collector.TopDocs(startRowIndex, pageSize).scoreDocs;
             
-            //将搜索到的信息，装入数组中
-            List<Books> bookResult = new List<Books>();
+            ////将搜索到的信息，装入数组中
+            //List<Books> bookResult = new List<Books>();
 
-            //将搜索结果中的对象赋值到List<Books>中
-            for (int i = 0; i < docs.Length; i++) {
-                //取文档的编号，这个是主键，lucene.net分配
-                //检索结果中只有文档的id，如果要取Document，则需要Doc再去取
-                int docID = docs[i].doc;
-                Document doc = searcher.Doc(docID);
+            ////将搜索结果中的对象赋值到List<Books>中
+            //for (int i = 0; i < docs.Length; i++) {
+            //    //取文档的编号，这个是主键，lucene.net分配
+            //    //检索结果中只有文档的id，如果要取Document，则需要Doc再去取
+            //    int docID = docs[i].doc;
+            //    Document doc = searcher.Doc(docID);
 
-                string bookID = doc.Get("bookID");
-                string bookName = doc.Get("bookName");
-                string upTime = doc.Get("upTime");
-                string upUserID = doc.Get("upUserID");
-                string upUserNickName = doc.Get("upUserNickName");
-                string recNumber = doc.Get("recNumber");
-                string remNumber = doc.Get("remNumber");
-                string bookIntr = doc.Get("bookIntr");
-                string bookPrice = doc.Get("bookPrice");
-                string author = doc.Get("author");
-                string pub = doc.Get("pub");
-                string cNumber = doc.Get("cNumber");
+            //    string bookID = doc.Get("bookID");
+            //    string bookName = doc.Get("bookName");
+            //    string upTime = doc.Get("upTime");
+            //    string upUserID = doc.Get("upUserID");
+            //    string upUserNickName = doc.Get("upUserNickName");
+            //    string recNumber = doc.Get("recNumber");
+            //    string remNumber = doc.Get("remNumber");
+            //    string bookIntr = doc.Get("bookIntr");
+            //    string bookPrice = doc.Get("bookPrice");
+            //    string author = doc.Get("author");
+            //    string pub = doc.Get("pub");
+            //    string cNumber = doc.Get("cNumber");
 
-                //高亮搜索结果
-                foreach (string word in sw) { 
-                    bookName = Preview(bookName, word);
-                    upUserNickName = Preview(upUserNickName, word);
-                    bookIntr = Preview(bookIntr, word);
-                    author = Preview(author, word);
-                    pub = Preview(pub, word);
-                }
+            //    //高亮搜索结果
+            //    foreach (string word in sw) { 
+            //        bookName = Preview(bookName, word);
+            //        upUserNickName = Preview(upUserNickName, word);
+            //        bookIntr = Preview(bookIntr, word);
+            //        author = Preview(author, word);
+            //        pub = Preview(pub, word);
+            //    }
 
-                //将搜索结果放入Book对象中
-                Books bk = new Books();
-                bk.author = author;
-                bk.bookID = bookID;
-                bk.bookIntr = bookIntr;
-                bk.bookName = bookName;
-                bk.bookPrice = Decimal.Parse(bookPrice);
-                bk.cNumber = Int32.Parse(cNumber);
-                bk.pub = pub;
-                bk.recNumber = Int32.Parse(recNumber);
-                bk.remNumber = Int32.Parse(remNumber);
-                bk.upTime = DateTime.Parse(upTime);
-                bk.upUserNickName = upUserNickName;
-                bk.upUserID = upUserID;
+            //    //将搜索结果放入Book对象中
+            //    Books bk = new Books();
+            //    bk.author = author;
+            //    bk.bookID = bookID;
+            //    bk.bookIntr = bookIntr;
+            //    bk.bookName = bookName;
+            //    bk.bookPrice = Decimal.Parse(bookPrice);
+            //    bk.cNumber = Int32.Parse(cNumber);
+            //    bk.pub = pub;
+            //    bk.recNumber = Int32.Parse(recNumber);
+            //    bk.remNumber = Int32.Parse(remNumber);
+            //    bk.upTime = DateTime.Parse(upTime);
+            //    bk.upUserNickName = upUserNickName;
+            //    bk.upUserID = upUserID;
 
-                bookResult.Add(bk);
-            }
+            //    bookResult.Add(bk);
+            //}
 
             
 
@@ -131,7 +143,7 @@ namespace findbook.WebUI.Controllers {
 
             //获取匹配的用户
             SearchView sv = new SearchView {
-                Books = bookResult,
+                Books = br.Books.Where(b => b.bookName.Contains(kw)),
                 Users = ur.Users.Where(u => u.userName.Contains(kw))
             };
 

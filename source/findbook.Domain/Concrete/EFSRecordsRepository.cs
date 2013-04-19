@@ -19,7 +19,7 @@ namespace findbook.Domain.Concrete {
             if (!string.IsNullOrEmpty(sBody)) {
                 #region 初始化存储过程参数
 
-                SqlParameter[] parameters = new SqlParameter[11];
+                SqlParameter[] parameters = new SqlParameter[2];
 
                 parameters[0] = new SqlParameter {
                     DbType = DbType.String,

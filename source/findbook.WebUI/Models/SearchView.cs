@@ -10,6 +10,7 @@ namespace findbook.WebUI.Models {
         public IEnumerable<Users> Users { get; set; }
 
         //显示搜索到的书籍
-        public List<Books> Books { get; set; }
+        //public List<Books> Books { get; set; }
+        public IEnumerable<Books> Books { get; set; }
     }
 }

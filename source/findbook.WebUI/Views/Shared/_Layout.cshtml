@@ -74,8 +74,8 @@
 		    <!--=============================search=================================-->
 		    <div class="search">
 			    @*<form method="post" class="searchform" action="">*@
-                @using(Html.BeginForm("Show", "Search", new {kw=}, FormMethod.Post, new { @class = "searchform" })) {
-				    <input type="text" id="searchBox" placeholder="ËÑË÷..." class="search_txt" />
+                @using(Html.BeginForm("Show", "Search", FormMethod.Post, new { @class = "searchform" })) {
+				    <input type="text" name="kw" id="kw" placeholder="ËÑË÷..." class="search_txt" />
 				    <input type="button" class="search_btn" value=""/>
 			    }
 
