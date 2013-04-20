@@ -10,6 +10,8 @@
           
     //确定是不是自己的主页
     bool myPage = Model.Users.userID.Equals(userID);
+
+    string userImgPath = "../../Content/Images/users/" + Model.Users.userID + ".jpg";
     
     if (myPage) {
         //自己看自己
@@ -31,7 +33,7 @@
 	<!--个人信息-->
 	<div class="personal_info">
         <div class="personal_img">
-	        <img src="../../Content/Images/users/author.jpg" width="220px" height="220px" />
+	        <img src=@userImgPath width="220px" height="220px" />
         </div>
 		<div class="psesonal_introduction">
 			<p>

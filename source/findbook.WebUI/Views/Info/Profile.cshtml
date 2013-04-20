@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "我的资料";
     Layout = "~/Views/Shared/_InfoLayout.cshtml";
+
+    string userImgPath = "../../Content/Images/users/" + Model.userID + ".jpg";
 }
 
 @*设置navigator中的标签为active*@
@@ -23,7 +25,7 @@
 					<tr>
 						<td class="c09">个人头像:</td>
                         <td class="c10">
-                            <img src="../../Content/Images/users/author.jpg" width="80px" height="80px" />
+                            <img src=@userImgPath width="80px" height="80px" />
                             <input type="file" />
                         </td>
 					</tr>

@@ -1,7 +1,11 @@
 ﻿@model findbook.Domain.Entities.Books
 
+@{
+    string bookImgPath = "../../Content/Images/books/" + Model.bookID + ".jpg";
+}
+
 <li>
-	<div class="c23"><a href="#" target="_blank"><img src="images/book.jpg" width="140px" height="170px" /></a></div>
+	<div class="c23"><a href="#" target="_blank"><img src=@bookImgPath width="140px" height="170px" /></a></div>
 	<div class="c24">
 		<a href="#" target="_blank" class="c25">@Model.bookName</a>
 		<label>@Model.author</label>&nbsp;&nbsp;<label>@Model.pub</label>

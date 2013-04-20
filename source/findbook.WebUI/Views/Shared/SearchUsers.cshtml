@@ -1,7 +1,11 @@
 ﻿@model findbook.Domain.Entities.Users
 
+@{
+    string userImgPath = "../../Content/Images/users/" + Model.sUserID + ".jpg";
+ }
+
 <li style="border-bottom:1px dotted #666;">
-    <div class="c31"><a href="#" target="_blank"><img src="images/author.jpg" width="140px" height="140px"/></a></div>
+    <div class="c31"><a href="#" target="_blank"><img src=@userImgPath width="140px" height="140px"/></a></div>
     <div class="c32">
 	    <a href="#" target="_blank" class="c33">@Model.userNickName</a>
         @{

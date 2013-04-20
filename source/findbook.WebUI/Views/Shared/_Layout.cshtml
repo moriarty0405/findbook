@@ -80,8 +80,9 @@
 			    }
 
                 @if (authenticated) {
+                    string imgPath = "../../Content/Images/users/" + userID + ".jpg";
                     <span class="user_login">
-				        <a href="#" target="_blank"><img src="../../Content/Images/users/author.jpg" width="30px" height="30px" border="0"/>@Context.User.Identity.Name</a>
+				        <a href="#" target="_blank"><img src=@imgPath width="30px" height="30px" border="0"/>@Context.User.Identity.Name</a>
 				        <ul class="user_login_ul">
 					        <li>
                                 @Html.RouteLink("ÎÒµÄÖ÷Ò³", new {

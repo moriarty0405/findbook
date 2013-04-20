@@ -1,16 +1,12 @@
 ﻿@model findbook.Domain.Entities.Books
 
-@*<script type="text/javascript">
-    $(function () {
-        var bookID = "@Model.bookID";
-        $("#image").click(function () {
-            window.load("/Book/List?bookID=" + bookID)
-        })
-    }) 
-</script>*@
+@{
+    string bookImgPath = "../../Content/Images/books/" + Model.bookID + ".jpg";
+}
+
 
 <li>
-    <img id="image" src="../../Content/Images/books/book.jpg" width="220" height="180"  border="0px"alt="大学英语1" display:block; />
+    <img id="image" src=@bookImgPath width="220" height="180"  border="0px"alt="大学英语1" display:block; />
     
 	<div class="c02">
 		<p class="c03">

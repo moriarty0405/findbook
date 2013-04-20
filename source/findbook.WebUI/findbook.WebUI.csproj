@@ -104,6 +104,7 @@
     <Compile Include="Models\Account\LogOnModel.cs" />
     <Compile Include="Models\Account\RegisterModel.cs" />
     <Compile Include="Models\BookViewModel.cs" />
+    <Compile Include="Models\IndexView.cs" />
     <Compile Include="Models\PageInfo.cs" />
     <Compile Include="Models\PageViewModel.cs" />
     <Compile Include="Models\PrivateView.cs" />

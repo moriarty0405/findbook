@@ -1,9 +1,13 @@
 ﻿@model findbook.Domain.Entities.BookComments
            
+@{
+    string userImgPath = "../../Content/Images/users/" + Model.userID + ".jpg";
+    }
+           
 <li>
 	<img class="hr1" src="../../Content/Images/web/hr.gif" width="580px"/>
 	<div class="user_comment_img">
-		<a href="#" target="_blank"><img src="../../Content/Images/users/author.jpg" width="40px" height="40px"/></a>		
+		<a href="#" target="_blank"><img src=@userImgPath width="40px" height="40px"/></a>		
 	</div>
 	<div class="user_comment_content">
 		@*<a href="#" target="_blank">@Model.userName</a>*@
