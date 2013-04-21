@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using findbook.Domain.Abstract;
+using findbook.WebUI.Models;
 
 namespace findbook.WebUI.Controllers
 {
@@ -17,6 +18,16 @@ namespace findbook.WebUI.Controllers
         }
 
         public ActionResult Index() {
+            IndexView iv = new IndexView() {
+                Wanted = wr.Wanted,
+                NewBook = br.Books.OrderByDescending(b => b.upTime)
+                                  .Take(6),
+                FreeBook = br.Books.Where(b => b.bookPrice == 0)
+                                   .Take(6)
+
+
+            };
+
             return View();
         }
 

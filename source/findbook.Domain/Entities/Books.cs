@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using findbook.Domain.Helpers;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace findbook.Domain.Entities {
     public class Books : TimeHelper {
@@ -45,5 +47,23 @@ namespace findbook.Domain.Entities {
         public int cNumber { get; set; }
 
         public string ZT { get; set; }
+
+        //推荐
+        public int Recommend(string bookID) {
+            string connstr = ConfigurationManager.ConnectionStrings["EFDbContext"].ConnectionString;
+            using (SqlConnection mycon = new SqlConnection(connstr)) {
+                mycon.Open();
+
+                using (SqlCommand cmd = mycon.CreateCommand()) {
+
+                    String updateSql = String.Format("update Books set recNumber = recNumber + 1 where bookID = '{0}'", bookID);
+                    cmd.CommandText = updateSql;
+                    cmd.ExecuteNonQuery();
+                }
+
+                return 0;
+            }
+        }
+          
     }
 }

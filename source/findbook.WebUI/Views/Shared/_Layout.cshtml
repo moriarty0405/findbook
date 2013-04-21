@@ -11,7 +11,7 @@
     <link href="@Url.Content("~/Content/bootstrap-responsive.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />*@
     <link href="../../Content/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
-    <link href="../../Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    @*<link href="../../Content/bootstrap.min.css" rel="stylesheet" type="text/css" />*@
     <link href="../../Content/style.css" rel="stylesheet" type="text/css" />
 
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
@@ -101,13 +101,13 @@
 			    @*<form method="post" class="searchform" action="">*@
                 @using(Html.BeginForm("Show", "Search", FormMethod.Post, new { @class = "searchform" })) {
 				    <input type="text" name="kw" id="kw" placeholder="ËÑË÷..." class="search_txt" />
-				    <input type="button" class="search_btn" value=""/>
+				    <input type="submit" class="search_btn" value="" />
 			    }
 
                 @if (authenticated) {
                     string imgPath = "../../Content/Images/users/" + userID + ".jpg";
                     <span class="user_login">
-				        <a href="#" target="_blank"><img src=@imgPath width="30px" height="30px" border="0"/>@Context.User.Identity.Name</a>
+				        <a href="#" target="_blank" ><img src=@imgPath width="25px" height="25px" border="0"/><span style="padding-bottom:10px;">@Context.User.Identity.Name</span></a>
 				        <ul class="user_login_ul">
 					        <li>
                                 @Html.RouteLink("ÎÒµÄÖ÷Ò³", new {

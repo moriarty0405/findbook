@@ -2,12 +2,31 @@
 
 @{
     string bookImgPath = "../../Content/Images/books/" + Model.bookID + ".jpg";
+    
+    string userID = Session["logOnUserID"].ToString();
 }
 
+<script type="text/javascript">
+    //为每一个超链接绑定click事件，点击后，消息标记为已读
+    $(function () {
+        $("recommend").live("click", function () {
+            var x = 1;
+
+            //页面是否首次加载
+            var isPostBack = "<%=IsPostBack%>";
+
+            //不是首次加载
+            if (isPostBack) {
+                x = "<%=@Model.Recommend(Model.bookID)%>";
+            }
+        })
+    })
+</script>
 
 <li>
+    <div class="c105">
     @*<img id="image" src=@bookImgPath width="220" height="180"  border="0px" display:block; />*@
-    @Html.ActionLinkWithImage(bookImgPath, "List", "Book", new { bookID = Model.bookID })
+    @Html.ActionLinkWithImage(bookImgPath, "List", "Book", new { bookID = Model.bookID })</div>
     
 	<div class="c02">
 		<p class="c03">
@@ -24,8 +43,19 @@
 		<p class="time">@Model.DateDiff(Model.upTime)</p>
 		<p class="c04">
 			<span>@Model.cNumber</span><a href="#">评论</a>
-			<span>@Model.recNumber</span><a href="#">推荐</a>
-			<span class="c19"><a href="#">修改</a>&nbsp;&nbsp;<a href="#">删除</a></span>
+			<span>@Model.recNumber</span>
+            @{
+                if (userID.Equals(Model.upUserID)) {
+                    <span class="c19">
+                        <a href="#">修改</a>
+                        <a href="#">删除</a>
+                    </span>
+                } else {
+                    <span class="c19">
+                        <input class="recommend" type="button" value="推荐"/>
+                    </span>
+                }
+            }		
 		</p>
 	</div>	
 </li>

@@ -6,9 +6,10 @@
 
 <li style="border-bottom:1px dotted #666;">
     <div class="c31">
+        <div class="c101">
         @*<a href="#" target="_blank">
         <img src=@userImgPath width="140px" height="140px"/></a>*@
-        @Html.ActionLinkWithImage(userImgPath, "List", "Page", new { userID = Model.userID })
+        @Html.ActionLinkWithImage(userImgPath, "List", "Page", new { userID = Model.userID })</div>
     </div>
     <div class="c32">
 	    <a href="#" target="_blank" class="c33">@Model.userNickName</a>
