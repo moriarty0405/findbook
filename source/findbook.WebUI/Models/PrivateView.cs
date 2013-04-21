@@ -11,5 +11,7 @@ namespace findbook.WebUI.Models {
         public IEnumerable<GPrivates> GPrivates { get; set; }
 
         public Privates PrivateDetail { get; set; }
+
+        public PageInfo PD { get; set; }
     }
 }

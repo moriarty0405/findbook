@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using findbook.WebUI.Models;
 using findbook.Domain.Abstract;
+using findbook.Domain.Entities;
 
 namespace findbook.WebUI.Controllers
 {
@@ -30,19 +31,28 @@ namespace findbook.WebUI.Controllers
         }
 
         //传入参数为另一位用户的ID
-        public ViewResult DetailList(string anotherUserID) {
-            ////发送用户为当前用户，故可从cookie中获取userName
-            //HttpCookie cookie = Request.Cookies["user"];
-            //string sUserID = cookie["userID"].ToString();
-
+        public ViewResult DetailList(string anotherUserID, int page = 1) {
+            int pageSize = 6;
+            
             //发送用户为当前用户，故可从session中获取userName
             string sUserID = Session["logOnUserID"].ToString();
-            
-            //传入选中用户对当前用户的私信,按时间排列
+
+            //传入选中用户对当前用户的私信,按时间排列, 并获取分页后记录
             PrivateView pv = new PrivateView() {
                 Privates = pr.Privates.Where(p => p.rUserID == anotherUserID && p.sUserID == sUserID
-                                                || p.sUserID == anotherUserID && p.rUserID == sUserID)
-                                      .OrderByDescending(p => p.sTime)
+                                                  || p.sUserID == anotherUserID && p.rUserID == sUserID)
+                                        .OrderByDescending(p => p.sTime)
+                                        .Skip((page - 1) * pageSize)
+                                        .Take(pageSize),
+
+                //PrivateDetail分页信息
+                PD = new PageInfo {
+                    CurrentPage = page,
+                    ItemsPerPage = pageSize,
+                    TotalItems = pr.Privates.Where(p => p.rUserID == anotherUserID && p.sUserID == sUserID
+                                                  || p.sUserID == anotherUserID && p.rUserID == sUserID)
+                                            .Count()
+                }
             };
 
             return View(pv);

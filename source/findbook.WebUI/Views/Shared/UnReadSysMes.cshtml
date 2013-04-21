@@ -1,0 +1,27 @@
+﻿@model findbook.Domain.Entities.SystemMessages
+
+<script type="text/javascript">
+    //为每一个超链接绑定click事件，点击后，消息标记为已读
+    $(function () {
+        $("unRead").live("click", function () {
+            //页面是否首次加载
+            var isPostBack = "<%=IsPostBack%>";
+
+            if (isPostBack) {
+                var x = "<%=@Model.MarkReaded(Model.sysMesID)%>" 
+            }
+        })
+    })
+</script>
+
+<li>
+    <span>
+        @Model.smBody
+    </span>
+    <span>
+        <a class="unRead" href="@Model.href">@Model.href</a>
+    </span>
+    <span>
+        @Model.sTime
+    </span>
+</li>

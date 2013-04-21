@@ -7,7 +7,10 @@
 <li>
 	<img class="hr1" src="../../Content/Images/web/hr.gif" width="580px"/>
 	<div class="user_comment_img">
-		<a href="#" target="_blank"><img src=@userImgPath width="40px" height="40px"/></a>		
+		<a href="#" target="_blank">
+            @*<img src=@userImgPath width="40px" height="40px"/>*@
+            @Html.ActionLinkWithImage(userImgPath, "List", "Page", new { userID = Model.sUserID })
+        </a>		
 	</div>
 	<div class="user_comment_content">
 		@Html.RouteLink(Model.sUserName, new {

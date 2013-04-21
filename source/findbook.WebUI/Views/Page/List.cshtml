@@ -22,6 +22,9 @@
         
         //将对方的信息写到session中
         Context.Session["hUserID"] = userID;
+        
+        //访问数加1
+        Model.Pages.Increase(Model.Pages.pageID);
     }
 }
 
@@ -33,7 +36,8 @@
 	<!--个人信息-->
 	<div class="personal_info">
         <div class="personal_img">
-	        <img src=@userImgPath width="220px" height="220px" />
+	        @*<img src=@userImgPath width="220px" height="220px" />*@
+            @Html.ActionLinkWithImage(userImgPath, "List", "Page", new { userID = Model.Users.userID })
         </div>
 		<div class="psesonal_introduction">
 			<p>
@@ -169,7 +173,8 @@
 		    </ul>
         
             <div class="pager">
-                @Html.PageLinks(Model.LC, x => Url.Action("List", new {page = x}))
+                @*@Html.AjaxPageLinks(Model.LC, x => Url.Action("List", new { page = x }), 3, "LeaveComments")*@
+                @Html.PageLinks(Model.LC, x => Url.Action("List", new { page = x }))
             </div>
 
 			<!--评论-->

@@ -9,6 +9,9 @@
 
     //判断是否是进入自己的图书界面
     bool myPage = userID.Equals(Model.Books.upUserID);
+
+    string bookImgPath = "../../Content/Images/books/" + Model.Books.bookID + ".jpg";
+    string userImgPath = "../../Content/Images/users/" + Model.Books.upUserID + ".jpg";
 }
 
 <script src="../../Scripts/MicrosoftAjax.js" type="text/javascript"></script>  
@@ -24,11 +27,15 @@
 			<p><span>@Model.Books.bookIntr.</span></p>
 		</div>
 		<div class="book_img_show">		
-			<img src="../../Content/Images/books/book.jpg" width="320px" height="250px" />	
+			@*<img src=@bookImgPath width="320px" height="250px" />*@
+            @Html.ActionLinkWithImage(bookImgPath, "List", "Book", new { bookID = Model.Books.bookID })	
 		</div>
 		<div class="author_info">
 			<p>
-				<a href="#"><img src="../../Content/Images/users/author.jpg" width=30px height=30px/></a>
+				<a href="#">
+                @*<img src=@userImgPath width=30px height=30px/></a>*@
+                @Html.ActionLinkWithImage(userImgPath, "List", "Page", new { userID = Model.Books.upUserID })
+
 				@*<a href="#" class="author_name">Jone</a>*@
                 @Html.RouteLink(Model.Books.upUserNickName, new {
                                     Controller = "Page",

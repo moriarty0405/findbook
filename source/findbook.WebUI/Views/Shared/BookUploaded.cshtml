@@ -6,7 +6,8 @@
 
 
 <li>
-    <img id="image" src=@bookImgPath width="220" height="180"  border="0px"alt="大学英语1" display:block; />
+    @*<img id="image" src=@bookImgPath width="220" height="180"  border="0px" display:block; />*@
+    @Html.ActionLinkWithImage(bookImgPath, "List", "Book", new { bookID = Model.bookID })
     
 	<div class="c02">
 		<p class="c03">

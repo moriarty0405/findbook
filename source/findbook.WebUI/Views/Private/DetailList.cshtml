@@ -29,19 +29,47 @@
 <script src="../../Scripts/MicrosoftMvcAjax.js" type="text/javascript"></script>
 <script src="../../Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
 
-@*<script type="text/javascript">
-    //最新消息每5秒刷新一次
-    setInterval(function () {
-        $.ajax({
-            url: '@Url.Action("DetailList", "Private")', //异步请求Action
-            data: "id=@rUserID",
-            type: "POST",
-//            success: function (result) {
-//                $("#partialContainer").html(result);
-//            }
-        });
-    }, 5000);
- </script>*@
+<script type="text/javascript">
+//    $(function () {
+//        function long_polling() {
+//            $.getJSON('/PrivateComet/LongPolling', function (data) {
+//                //如果收到的私信不为空
+//                if (data) {
+//                    var sUserID = data.sUserID;
+//                    var userImgPath = '../../Content/Images/users/' + sUserID + '.jpg';
+//                    var pagePath = 'Page/List/' + sUserID;
+//                    
+//                    //向页面前追加
+//                    $('#partialContainer').prepend("<li>"
+//                    + "<img class='hr1' src='../../Content/Images/web/hr.gif' width='580px'/>"
+//                    + '<div class="user_comment_img">'
+//                    + '<a href='+ pagePath + '><img src=' + userImgPath + ' width="40px" height="40px"/></a></div>'
+//                    + '<div class="user_comment_content">'
+//                    + '<a href=pagePath>' + data.sUserName +'</a>'
+//                    + '<p class="comment_content">' + data.pmBody + '</p>'
+//                    + '<p class="comment_content_time">' + data.sTime + '</p></div>'
+//                    + '<div class="comment_content_reply">'
+//                    + '<a href="#" target="_blank">回复</a>|'
+//                    + '<a href="#">删除</a></div></li>')
+//                }
+//                long_polling();
+//            });
+//        }
+//        long_polling();
+    //    });
+
+    function next() {
+        var str = $("#pmBody").val();
+        if ( str.length <= 0) {
+            window.location.href = "http://localhost:6110/Private-Detail/" + @rUserID;
+        } 
+    }
+
+    $(function () {//间隔3s自动加载一次  
+        window.setInterval(next, 5000); 
+    });
+    
+</script>
 
 <div class="content">
 	<!--私信-->
@@ -62,7 +90,7 @@
                             sUserID = userID, rUserID = Session["rUserID"]
                         }, 
                         new AjaxOptions { UpdateTargetId = "target" })) {
-				<textarea rows="6" cols="93" name="pmBody"></textarea>
+				<textarea rows="6" cols="93" name="pmBody" id="pmBody"></textarea>
 				<input type="submit" value="发送"></input>
 			}
 		</div>
@@ -83,8 +111,12 @@
                 }
 			</ul>
 
-
-
+            <div class="pager">
+                @*@Html.AjaxPageLinks(Model.LC, x => Url.Action("List", new { page = x }), 3, "LeaveComments")*@
+                @Html.PageLinks(Model.PD, x => Url.Action("DetailList", new { page = x }))
+            </div>
 		</div>
 	</div>
+
+    
 </div>

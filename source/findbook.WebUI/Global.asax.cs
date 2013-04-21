@@ -69,6 +69,12 @@ namespace findbook.WebUI
             );
 
             routes.MapRoute(
+                "Private-Detail-paging",
+                "Private-Detail/{anotherUserID}/{page}",
+                new { controller = "Private", action = "DetailList", anotherUserID = "" }
+            );
+
+            routes.MapRoute(
                 "Private-Detail",
                 "Private-Detail/{anotherUserID}",
                 new { controller = "Private", action = "DetailList", anotherUserID = "" }

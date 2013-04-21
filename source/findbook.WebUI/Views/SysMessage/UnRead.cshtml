@@ -8,7 +8,7 @@
 
 <script type="text/javascript">
     $(function () {
-        @*设置navigator中的标签为active*@
+        //设置navigator中的标签为active
         $("#UnRead").addClass("active")
     })     
 </script>
@@ -21,7 +21,7 @@
 		<div class="message">
 			<ul>
 				@foreach (var m in Model.SystemMessages) {
-                    Html.RenderPartial("SystemMessages", m);
+                    Html.RenderPartial("UnReadSysMes", m);
                 }
 			</ul>
 		</div>
