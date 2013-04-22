@@ -5,10 +5,12 @@
     $(function () {
         $("unRead").live("click", function () {
             //页面是否首次加载
+            var sysMesID = $(this).attr('id');
+
             var isPostBack = "<%=IsPostBack%>";
 
             if (isPostBack) {
-                var x = "<%=@Model.MarkReaded(Model.sysMesID)%>" 
+                var x = "<%=@findbook.Domain.Entities.SystemMessages.MarkReaded(@Model.sysMesID)%>"
             }
         })
     })
@@ -19,8 +21,9 @@
         @Model.smBody
     </span>
     <span>
-        <a class="unRead" href="@Model.href">@Model.href</a>
+        <a class="unRead" id="@Model.sysMesID" href="@Model.href">@Model.href</a>
     </span>
+    <br />
     <span>
         @Model.sTime
     </span>

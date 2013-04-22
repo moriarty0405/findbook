@@ -354,11 +354,11 @@ text-decoration:none;
 /*=====书本展示=====*/
 .innercontent{
 width:960px;
-min-height:1658px;
 margin:0 auto;
 background:#fff;
 border:solid 1px #eee;
 float:left;
+margin-bottom:50px;
 /*top:50%;
 left:50%;
 display:block;
@@ -414,7 +414,7 @@ margin:10px 10px 10px 10px;
 .text p a{
 font-weight:bold;
 font-size:14px;
-color:#21de0c;
+color: #21de0c;
 text-decoration:none;
 }
 .text p a:hover{
@@ -426,22 +426,31 @@ margin:3px 0;
 .text{
 width:210px;
 height:auto;
-color: #666;
-background-color:#eee;
-FILTER: alpha(opacity=70);
+color: #000;
+background-color:#fff;
+/*FILTER: alpha(opacity=70);
 opacity: 0.7;
 -moz-opacity:0.7;
+-webkit-opacity:0.7;*/
 position: absolute;
 left:0px;
 bottom:50px;
 margin:0px 10px 15px 10px;
 padding:0 0 0 10px;
+border-top:2px solid #21de0c;
 }
 .hudong{
 height:50px;
 position:relative;
 float:right;
 margin-right:10px;
+}
+.hudong1 a
+{
+    float:left;
+    color:#999;
+    text-decoration:none;
+
 }
 .hudong a img{
 margin:0px 5px 0 0;
@@ -472,16 +481,34 @@ position: absolute;
 left:178px;
 bottom:193px;
 }
+.comment_up
+{
+    float:right;
+    padding-top:12px;
+}
+.comment_up span
+{
+    color:#21de0c;
+}
+.comment_up a
+{
+    color:#999;
+    text-decoration:none;
+}
+.comment_up a:hover
+{
+    color:#666;
+}
 /*==============================求购===============================*/
 .askfor_purchase{
 width:960px;
 float:left;
 background:#fff;
-margin:30px 0 50px 0px;
+margin:0px 0 50px 0px;
 border:1px solid #eee;
 }
 .askfor_purchase marquee{
-widht: 960px;
+width: 960px;
 height:200px;
 color:#999;
 font-size:14px;
@@ -585,6 +612,7 @@ color:#999;
 width:220px;
 height:240px;
 float:left;
+padding-right:22px;
 }
 .author_info{
 float:left;
@@ -611,6 +639,11 @@ text-decoration:none;
 }
 .author_info a:hover{
 color:#666;
+}
+.popular_info
+{
+    width:470px;
+    float:left;
 }
 .popular_info ul li{
 float:left;
@@ -1257,11 +1290,12 @@ font-size:14px;
 
 .tabbable ul
 {
-    padding-left:84px;
+    padding-left:0px;
+    /*position:absolute;*/
 }
 .tabbable ul li
 {
-    float:left;
+    
     padding-right:30px;
     padding-bottom:20px;
     font-size:14px;
@@ -1286,4 +1320,77 @@ border: 1px solid #ccc;
 color: #999;
 font-size: 16px;
 padding-left: 6px;
+}
+.clear
+{
+    clear:both;
+}
+.tab-content
+{
+    width:800px;
+    margin:0 auto;
+    position: relative;
+    top:-85px;
+    left:15px;
+}
+
+/*消息提醒*/
+.message_inform{
+float: left;
+position: relative;
+left:-16px;
+top:4px;
+background: url(../../Content/Images/web/message_inform.png) no-repeat;
+width:15px;
+height:15px;
+line-height:15px;
+padding:0px 0 6px 3px;
+color:#fff;
+font-weight:bold;
+font-size:10px;
+}
+/*hover头像显示*/
+.hover_personal_info{
+position: absolute;
+left:10px;
+bottom:-82px;
+height:100px;
+width:214px;
+background:#fff;
+border:1px solid #eee;
+box-shadow:0px 0 3px #666;
+z-index:1000;
+}
+.hover_personal_info a img{
+margin:0;
+padding:8px 8px 0 8px;
+}
+.hover_a_name{
+padding:4px 0 0 0;
+}
+.hover_a_name a{
+color:#999;
+text-decoration:none;
+font-size:14px;
+}
+.hover_a_name a:hover{
+color:#666;
+text-decoration: underline;
+}
+.hover_a_name label{
+color:#999;
+}
+.sixin_ta{
+float:right;
+margin:10px 6px 0 0;
+border:1px solid #eee;
+width:40px;
+text-align:center;
+}
+.sixin_ta a{
+color:#999;
+text-decoration:none;
+}
+.sixin_ta a:hover{
+color:#666;
 }

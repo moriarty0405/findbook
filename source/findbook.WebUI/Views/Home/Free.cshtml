@@ -1,0 +1,66 @@
+﻿@model IEnumerable<findbook.Domain.Entities.Books>
+
+@{
+    ViewBag.Title = "免费专区";
+}
+
+<script type="text/javascript">
+    $(function () {
+        $("#index").removeClass("selected");
+        $("#free").addClass("selected");
+    })
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".text").hide();
+
+        $(".book_img").mouseover(function () {
+            var imgId = $(this).attr('id');
+            var len = imgId.length; ;
+            var txtId = "#txt" + imgId.substring(3, len);
+
+            $(txtId).show();
+        });
+
+        $(".book_img").mouseout(function () {
+            var imgId = $(this).attr('id');
+            var len = imgId.length; ;
+            var txtId = "#txt" + imgId.substring(3, len);
+
+            $(txtId).hide();
+        });
+
+        $(".text").mouseover(function () {
+            var txtId = "#" + $(this).attr('id');
+
+            $(txtId).show();
+        });
+
+        $(".text").mouseout(function () {
+            var txtId = "#" + $(this).attr('id');
+
+            $(txtId).hide();
+        });
+    });
+</script>
+<div style="width:964px; margin:0 auto;padding:50px 0;">
+<div class="innercontent">
+	<div class="fenkuai">
+		<div class="guide">
+			<div class="guide_tittle_div">
+				<img src="../../Content/Images/web/upload_icon.png" width="16px" height="16px"/>
+				<span class="guide_tittle">免费专区</span>
+				<span class="guide_description">-----学长学姐白送给你的课堂书籍-----</span>
+			</div>
+		</div>
+		<div class="guide_content">
+			<ul class="guide_content_details">
+				@foreach (var m in Model) {
+                    Html.RenderPartial("BookGuid", m);
+                }
+			</ul>
+		</div>
+	</div>
+</div>
+</div>

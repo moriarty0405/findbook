@@ -2,10 +2,8 @@
 
 @{
     ViewBag.Title = "图书信息";
-    
-    //从cookie中获取userID
-    HttpCookie cookie = Request.Cookies["user"];
-    string userID = cookie["userID"].ToString();
+
+    string userID = Session["logOnUserID"].ToString();
 
     //判断是否是进入自己的图书界面
     bool myPage = userID.Equals(Model.Books.upUserID);
@@ -87,26 +85,17 @@
 				售价:￥<span class="price_info">@Model.Books.bookPrice.ToString("0.0")</span>
 			</p>
 		</div>
-		@*<div class="popular_info">
-			<p>热门推荐</p>
-			<img class="hr1" src="../../Content/Images/web/hr.gif" width="340px"/>
+		<div class="popular_info">
+			<p>他的其他上传</p>
+			<img class="hr1" src="../../Content/Images/web/hr.gif" width="460px"/>
 			<div>
 			  	<ul>
-					<li><a href="book_show.html" target="_blank"><img src="../../Content/Images/books/book.jpg" width="90px" height="90px" title="大学英语1"/></a></li>
-					<li><a href="book_show.html" target="_blank"><img src="../../Content/Images/books/book.jpg" width="90px" height="90px" title="大学英语1"/></a></li>
-					<li><a href="book_show.html" target="_blank"><img src="../../Content/Images/books/book.jpg" width="90px" height="90px" title="大学英语1"/></a></li>
+					@foreach (var m in Model.HisBooks) {
+                        Html.RenderPartial("HisBooks", m);
+                    }
 				</ul>
 			</div>
-			<p>免费课本</p>
-			<img class="hr1" src="../../Content/Images/web/hr.gif" width="340px"/>
-			<div>
-			  	<ul>
-					<li><a href="book_show.html" target="_blank"><img src="../../Content/Images/books/book.jpg" width="90px" height="90px" title="大学英语1"/></a><img class="free_01" src="../../Content/Images/web/free.png" width="30px" height="30px" border="0"/></li>
-					<li><a href="book_show.html" target="_blank"><img src="../../Content/Images/books/book.jpg" width="90px" height="90px" title="大学英语1"/></a><img class="free_01" src="../../Content/Images/web/free.png" width="30px" height="30px" border="0"/></li>
-					<li><a href="book_show.html" target="_blank"><img src="../../Content/Images/books/book.jpg" width="90px" height="90px" title="大学英语1"/></a><img class="free_01" src="../../Content/Images/web/free.png" width="30px" height="30px" border="0"/></li>
-				</ul>
-			</div>
-		</div>*@
+		</div>
 	</div>
 	<!--评论-->
 	<div class="comment_zone">

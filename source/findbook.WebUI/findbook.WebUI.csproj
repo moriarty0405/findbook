@@ -113,13 +113,63 @@
     <Compile Include="Models\PrivateView.cs" />
     <Compile Include="Models\SearchView.cs" />
     <Compile Include="Models\SysMesView.cs" />
+    <Compile Include="Models\XYView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\books\20000001.jpg" />
+    <Content Include="Content\Images\books\20000002.jpg" />
+    <Content Include="Content\Images\books\20000003.jpg" />
+    <Content Include="Content\Images\books\20000004.jpg" />
+    <Content Include="Content\Images\books\20000005.jpg" />
+    <Content Include="Content\Images\books\20000006.jpg" />
+    <Content Include="Content\Images\books\20000007.jpg" />
+    <Content Include="Content\Images\books\20000008.jpg" />
+    <Content Include="Content\Images\books\20000009.jpg" />
+    <Content Include="Content\Images\books\20000010.jpg" />
+    <Content Include="Content\Images\books\20000011.jpg" />
+    <Content Include="Content\Images\books\20000012.jpg" />
+    <Content Include="Content\Images\books\20000013.jpg" />
+    <Content Include="Content\Images\books\20000014.jpg" />
+    <Content Include="Content\Images\books\20000015.jpg" />
+    <Content Include="Content\Images\books\20000016.jpg" />
+    <Content Include="Content\Images\books\20000017.jpg" />
+    <Content Include="Content\Images\books\20000018.jpg" />
+    <Content Include="Content\Images\books\20000019.jpg" />
+    <Content Include="Content\Images\books\20000020.jpg" />
+    <Content Include="Content\Images\books\20000021.jpg" />
+    <Content Include="Content\Images\books\20000022.jpg" />
+    <Content Include="Content\Images\books\20000023.jpg" />
+    <Content Include="Content\Images\books\20000024.jpg" />
+    <Content Include="Content\Images\books\20000025.jpg" />
+    <Content Include="Content\Images\books\20000026.jpg" />
+    <Content Include="Content\Images\books\20000027.jpg" />
+    <Content Include="Content\Images\books\20000028.jpg" />
+    <Content Include="Content\Images\books\20000029.jpg" />
+    <Content Include="Content\Images\books\20000030.jpg" />
+    <Content Include="Content\Images\books\20000031.jpg" />
+    <Content Include="Content\Images\books\20000032.jpg" />
+    <Content Include="Content\Images\books\20000033.jpg" />
+    <Content Include="Content\Images\books\20000034.jpg" />
+    <Content Include="Content\Images\books\20000035.jpg" />
+    <Content Include="Content\Images\books\20000036.jpg" />
+    <Content Include="Content\Images\books\20000037.jpg" />
+    <Content Include="Content\Images\books\20000038.jpg" />
+    <Content Include="Content\Images\books\20000039.jpg" />
+    <Content Include="Content\Images\books\20000040.jpg" />
     <Content Include="Content\Images\books\book.jpg" />
-    <Content Include="Content\Images\users\author.jpg" />
+    <Content Include="Content\Images\users\1000001.jpg" />
+    <Content Include="Content\Images\users\1000002.jpg" />
+    <Content Include="Content\Images\users\1000003.jpg" />
+    <Content Include="Content\Images\users\1000004.jpg" />
+    <Content Include="Content\Images\users\1000005.jpg" />
+    <Content Include="Content\Images\users\1000006.jpg" />
+    <Content Include="Content\Images\users\1000007.jpg" />
+    <Content Include="Content\Images\users\1000008.jpg" />
+    <Content Include="Content\Images\users\1000009.jpg" />
+    <Content Include="Content\Images\users\1000010.jpg" />
     <Content Include="Content\Images\web\askfor_icon.png" />
     <Content Include="Content\Images\web\comment_ico.png" />
     <Content Include="Content\Images\web\contact_ico.png" />
@@ -138,6 +188,7 @@
     <Content Include="Content\Images\web\logo.jpg" />
     <Content Include="Content\Images\web\logo2.jpg" />
     <Content Include="Content\Images\web\logo_img.png" />
+    <Content Include="Content\Images\web\message_inform.png" />
     <Content Include="Content\Images\web\phone_icon.png" />
     <Content Include="Content\Images\web\recommend_ico.png" />
     <Content Include="Content\Images\web\searchBtn.png" />
@@ -189,6 +240,7 @@
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
     <Content Include="Scripts\script.js" />
+    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\BookComments.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\LeaveComments.cshtml" />
@@ -237,9 +289,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\LogOn.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Book\List.cshtml" />
@@ -294,6 +343,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\ReadSysMes.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\BookGuid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\IndexZY.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\IndexXY.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Free.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Recommend.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\HisBooks.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

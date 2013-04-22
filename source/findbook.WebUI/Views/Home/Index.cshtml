@@ -67,6 +67,41 @@
 
     });
 </script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".text").hide();
+
+        $(".book_img").mouseover(function () {
+            var imgId = $(this).attr('id');
+            var len = imgId.length;
+            var txtId = "#txt" + imgId.substring(3, len);
+
+            $(txtId).show();
+        });
+
+        $(".book_img").mouseout(function () {
+            var imgId = $(this).attr('id');
+            var len = imgId.length; ;
+            var txtId = "#txt" + imgId.substring(3, len);
+
+            $(txtId).hide();
+        });
+
+        $(".text").mouseover(function () {
+            var txtId = "#" + $(this).attr('id');
+
+            $(txtId).show();
+        });
+
+        $(".text").mouseout(function () {
+            var txtId = "#" + $(this).attr('id');
+
+            $(txtId).hide();
+        });
+    });
+</script>
+
 <!--==========左边导航==========-->
 <div class="l_nav_div">
 <div class="detail_nav">
@@ -88,8 +123,8 @@
 				     <li><a href="#">电子商务</a></li>
 			     </ul>
 		     </li>
-		    <li><a href="#">·&nbsp;&nbsp;管理学院</a>
-		    <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;经济学院</a>
+		    <li><a href="#">·&nbsp;&nbsp;经济学院</a>
+		    <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;文法学院</a>
 			     <ul>
 				     <li><a href="#">信息管理与信息系统</a></li>
 				     <li><a href="#">工商管理</a></li>
@@ -98,8 +133,8 @@
 				     <li><a href="#">劳动与社会保障</a></li>
 			     </ul>
 		     </li>
-		     <li><a href="#">·&nbsp;&nbsp;管理学院</a>
-		     <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;经济学院</a>
+		     <li><a href="#">·&nbsp;&nbsp;外语学院</a>
+		     <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;理学院</a>
 			     <ul>
 				     <li><a href="#">信息管理与信息系统</a></li>
 				     <li><a href="#">工商管理</a></li>
@@ -108,8 +143,8 @@
 				     <li><a href="#">劳动与社会保障</a></li>
 			     </ul>
 		     </li>
-		     <li><a href="#">·&nbsp;&nbsp;管理学院</a>
-		     <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;经济学院</a>
+		     <li><a href="#">·&nbsp;&nbsp;资环学院</a>
+		     <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;材料学院</a>
 			     <ul>
 				     <li><a href="#">信息管理与信息系统</a></li>
 				     <li><a href="#">工商管理</a></li>
@@ -118,8 +153,8 @@
 				     <li><a href="#">劳动与社会保障</a></li>
 			     </ul>
 		     </li>
-		     <li><a href="#">·&nbsp;&nbsp;管理学院</a>
-		     <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;经济学院</a>
+		     <li><a href="#">·&nbsp;&nbsp;机电学院</a>
+		     <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;汽车学院</a>
 			     <ul>
 				     <li><a href="#">信息管理与信息系统</a></li>
 				     <li><a href="#">工商管理</a></li>
@@ -128,8 +163,8 @@
 				     <li><a href="#">劳动与社会保障</a></li>
 			     </ul>
 		     </li>
-		     <li><a href="#">·&nbsp;&nbsp;管理学院</a>
-		     <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;经济学院</a>
+		     <li><a href="#">·&nbsp;&nbsp;信息学院</a>
+		     <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;自动化学院</a>
 			     <ul>
 				     <li><a href="#">信息管理与信息系统</a></li>
 				     <li><a href="#">工商管理</a></li>
@@ -138,8 +173,8 @@
 				     <li><a href="#">劳动与社会保障</a></li>
 			     </ul>
 		     </li>
-		     <li><a href="#">·&nbsp;&nbsp;管理学院</a>
-		     <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;经济学院</a>
+		     <li><a href="#">·&nbsp;&nbsp;土木学院</a>
+		     <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;计算机学院</a>
 			     <ul>
 				     <li><a href="#">信息管理与信息系统</a></li>
 				     <li><a href="#">工商管理</a></li>
@@ -148,8 +183,8 @@
 				     <li><a href="#">劳动与社会保障</a></li>
 			     </ul>
 		     </li>
-		     <li><a href="#">·&nbsp;&nbsp;管理学院</a>
-		     <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;经济学院</a>
+		     <li><a href="#">·&nbsp;&nbsp;交通学院</a>
+		     <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;能动学院</a>
 			     <ul>
 				     <li><a href="#">信息管理与信息系统</a></li>
 				     <li><a href="#">工商管理</a></li>
@@ -158,8 +193,8 @@
 				     <li><a href="#">劳动与社会保障</a></li>
 			     </ul>
 		     </li>
-		      <li><a href="#">·&nbsp;&nbsp;管理学院</a>
-		      <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;经济学院</a>
+		      <li><a href="#">·&nbsp;&nbsp;航运学院</a>
+		      <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;物流学院</a>
 			     <ul>
 				     <li><a href="#">信息管理与信息系统</a></li>
 				     <li><a href="#">工商管理</a></li>
@@ -168,8 +203,8 @@
 				     <li><a href="#">劳动与社会保障</a></li>
 			     </ul>
 		     </li>
-		    <li><a href="#">·&nbsp;&nbsp;管理学院</a>
-		    <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;经济学院</a>
+		    <li><a href="#">·&nbsp;&nbsp;政治学院</a>
+		    <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;化工学院</a>
 			     <ul>
 				     <li><a href="#">信息管理与信息系统</a></li>
 				     <li><a href="#">工商管理</a></li>
@@ -178,8 +213,8 @@
 				     <li><a href="#">劳动与社会保障</a></li>
 			     </ul>
 		     </li>
-		     <li><a href="#">·&nbsp;&nbsp;管理学院</a>
-		     <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;经济学院</a>
+             <li><a href="#">·&nbsp;&nbsp;政治学院</a>
+		    <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;化工学院</a>
 			     <ul>
 				     <li><a href="#">信息管理与信息系统</a></li>
 				     <li><a href="#">工商管理</a></li>
@@ -196,10 +231,10 @@
 				<div class="main_view">
 					<div class="window">	
 						<div class="image_reel">
-						    <img src="../../Content/Images/web/img_roll1.jpg" alt="" width=708px height=424px/>
-							<img src="../../Content/Images/web/img_roll2.jpg" alt="" width=708px height=410px/>
-							<img src="../../Content/Images/web/img_roll3.jpg" alt="" width=708px height=410px/>
-							<img src="../../Content/Images/web/img_roll4.jpg" alt="" width=708px height=410px/>
+						    <img src="../../Content/Images/web/img_roll1.jpg" alt="" width=708px height=480px/>
+							<img src="../../Content/Images/web/img_roll2.jpg" alt="" width=708px height=480px/>
+							<img src="../../Content/Images/web/img_roll3.jpg" alt="" width=708px height=480px/>
+							<img src="../../Content/Images/web/img_roll4.jpg" alt="" width=708px height=480px/>
 						</div>
 					</div>
 					<div class="paging">
@@ -212,5 +247,112 @@
 		  	</div>	
 		</div>
 	</div>
+</div>
+</div>
+
+<div style="width:964px; margin:0 auto;">
+<div class="innercontent">
+	<!--最新上传-->
+	<div class="fenkuai" style="float:left;">
+		<div class="guide">
+			<div class="guide_tittle_div">
+				<img src="../../Content/Images/web/upload_icon.png" width="16px" height="16px"/>
+				<span class="guide_tittle">最新上传</span>
+				<span class="guide_description">-----翻找出你想要的课堂书籍-----</span>
+				<a href="#" class="seemore" target="_blank">更多>></a>
+			</div>
+		</div>
+		<div class="guide_content">
+			<ul class="guide_content_details">
+				@foreach (var m in Model.NewBook) {
+                    Html.RenderPartial("BookGuid", m);
+                }
+			</ul>
+		</div>
+	</div>
+
+
+	<!--热门推荐-->
+	<div class="fenkuai" style="float:left;">
+		<div class="guide">
+			<div class="guide_tittle_div">
+				<img src="../../Content/Images/web/like_icon.png" width="16px" height="16px" />
+				<span class="guide_tittle">热门推荐</span>
+				<span class="guide_description">-----同学们给你推荐的课堂书籍-----</span>
+				<a href="#" class="seemore" target="_blank">更多>></a>
+			</div>
+		</div>
+		<div class="guide_content">
+			<ul class="guide_content_details">
+				@foreach (var m in Model.PopularBook) {
+                    Html.RenderPartial("BookGuid", m);
+                }
+			</ul>
+		</div>
+	</div>
+</div>
+</div>
+<!--=================================求购======================================-->
+<div style="width:964px; margin:0 auto;">
+<div class="askfor_purchase">
+	<div class="guide">
+			<div class="guide_tittle_div">
+				<img src="../../Content/Images/web/askfor_icon.png" width="16px" height="16px" />
+				<span class="guide_tittle">捉急求购</span>
+				<span class="guide_description">-----同学们捉急求购的课堂书籍-----</span>
+				<!--<a href="#" class="seemore" target="_blank">更多>></a>-->
+			</div>
+	</div>
+	<marquee scrollAmount="3" direction="up">
+		<table>
+			<tbody>
+							<tr>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+							</tr>
+							<tr>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+							</tr>
+							<tr>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+							</tr>
+							<tr>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+							</tr>
+							<tr>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+							</tr>
+							<tr>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+							</tr>
+							<tr>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+							</tr>
+							<tr>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+							</tr>
+							<tr>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+								<td><span class="askfor_purchase_author_name">Jone</span>求购<span class="askfor_purchase_book">大学生英语四</span><span class="askfor_purchase_account">1</span>本</td>
+							</tr>
+						</tbody>
+		</table>
+	</marquee>
 </div>
 </div>

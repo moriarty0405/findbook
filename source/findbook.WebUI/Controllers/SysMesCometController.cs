@@ -5,19 +5,23 @@ using System.Web;
 using System.Web.Mvc;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Security.Principal;
+using findbook.Domain.Concrete;
+using System.Web.Security;
 
 namespace findbook.WebUI.Controllers {
     public class SysMesCometController : AsyncController {
         //LongPolling Action 1 - 处理客户端发起的请求
         public void LongPollingAsync() {
-            //计时器，3秒种触发一次Elapsed事件
-            System.Timers.Timer timer = new System.Timers.Timer(3000);
+            //计时器，60秒种触发一次Elapsed事件
+            System.Timers.Timer timer = new System.Timers.Timer(60000);
 
             //告诉ASP.NET接下来将进行一个异步操作
             AsyncManager.OutstandingOperations.Increment();
 
             //订阅计时器的Elapsed事件
             timer.Elapsed += (sender, e) => {
+
                     //告诉ASP.NET异步操作已完成，进行LongPollingCompleted方法的调用
                     AsyncManager.OutstandingOperations.Decrement();
                 };
@@ -29,9 +33,19 @@ namespace findbook.WebUI.Controllers {
         //LongPolling Action 2 - 异步处理完成，向客户端发送响应
         public ActionResult LongPollingCompleted() {
             int mesNum = 0;
+            string userID = "";
+
+            //从cookie中获取userID
+            HttpCookie cookie = Request.Cookies["user"];
+
+            if (cookie == null) {
+                //如果用户未登陆
+                return Json(new { mesNum = mesNum },
+                JsonRequestBehavior.AllowGet);
+            } else {
+                userID = cookie["userID"].ToString();
+            }
             
-            //从session中获取用户ID
-            string userID = Session["logOnUserID"].ToString();
 
             //获取用户的未读消息数
             string connstr = ConfigurationManager.ConnectionStrings["EFDbContext"].ConnectionString;

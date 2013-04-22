@@ -12,6 +12,6 @@ namespace findbook.WebUI.Models {
 
         public IEnumerable<Books> PopularBook { get; set; }
 
-        public IEnumerable<Books> FreeBook { get; set; }
+        public XYView XYView { get; set; }
     }
 }

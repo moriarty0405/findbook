@@ -6,6 +6,7 @@ using findbook.Domain.Entities;
 using findbook.Domain.Abstract;
 using System.Data.SqlClient;
 using System.Data;
+using System.Configuration;
 
 namespace findbook.Domain.Concrete {
     public class EFSystemMessagesRepository : ISystemMessagesRepository{
@@ -14,5 +15,6 @@ namespace findbook.Domain.Concrete {
         public IQueryable<SystemMessages> SystemMessages {
             get { return context.SystemMessages; }
         }
+        
     }
 }

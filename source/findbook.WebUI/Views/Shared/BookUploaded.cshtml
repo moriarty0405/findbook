@@ -43,16 +43,12 @@
 		<p class="time">@Model.DateDiff(Model.upTime)</p>
 		<p class="c04">
 			<span>@Model.cNumber</span><a href="#">评论</a>
-			<span>@Model.recNumber</span>
+            <span>@Model.recNumber</span><a href="#">推荐</a>
             @{
                 if (userID.Equals(Model.upUserID)) {
                     <span class="c19">
                         <a href="#">修改</a>
                         <a href="#">删除</a>
-                    </span>
-                } else {
-                    <span class="c19">
-                        <input class="recommend" type="button" value="推荐"/>
                     </span>
                 }
             }		

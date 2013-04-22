@@ -24,8 +24,7 @@ namespace findbook.Domain.Entities {
         public string href { get; set; }
 
         //标记为已读
-        public int MarkReaded(string sysMesID)
-        {
+        public static int MarkReaded(string sysMesID) {
             string connstr = ConfigurationManager.ConnectionStrings["EFDbContext"].ConnectionString;
             using (SqlConnection mycon = new SqlConnection(connstr)) {
                 mycon.Open();

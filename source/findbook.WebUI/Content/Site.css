@@ -63,19 +63,19 @@ color:#21de0c;
 .detail_nav li:hover ul,.detail_nav li.over ul{ display: block; } /* The magic */
 /*头部滚动大图*/
 .img_roll{
-height:434px;
+/*height:434px;*/
 padding:10px 0 0px 0;
 float:left;
 }
 .container {
 	width: 708px;
-    height:434px;
+    /*height:434px;*/
 	padding: 0;
 	margin: 0 auto;
 }
 .folio_block {
 width: 708px;
- height:434px;
+ /*height:434px;*/
 }
 
 
@@ -86,7 +86,7 @@ width: 708px;
 }
 /*--Window/Masking Styles--*/
 .window {
-	height:434px;	width: 708px;
+	height:480px;	width: 708px;
 	overflow: hidden; /*--Hides anything outside of the set width/height--*/
 	position: relative;
 }
@@ -127,6 +127,10 @@ background:#fff;
 margin-top:40px;
 border:1px solid #eee;
 }
+.book_search_title
+{
+    padding-top:50px;
+}
 .book_search_title a{
 text-decoration:none;
 color: #21de0c;
@@ -141,13 +145,17 @@ border-bottom:1px solid #eee;
 }
 .book_area ul li img{
 border:0;
+width:140px;
+height:180px;
 }
 .c23{
 border:1px solid #eee;
 padding:10px;
 width:140px;
+height:200px;
 margin:10px 60px 10px 10px;
 float:left;
+overflow:hidden;
 }
 .c24{
 padding-top:10px;
@@ -211,7 +219,7 @@ box-shadow:0 1px 2px #999 inset;
 -moz-box-shadow:0 1px 2px #999 inset;
 -webtik-box-shadow:0 1px 2px #999 inset;
 }
-<!--用户-->
+/*用户*/
 .c31{
 border:1px solid #eee;
 padding:10px;

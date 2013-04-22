@@ -12,7 +12,12 @@
         @Html.ActionLinkWithImage(userImgPath, "List", "Page", new { userID = Model.userID })</div>
     </div>
     <div class="c32">
-	    <a href="#" target="_blank" class="c33">@Model.userNickName</a>
+	    @*<a href="#" target="_blank" class="c33">@Model.userNickName</a>*@
+        @Html.RouteLink(@Model.userNickName, new {
+                   Controller = "Page",
+                   Action = "List",
+                   userID = Model.userID
+                }, new { @class = "c33" })
         @{
             string sex = "";
             

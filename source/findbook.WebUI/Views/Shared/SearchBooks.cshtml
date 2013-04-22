@@ -2,22 +2,22 @@
 
 @{
     string bookImgPath = "../../Content/Images/books/" + Model.bookID + ".jpg";
+    string bookHref = "/Book/" + Model.bookID;
+    string userHref = "/Page/" + Model.upUserID;
 }
 
 <li>
 	<div class="c23">
-    <div class="c102">
         @*<a href="#" target="_blank">*@
             @*<img src=@bookImgPath width="140px" height="170px" />*@
             @Html.ActionLinkWithImage(bookImgPath, "List", "Book", new { bookID = Model.bookID })</div>
         </a>
-    </div>
 	<div class="c24">
-		<a href="#" target="_blank" class="c25">@Model.bookName</a>
+		<a href="@bookHref" class="c25">@Model.bookName</a>
 		<label>@Model.author</label>&nbsp;&nbsp;<label>@Model.pub</label>
 		<div class="c26"><label><strong>@Model.bookPrice.ToString("0.0")</strong></label>目前还剩<label class="c27">@Model.remNumber</label>本</div>
 		<div><label>@Model.bookXY</label>-<label>@Model.bookZY</label></div>
-		<div class="c28">上传者:<a href="#" target="_blank">@Model.upUserNickName</a></div>
+		<div class="c28">上传者:<a href="@userHref">@Model.upUserNickName</a></div>
 		<div class="c29"><label>@Model.cNumber</label><a href="#">评论</a><label>@Model.recNumber</label><a href="#">推荐</a></div>
 		<div><label>@Model.DateDiff(Model.upTime)</label></div>
 	</div>

@@ -39,6 +39,9 @@ namespace findbook.WebUI.Controllers
                 }
             };
 
+            bv.HisBooks = br.Books.Where(b => b.upUserID == bv.Books.upUserID 
+                                                    && b.bookID != bv.Books.bookID);
+
             return View(bv);
         }
 

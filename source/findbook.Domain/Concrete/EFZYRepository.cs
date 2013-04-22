@@ -7,7 +7,7 @@ using findbook.Domain.Entities;
 
 namespace findbook.Domain.Concrete {
     public class EFZYRepository : IZYRepository {
-        private EFDbContext context;
+        private EFDbContext context = new EFDbContext();
 
         public IQueryable<ZY> ZY { 
             get { return context.ZY; } 

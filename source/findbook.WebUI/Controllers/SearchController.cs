@@ -143,7 +143,9 @@ namespace findbook.WebUI.Controllers {
 
             //获取匹配的用户
             SearchView sv = new SearchView {
-                Books = br.Books.Where(b => b.bookName.Contains(kw)),
+                Books = br.Books.Where(b => b.bookName.Contains(kw) || b.author.Contains(kw) 
+                                || b.bookZY.Contains(kw) || b.bookXY.Contains(kw)),
+
                 Users = ur.Users.Where(u => u.userName.Contains(kw))
             };
 

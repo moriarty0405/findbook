@@ -8,5 +8,7 @@ namespace findbook.WebUI.Models {
     public class SysMesView {
         //传入当前用户的系统消息
         public IEnumerable<SystemMessages> SystemMessages { get; set; }
+
+
     }
 }

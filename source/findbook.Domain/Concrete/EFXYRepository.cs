@@ -7,7 +7,7 @@ using findbook.Domain.Abstract;
 
 namespace findbook.Domain.Concrete {
     public class EFXYRepository : IXYRepository {
-        private EFDbContext context { get; set; }
+        private EFDbContext context = new EFDbContext();
 
         public IQueryable<XY> XY { 
             get { return context.XY; } 
