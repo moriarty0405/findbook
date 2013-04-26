@@ -1,31 +1,42 @@
 ﻿@model findbook.WebUI.Models.PageViewModel
 
 @{
-    //string userID = (string)Context.Session["userID"];
+    //用户判断是否是自己的主页
+    bool logIn = false;
+    bool myPage = false;
+
+    string userImgPath = "../../Content/Images/users/" + Model.Users.userID + ".jpg";
+    string userID = "";
+    string userName = "";
     
     //从cookie中获取userID
     HttpCookie cookie = Request.Cookies["user"];
-    string userID = cookie["userID"].ToString();
-    string userName = cookie["userName"].ToString();  
-          
-    //确定是不是自己的主页
-    bool myPage = Model.Users.userID.Equals(userID);
-
-    string userImgPath = "../../Content/Images/users/" + Model.Users.userID + ".jpg";
     
-    if (myPage) {
-        //自己看自己
-        ViewBag.Title = "我的主页";
-    } else {
-        //别人看自己
-        ViewBag.Title = Model.Users.userNickName + "的主页";
+    //用户处于登陆状态
+    if (cookie != null) {
+        logIn = true;
         
-        //将对方的信息写到session中
-        Context.Session["hUserID"] = userID;
+        userID = cookie["userID"].ToString();
+        userName = cookie["userName"].ToString();
+
+        //确定是不是自己的主页
+        myPage = Model.Users.userID.Equals(userID);
         
-        //访问数加1
-        Model.Pages.Increase(Model.Pages.pageID);
+        if (myPage) {
+            //自己看自己
+            ViewBag.Title = "我的主页";
+        } else {
+            //别人看自己
+            ViewBag.Title = Model.Users.userNickName + "的主页";
+
+            //将对方的信息写到session中
+            Context.Session["hUserID"] = userID;
+
+            //访问数加1
+            Model.Pages.Increase(Model.Pages.pageID);
+        }
     }
+    
 }
 
 <script src="../../Scripts/MicrosoftAjax.js" type="text/javascript"></script>  
@@ -91,6 +102,8 @@
 			    </p>
             } else { 
                 <p class="c17">
+                    @*弹框*@
+                    @*如果用户已登录则弹框，为登陆则提示登陆*@
 				    <a href="#"><img src="../../Content/Images/web/contact_ico.png" width="16px" height="16px"/>&nbsp;给Ta发私信</a>
 			    </p>
             }
@@ -121,7 +134,9 @@
 			<div class="c15"><span>@Model.Pages.pageDesc</span></div>
 			<div class="tags">
 				<p class="c16">Ta的标签</p>
-				<div class="tag"><p>计算机</p><p>计算机</p><p>计算机</p><p>计算机</p><p>计算机</p><p>计算机</p><p>计算机</p><p>计算机</p><p>计算机</p><p>计算机</p><p>计算机</p></div>
+				<div class="tag">
+                    <p>计算机</p><p>Java</p><p>JavaScript</p><p>oracle</p><p>数据库</p><p>数据挖掘</p><p>学习ing</p><p>Kobe</p><p>NBA</p><p>湖人</p>
+                </div>
 			</div>
 		</div>
 	</div>
@@ -155,8 +170,8 @@
                     if (myPage) {
                         //自己看自己
                         host = "给我的留言";
-                    } else {
-                        //别人看自己
+                    } else if (logIn){
+                        //其他登陆用户看自己
                         host = "给Ta留言";
                     }
 
@@ -177,7 +192,7 @@
                 @Html.PageLinks(Model.LC, x => Url.Action("List", new { page = x }))
             </div>
 
-			<!--评论-->
+			<!--留言-->
 			<div class="comment_box">
 				@using (Ajax.BeginForm("List", new { Controller = "Page", Action = "List", userID = Model.Users.userID, userName = Model.Users.userName }, new AjaxOptions{})) {
                     if (!myPage) { 

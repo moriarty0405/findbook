@@ -32,9 +32,11 @@ namespace findbook.WebUI.Controllers {
         }
 
         [HttpPost]
-        public ActionResult Show(string orderType = "0") {
-            string kw = HttpContext.Request["kw"].ToString();
-
+        public ActionResult Show(string kw = "", string orderType = "0") {
+            if (string.IsNullOrEmpty(kw)) {
+                kw = HttpContext.Request["kw"].ToString(); 
+            }
+            
             ViewData["searchWord"] = kw;
             SearchView sv = Search(kw);
 

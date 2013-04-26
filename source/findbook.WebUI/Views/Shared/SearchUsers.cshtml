@@ -2,6 +2,7 @@
 
 @{
     string userImgPath = "../../Content/Images/users/" + Model.userID + ".jpg";
+    string userHref = "/Page/" + Model.userID;
  }
 
 <li style="border-bottom:1px dotted #666;">
@@ -37,7 +38,7 @@
 	    <div>电话: <label>15828121192(可保密)</label></div>
     </div>
     <div class="c30">
-	    <div><a href="#">进入Ta的主页</a></div>
+	    <div><a href="@userHref">进入Ta的主页</a></div>
     </div>
     <div class="clear"></div>
 </li>

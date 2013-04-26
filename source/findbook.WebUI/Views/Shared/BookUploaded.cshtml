@@ -2,8 +2,13 @@
 
 @{
     string bookImgPath = "../../Content/Images/books/" + Model.bookID + ".jpg";
+    string userID = "";
     
-    string userID = Session["logOnUserID"].ToString();
+    //从cookie中获取userID
+    HttpCookie cookie = Request.Cookies["user"];
+    if (cookie != null) {
+        userID = cookie["userID"].ToString();
+    }
 }
 
 <script type="text/javascript">

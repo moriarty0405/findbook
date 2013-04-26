@@ -3,7 +3,14 @@
 @{
     ViewBag.Title = "图书信息";
 
-    string userID = Session["logOnUserID"].ToString();
+    string userID = "";
+    
+    //从cookie中获取userID
+    HttpCookie cookie = Request.Cookies["user"];
+    
+    if (cookie != null) {
+        userID = cookie["userID"].ToString();
+    }
 
     //判断是否是进入自己的图书界面
     bool myPage = userID.Equals(Model.Books.upUserID);

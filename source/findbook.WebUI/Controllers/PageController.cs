@@ -4,6 +4,9 @@ using findbook.Domain.Abstract;
 using findbook.WebUI.Models;
 using System.Web;
 using findbook.Domain.Entities;
+using System.Configuration;
+using System.Data.SqlClient;
+using System;
 
 namespace findbook.WebUI.Controllers
 {
@@ -73,6 +76,31 @@ namespace findbook.WebUI.Controllers
             }
 
             return RedirectToAction("Index", "Home");
+        }
+
+        public JsonResult Agree(string lcID) {
+            int agreement = 0;
+
+            string connstr = ConfigurationManager.ConnectionStrings["EFDbContext"].ConnectionString;
+            using (SqlConnection mycon = new SqlConnection(connstr)) {
+                mycon.Open();
+
+                using (SqlCommand cmd = mycon.CreateCommand()) {
+                    //先更新
+                    string updateSql = String.Format("update LeaveComments set agreement = agreement + 1 where lcID = '{0}'", lcID);
+                    cmd.CommandText = updateSql;
+                    cmd.ExecuteNonQuery();
+
+                    //再查询
+                    String selectSql = String.Format("select agreement from LeaveComments where lcID = '{0}'", lcID);
+                    cmd.CommandText = selectSql;
+                    agreement = (int)cmd.ExecuteScalar();
+                }
+            }
+
+
+            return Json(new { a = agreement },
+                JsonRequestBehavior.AllowGet);
         }
     }
 }
