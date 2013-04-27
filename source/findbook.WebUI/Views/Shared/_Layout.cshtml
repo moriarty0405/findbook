@@ -44,24 +44,25 @@
                                     
     }
 
-    @*使用Comet轮询，显示未读消息数*@
-    @*使用有问题，网页速度减慢很多*@
-    @*<script type="text/javascript">
-        $(function () {
-            function long_polling() {
-                $.getJSON('/SysMesComet/LongPolling', function (data) {
-                    //如果收到的消息数不为0
-                    if (data.mesNum) {
-                        //将消息数显示到消息文字上
-                        $('top_nav').append('<div class=message_inform"><label>' + data.mesNum
-                                    + "</label></div>");
-                    }
-                    long_polling();
-                });
-            }
-            long_polling();
-        });
-    </script>*@
+@*使用Comet轮询，显示未读消息数*@
+@*使用有问题，网页速度减慢很多*@
+@*<script type="text/javascript">
+    $(function () {
+        function long_polling() {
+            $.getJSON('/SysMesComet/LongPolling', function (data) {
+                //如果收到的消息数不为0
+                if (data.mesNum) {
+                    //将消息数显示到消息文字上
+                    $('top_nav').append('<div class=message_inform"><label>' + data.mesNum
+                                + "</label></div>");
+                }
+                long_polling();
+            });
+        }
+        long_polling();
+    });
+</script>*@
+
 </head>
 <body>
     <div class="top_div">

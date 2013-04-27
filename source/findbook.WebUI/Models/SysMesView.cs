@@ -9,6 +9,9 @@ namespace findbook.WebUI.Models {
         //传入当前用户的系统消息
         public IEnumerable<SystemMessages> SystemMessages { get; set; }
 
+        //用户调用MarkReaded方法
+        public SystemMessages sm { get; set; }
+
 
     }
 }

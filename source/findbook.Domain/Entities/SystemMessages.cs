@@ -24,7 +24,11 @@ namespace findbook.Domain.Entities {
         public string href { get; set; }
 
         //标记为已读
-        public void MarkReaded(string sysMesID) {
+        public static int MarkReaded(string sysMesID) {
+            if (string.IsNullOrEmpty(sysMesID)) {
+                return 0;
+            }
+
             string connstr = ConfigurationManager.ConnectionStrings["EFDbContext"].ConnectionString;
             using (SqlConnection mycon = new SqlConnection(connstr)) {
                 mycon.Open();
@@ -36,6 +40,8 @@ namespace findbook.Domain.Entities {
                     cmd.ExecuteNonQuery();
                 }
             }
+
+            return 0;
         }
     }
 }

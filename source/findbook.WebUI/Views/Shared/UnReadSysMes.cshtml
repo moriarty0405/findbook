@@ -1,27 +1,29 @@
 ﻿@model findbook.Domain.Entities.SystemMessages
 
-@*<script type="text/javascript">
+@*这里的JavaScript会预编译*@
+<script type="text/javascript">
     //为每一个超链接绑定click事件，点击后，消息标记为已读
     $(function () {
-        $("unRead").live("click", function () {
+        $("unReadMes").live("hover", function () {
             //页面是否首次加载
             var sysMesID = $(this).attr('id');
 
             var isPostBack = "<%=IsPostBack%>";
 
             if (isPostBack) {
-                var x = "<%=@findbook.Domain.Entities.SystemMessages.MarkReaded(@Model.sysMesID)%>"
+                var x = '<%=@findbook.Domain.Entities.SystemMessages.MarkReaded(Model.sysMesID)%>';
+
             }
         })
     })
-</script>*@
+</script>
 
 <li>
     <span>
         @Model.smBody
     </span>
     <span>
-        <a class="unRead" id="@Model.sysMesID" href="@Model.href">@Model.href</a>
+        <a class="unReadMes" id="@Model.sysMesID" href="@Model.href">@Model.href</a>
     </span>
     <br />
     <span>

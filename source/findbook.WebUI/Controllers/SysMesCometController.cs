@@ -21,45 +21,50 @@ namespace findbook.WebUI.Controllers {
 
             //订阅计时器的Elapsed事件
             timer.Elapsed += (sender, e) => {
+                    int mesNum = 0;
+                    string userID = "";
 
-                    //告诉ASP.NET异步操作已完成，进行LongPollingCompleted方法的调用
-                    AsyncManager.OutstandingOperations.Decrement();
+                    //从cookie中获取userID
+                    HttpCookie cookie = Request.Cookies["user"];
+
+                    if (cookie == null) {
+                        //如果用户未登陆
+                        //保存将要传递给LongPollingCompleted的参数
+                        AsyncManager.Parameters["mesNum"] = mesNum;
+
+                        //告诉ASP.NET异步操作已完成，进行LongPollingCompleted方法的调用
+                        AsyncManager.OutstandingOperations.Decrement();
+
+                    } else {
+                        //用户登陆，获取其ID
+                        userID = cookie["userID"].ToString();
+
+                        //获取用户的未读消息数
+                        string connstr = ConfigurationManager.ConnectionStrings["EFDbContext"].ConnectionString;
+                        using (SqlConnection mycon = new SqlConnection(connstr)) {
+                            mycon.Open();
+
+                            using (SqlCommand cmd = mycon.CreateCommand()) {
+
+                                String selectSql = String.Format("select count(1) from SystemMessages where sta = '1' and userID = '{0}'", userID);
+                                cmd.CommandText = selectSql;
+                                mesNum = (int)cmd.ExecuteScalar();
+                            }
+                        }
+
+                        //告诉ASP.NET异步操作已完成，进行LongPollingCompleted方法的调用
+                        AsyncManager.OutstandingOperations.Decrement();
+                    }
+
                 };
+
             //启动计时器
             timer.Start();
         }
 
         
         //LongPolling Action 2 - 异步处理完成，向客户端发送响应
-        public ActionResult LongPollingCompleted() {
-            int mesNum = 0;
-            string userID = "";
-
-            //从cookie中获取userID
-            HttpCookie cookie = Request.Cookies["user"];
-
-            if (cookie == null) {
-                //如果用户未登陆
-                return Json(new { mesNum = mesNum },
-                JsonRequestBehavior.AllowGet);
-            } else {
-                userID = cookie["userID"].ToString();
-            }
-            
-
-            //获取用户的未读消息数
-            string connstr = ConfigurationManager.ConnectionStrings["EFDbContext"].ConnectionString;
-            using (SqlConnection mycon = new SqlConnection(connstr)) {
-                mycon.Open();
-
-                using (SqlCommand cmd = mycon.CreateCommand()) {
-
-                    String selectSql = String.Format("select count(1) from SystemMessages where sta = '1' and userID = '{0}'", userID);
-                    cmd.CommandText = selectSql;
-                    mesNum = (int)cmd.ExecuteScalar();
-                }
-            }
-
+        public ActionResult LongPollingCompleted(int mesNum) {
             return Json(new { mesNum = mesNum },
                 JsonRequestBehavior.AllowGet);
         }

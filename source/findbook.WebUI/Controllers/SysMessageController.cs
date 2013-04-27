@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using findbook.Domain.Abstract;
 using findbook.WebUI.Models;
+using findbook.Domain.Entities;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace findbook.WebUI.Controllers
 {
@@ -21,7 +24,9 @@ namespace findbook.WebUI.Controllers
             SysMesView smv = new SysMesView {
                 SystemMessages = smr.SystemMessages
                             .Where(s => s.userID.Equals(userID) && s.sta.Equals("0"))
-                            .OrderByDescending(s => s.sTime)
+                            .OrderByDescending(s => s.sTime),
+
+                sm = new SystemMessages()
             };
 
             return View(smv);
@@ -37,6 +42,8 @@ namespace findbook.WebUI.Controllers
 
             return View(smv);
         }
+
+        
 
     }
 }
