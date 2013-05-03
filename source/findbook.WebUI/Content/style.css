@@ -1394,3 +1394,131 @@ text-decoration:none;
 .sixin_ta a:hover{
 color:#666;
 }
+
+/*hover后加上尖角*/
+.hover_personal_info:before,.hover_personal_info:after{ 
+content:'';
+width:0;
+height:0;
+position:absolute;
+}
+
+.hover_personal_info:after{
+left:6px;
+top:-8px;
+border-bottom:14px solid #fff;
+border-left:12px solid transparent;
+border-right:12px solid transparent;
+}
+
+
+/*find发现页面*/
+/*左边*/
+.find_page{
+width:640px;
+float: left;
+padding:20px;
+background:#fff;
+margin-top:40px;
+margin-bottom:50px;
+border:1px solid #eee;
+}
+.find_page_title h3{
+font-size:16px;
+color:#000;
+}
+.find_area ul li{
+padding-top:12px;
+padding-bottom:0px;
+border-bottom:1px #eee solid;
+}
+.find_touxiang a img{
+width:50px;
+float:left;
+}
+.find_info{
+padding-left:65px;
+}
+.find_info_name a{
+font-size:14px;
+color:#000;
+font-weight:bold;
+text-decoration:none;
+}
+.find_info_detail{
+font-size:14px;
+color:#999;
+}
+.find_info_detail .book_name{
+font-size:14px;
+color:#21de0c;
+font-weight:bold;
+text-decoration:none;
+}
+.find_info_detail .book_name:hover{
+text-decoration: underline;
+}
+.find_info_detail p{
+padding-bottom:8px;
+}
+.find_info_detail img{
+max-width:550px;
+max-height:550px;
+}
+.find_info_sixin_ta a{
+text-decoration:none;
+font-size:13px;
+color:#999;
+}
+.find_info_sixin_ta a:hover{
+text-decoration: underline;
+color:#0066CC;
+}
+.find_info_detail .book_name_02{
+font-size:14px;
+color:#21de0c;
+font-weight:bold;
+text-decoration:none;
+}
+/*右边*/
+.hot_user{
+width:220px;
+float: right;
+padding:10px;
+background:#fff;
+margin-top:40px;
+border:1px solid #eee;
+}
+.hot_user_title{
+border-bottom:1px solid #eee;
+padding-bottom:4px;
+}
+.hot_user_users ul li{
+border-bottom:1px dashed #eee;
+padding:8px 0;
+}
+.hot_user_users ul li img{
+width:50px;
+}
+.hot_user_users_touxiang{
+float:left;
+}
+.hot_user_users_info{
+padding-left:60px;
+}
+.hot_user_users_info p{
+height:17px;
+line-height:17px;
+}
+.hot_user_users_info_name{
+color:#000;
+text-decoration:none;
+}
+.hot_user_users_info_name a{
+color:#ccc;
+text-decoration:none;
+}
+.hot_user_users_info_name a:hover{
+text-decoration:underline;
+color:#0066CC;
+}
