@@ -1522,3 +1522,25 @@ text-decoration:none;
 text-decoration:underline;
 color:#0066CC;
 }
+/*ÎÒÂòµÄ*/
+.my_purchase
+{
+    position:absolute;
+    top:102%;
+    left:578.5px;
+    background:#21de0c;
+    display:none;
+}
+    
+.my_purchase ul li a
+{
+    height:30px;
+    line-height:30px;
+    border-bottom:1px solid #14B407;
+    padding:2px 16px;
+    font-size:14px;
+}
+.my_purchase ul li a:hover
+{
+    text-decoration:underline;
+}

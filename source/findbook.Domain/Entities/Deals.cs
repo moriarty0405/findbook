@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace findbook.Domain.Entities {
     public class Deals {
+        [Key]
         public string dID { get; set; }
 
         public string bookID { get; set; }

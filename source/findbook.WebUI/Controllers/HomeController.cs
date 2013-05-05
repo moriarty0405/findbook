@@ -16,13 +16,16 @@ namespace findbook.WebUI.Controllers
         private IWantedRepository wr;
         private IXYRepository xyr;
         private IZYRepository zyr;
+        private IUsersRepository ur;
 
         public HomeController(IBooksRepository bookRepository, IWantedRepository wantedRepository, 
-            IXYRepository xyRepository, IZYRepository zyRepository) {
+            IXYRepository xyRepository, IZYRepository zyRepository, 
+            IUsersRepository userRepository) {
             br = bookRepository;
             wr = wantedRepository;
             xyr = xyRepository;
             zyr = zyRepository;
+            ur = userRepository;
         }
 
         public ActionResult Index() {
@@ -61,6 +64,8 @@ namespace findbook.WebUI.Controllers
         public ActionResult Find() {
             FindView fv = new FindView() {
                 //显示购买数量最多和销售数量最多的用户
+                Users = ur.Users.Take(4),
+
 
                 //显示相同学院或专业的用户的动态
             };

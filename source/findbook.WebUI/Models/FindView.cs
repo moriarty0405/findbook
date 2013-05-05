@@ -6,5 +6,14 @@ using findbook.Domain.Entities;
 
 namespace findbook.WebUI.Models.Account {
     public class FindView {
+        public IEnumerable<Users> Users { get; set; }
+
+        public IEnumerable<Wanted> Wanted { get; set; }
+
+        public IEnumerable<Purchases> Purchases { get; set; }
+
+        public IEnumerable<BookComments> BookComments { get; set; }
+
+        public IEnumerable<Books> Books { get; set; }
     }
 }

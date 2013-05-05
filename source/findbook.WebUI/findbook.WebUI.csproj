@@ -105,6 +105,7 @@
     <Compile Include="HtmlHelpers\ImageHelper.cs" />
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
+    <Compile Include="Models\DealBook.cs" />
     <Compile Include="Models\FindView.cs" />
     <Compile Include="Models\Account\LogOnModel.cs" />
     <Compile Include="Models\Account\RegisterModel.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="Models\PageInfo.cs" />
     <Compile Include="Models\PageViewModel.cs" />
     <Compile Include="Models\PrivateView.cs" />
+    <Compile Include="Models\PurchaseBook.cs" />
     <Compile Include="Models\SearchView.cs" />
     <Compile Include="Models\SysMesView.cs" />
     <Compile Include="Models\XYView.cs" />
@@ -369,6 +371,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Find.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_PurchaseLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Purchase\Purchased.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\PurchaseBook.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Purchase\UnPurchase.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

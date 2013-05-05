@@ -113,6 +113,7 @@
     <Compile Include="Entities\ZY.cs" />
     <Compile Include="Helpers\MessageHelper.cs" />
     <Compile Include="Helpers\TimeHelper.cs" />
+    <Compile Include="Helpers\TranslateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

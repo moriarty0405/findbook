@@ -1,9 +1,11 @@
-﻿@model findbook.Domain.Entities.Books
+﻿@model findbook.WebUI.Models.PurchaseBook
 
 @{
     string bookImgPath = "../../Content/Images/books/" + Model.bookID + ".jpg";
     string bookHref = "/Book/" + Model.bookID;
-    string userHref = "/Page/" + Model.upUserID;
+
+    string sUserImgPath = "../../Content/Images/books/" + Model.sUserID + ".jpg";
+    string userHref = "/Page/" + Model.sUserID;
 }
 
 <li>
@@ -14,11 +16,17 @@
 	<div class="c24">
 		<a href="@bookHref" class="c25">@Model.bookName</a>
 		<label>@Model.author</label>&nbsp;&nbsp;<label>@Model.pub</label>
-		<div class="c26"><label><strong>@Model.bookPrice.ToString("0.0")</strong></label>目前还剩<label class="c27">@Model.remNumber</label>本</div>
-		<div><label>@Model.bookXY</label>-<label>@Model.bookZY</label></div>
-		<div class="c28">上传者:<a href="@userHref">@Model.upUserNickName</a></div>
-		<div class="c29"><label>@Model.cNumber</label><a href="#">评论</a><label>@Model.recNumber</label><a href="#">推荐</a></div>
-		<div><label>@Model.DateDiff(Model.upTime)</label></div>
+		
+        <div class="c26">
+            <label>
+                <strong>@Model.price.ToString("0.0")</strong>
+            </label>
+        </div>
+
+		<div class="c28">卖家:<a href="@userHref">@Model.sUserName</a></div>
+		<div>购买时间<label>@Model.pTime</label></div>
+        <div>购买数量<label>@Model.number</label>本</div>
+        <div>订单状态<label>@Model.sta</label></div>
 	</div>
 	<div class="c30">
 		<div>
