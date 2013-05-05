@@ -59,7 +59,7 @@ namespace findbook.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult SendPrivate(string sUserID, string rUserID) {
+        public ActionResult SendPrivate(string sUserID, string rUserID, int type = 0) {
             ////发送用户为当前用户，故可从cookie中获取userName
             //HttpCookie cookie = Request.Cookies["user"];
             //string sUserName = cookie["userName"].ToString();
@@ -75,13 +75,13 @@ namespace findbook.WebUI.Controllers
 
             //调用存储过程
             if (pr.SendPrivate(sUserID, sUserName, rUserID, rUserName, pmBody)) {
+                if (type == 0) {
                     return RedirectToRoute(new {
                         Controller = "Private",
                         Action = "DetailList",
                         anotherUserID = rUserID
-                    });
-
-                //return PartialView("SentPrivateDetail");
+                    });   
+                }    
             }
 
             return RedirectToAction("Index", "Home");

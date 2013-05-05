@@ -4,6 +4,21 @@
     ViewBag.Title = "登陆";
 }
 
+<link href="../../Content/jquery.validity.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="@Url.Content("~/Scripts/validity.js")"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $("form").validity(function () {
+            $("#UserName")
+                        .require('请输入用户名')
+
+            $("#Password")
+                        .require('请输入密码')
+        });
+    });
+</script>
+
 <div class="content">
 	<div class="loginbg">
 		<div class="login_div">

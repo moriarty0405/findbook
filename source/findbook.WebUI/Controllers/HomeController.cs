@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using findbook.Domain.Abstract;
 using findbook.WebUI.Models;
 using findbook.Domain.Entities;
+using findbook.WebUI.Models.Account;
+using System.Drawing;
 
 namespace findbook.WebUI.Controllers
 {
@@ -57,7 +59,11 @@ namespace findbook.WebUI.Controllers
         }
 
         public ActionResult Find() {
+            FindView fv = new FindView() {
+                //显示购买数量最多和销售数量最多的用户
 
+                //显示相同学院或专业的用户的动态
+            };
 
             return View();
         }
