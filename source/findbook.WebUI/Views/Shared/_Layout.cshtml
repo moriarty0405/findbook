@@ -94,16 +94,18 @@
                     Action = "Recommend"
                    }, new { @id = "recommed" })
 
-			    <a href="Home/Find" class="">发现</a>
+			    
 			    @*<a href="#" class="">消息</a>*@
                 @{
                     if (authenticated) {
+                        <a href="Home/Find" class="">发现</a>
+                        
                         @*<a href="#">私信</a>*@
                         @Html.RouteLink("消息", new {
                            Controller = "SysMessage",
                            Action = "UnRead",
                            userID = userID
-                        }, new { @id = "sysMes"})
+                        }, new { @id = "sysMes" })
                     }
                  }
                 
@@ -145,9 +147,6 @@
                                Action = "Profile",
                                userID = userID
                            })
-                            </li>
-                            <li>
-                                <a href="">购买信息</a>
                             </li>
 
 					        <li>@Html.ActionLink("退出", "LogOff", "Account")</li>

@@ -30,5 +30,9 @@ namespace findbook.Domain.Concrete {
         public DbSet<XY> XY { get; set; }
 
         public DbSet<ZY> ZY { get; set; }
+
+        public DbSet<Purchases> Purchases { get; set; }
+
+        public DbSet<Deals> Deals { get; set; }
     }
 }

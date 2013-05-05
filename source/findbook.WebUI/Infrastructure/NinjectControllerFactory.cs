@@ -34,6 +34,8 @@ namespace findbook.WebUI.Infrastructure {
             ninjectKernel.Bind<IGPrivatesRepository>().To<EFGPrivatesRepository>();
             ninjectKernel.Bind<IXYRepository>().To<EFXYRepository>();
             ninjectKernel.Bind<IZYRepository>().To<EFZYRepository>();
+            ninjectKernel.Bind<IPurchasesRepository>().To<EFPurchasesRepository>();
+            ninjectKernel.Bind<IDealsRepository>().To<EFDealsRepsitory>();
         }
     }
 }
