@@ -93,6 +93,30 @@ namespace findbook.WebUI
             );
 
             routes.MapRoute(
+                "",
+                "UnPurchase/{userID}",
+                new { controller = "Purchase", action = "UnPurchase", userID = "" }
+            );
+
+            routes.MapRoute(
+                "",
+                "Purchased/{userID}",
+                new { controller = "Purchase", action = "Purchased", userID = "" }
+            );
+
+            routes.MapRoute(
+                "",
+                "UnDeal/{userID}",
+                new { controller = "Purchase", action = "UnDeal", userID = "" }
+            );
+
+            routes.MapRoute(
+                "",
+                "Deal/{userID}",
+                new { controller = "Purchase", action = "Deal", userID = "" }
+            );
+
+            routes.MapRoute(
                 "Default", // 路由名称
                 "{controller}/{action}", // 带有参数的 URL
                 new { controller = "Home", action = "Index" } // 参数默认值

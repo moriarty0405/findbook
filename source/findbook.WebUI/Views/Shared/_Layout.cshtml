@@ -125,12 +125,18 @@
                             <ul>
                                 <li>
                                     @Html.RouteLink("我买的", new {
-                                   Controller = "Purchase",
-                                   Action = "UnPurchase",
-                                   userID = userID
-                               })
+                                       Controller = "Purchase",
+                                       Action = "UnPurchase",
+                                       userID = userID
+                                   })
                                 </li>
-                                <li><a href="#" target="_blank">我卖的</a></li>
+                                <li>
+                                    @Html.RouteLink("我卖的", new {
+                                       Controller = "Purchase",
+                                       Action = "UnDeal",
+                                       userID = userID
+                                   })
+                                </li>
                             </ul>
                         </div> 
                     }

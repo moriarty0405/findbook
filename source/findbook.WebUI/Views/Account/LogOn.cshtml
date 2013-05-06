@@ -11,10 +11,10 @@
     $(function () {
         $("form").validity(function () {
             $("#UserName")
-                        .require('请输入用户名')
+                        .require('请输入用户名<br/><span class="must_symbal">*必填</span>')
 
             $("#Password")
-                        .require('请输入密码')
+                        .require('请输入密码<br/><span class="must_symbal">*必填</span>')
         });
     });
 </script>

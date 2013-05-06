@@ -4,14 +4,11 @@ using System.Linq;
 using System.Web;
 using findbook.Domain.Entities;
 using System.ComponentModel.DataAnnotations;
+using findbook.Domain.Helpers;
 
 namespace findbook.WebUI.Models {
     //将Purchases和Book两张表关联得到的视图
-    public class PurchaseBook {
-        public PurchaseBook() { 
-            
-        }
-
+    public class PurchaseBook : TranslateHelper {
         [Key]
         public string pID { get; set; }
 
@@ -33,7 +30,7 @@ namespace findbook.WebUI.Models {
 
         public string sUserName { get; set; }
 
-        public double price { get; set; }
+        public decimal price { get; set; }
 
         public int number { get; set; }
 

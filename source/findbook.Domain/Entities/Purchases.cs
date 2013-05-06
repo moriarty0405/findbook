@@ -27,7 +27,7 @@ namespace findbook.Domain.Entities {
 
         public string sUserName { get; set; }
 
-        public double price { get; set; }
+        public decimal price { get; set; }
 
         public int number { get; set; }
     }

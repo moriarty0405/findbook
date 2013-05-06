@@ -1100,7 +1100,7 @@ __private = {
         raise:function($obj, msg) {
             var pos = $obj.offset();
             pos.left += $obj.width() + 18;
-            pos.top += 8;
+            pos.top += 0;
             
             $(
                 "<div class=\"validity-tooltip\">" + 

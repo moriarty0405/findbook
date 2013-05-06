@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    //获取userID
+    HttpCookie cookie = Request.Cookies["user"];
+    string userID = cookie["userID"].ToString();
+}
+
+<div class="content">
+	<div class="tabbable" id="myTab">
+	  <ul class="nav nav-tabs">
+		<li id="UnDeal">
+            @Html.RouteLink("未完成", new {
+                                    Controller = "Purchase",
+                                    Action = "UnDeal",
+                                    userID = userID
+                                    })
+        </li>
+		<li id="Deal">
+            @Html.RouteLink("已完成", new {
+                                    Controller = "Purchase",
+                                    Action = "Deal",
+                                    userID = userID
+                                    })
+        </li>
+	  </ul>
+	  <div class="tab-content">
+		@RenderBody()
+	  </div>
+	</div>
+</div>

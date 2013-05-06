@@ -1,4 +1,4 @@
-﻿@model findbook.WebUI.Models.PurchaseBook
+﻿@model findbook.WebUI.Models.DealBook
 
 @{
     bool isSeller = false;
@@ -35,17 +35,18 @@
                 <strong>￥@Model.price.ToString("0.0")</strong>
             </label>
         </div>
-        @{
+        
+		@{
             if (isSeller) {
                 <div class="c28">买家:<a href="@pUserHref">@Model.pUserName</a></div>
             } else {
                 <div class="c28">卖家:<a href="@userHref">@Model.sUserName</a></div>
             }    
         }
-		
-		<div>购买时间:<label>@Model.pTime</label></div>
+        
+		<div>成交时间:<label>@Model.dTime</label></div>
         <div>购买数量:<label>@Model.number</label>本</div>
-        <div>订单状态:<label>@Model.purchaseTran(@Model.sta)</label></div>
+        <div>订单状态:<label>@Model.dealTran(@Model.ZT)</label></div>
 	</div>
 	<div class="c30">
 		<div>
@@ -56,21 +57,21 @@
                     <a href="@userHref">查看卖家详细资料</a>
                 }    
             }
-            
         </div>
         @{
             if (isSeller) {
-                if (Model.sta == "0") {
-                    <input type="button" value="确认出售"/><br />
+                if (Model.ZT == "2") {
+                    <input type="button" value="同意退货"/>
                 }
 
             } else {
-                if (Model.sta == "1") {
-                    <input type="button" value="收到图书"/><br />
-                }
-            } 
-         }
-        <input type="button" value="取消交易"/>
+                 if (Model.ZT == "1") {
+                    <input type="button" value="申请退货"/>
+                 }
+            }    
+        }
+       
 	</div>
 	<div class="clear"></div>
 </li>
+

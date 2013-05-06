@@ -1,4 +1,4 @@
-﻿@model IEnumerable<findbook.WebUI.Models.PurchaseBook>
+﻿@model List<findbook.WebUI.Models.DealBook>
 
 @{
     ViewBag.Title = "我的购买";
@@ -8,19 +8,19 @@
 @*设置navigator中的标签为active*@
 <script type="text/javascript">
     $(function () {
-        $("#UnPurchase").addClass("active")
+        $("#Purchased").addClass("active")
     })     
 </script>
 
 <div class="tab-pane active" id="tab5">
 	<div class="my_message">
          <div class="clear"></div>
-		<p class="c21">未完成的交易</p>
+		<p class="c21">我的购买<br />已完成的交易</p>
 		<br />
 		<div class="book_area">
 			<ul>
 				@foreach (var m in Model) {
-                    Html.RenderPartial("PurchaseBook", m);
+                    Html.RenderPartial("DealBook", m);
                 }
 			</ul>
 		</div>
