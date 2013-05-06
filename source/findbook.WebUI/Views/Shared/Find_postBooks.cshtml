@@ -1,0 +1,22 @@
+﻿@model findbook.Domain.Entities.Books
+
+@{
+    string href = "/Book/" + Model.bookID;
+    string bookImgPath = "../../Content/Images/books/" + Model.bookID + ".jpg";
+
+    string userHref = "/Page/" + Model.upUserID;
+    string userImgPath = "../../Content/Images/users/" + Model.upUserID + ".jpg";    
+}
+
+<li>
+	<div class="find_touxiang"><a href="@userHref"><img src="@userImgPath"/></a></div>
+	<div class="find_info">
+		<div class="find_info_name"><a href="@userHref">@Model.upUserNickName</a></div>
+		<div class="find_info_detail">
+			<p>上传了<a href="@href" class="book_name">@Model.bookName</a></p>
+			<p><a href="@href"><img src="@bookImgPath"/></a></p>
+			<p class="find_info_sixin_ta"><a href="#" target="_blank">私信Ta</a>&nbsp;&nbsp;&nbsp;<a href="@userHref">到Ta的主页看看</a></p>
+		</div>
+	</div>
+	<div class="clear"></div>
+</li>

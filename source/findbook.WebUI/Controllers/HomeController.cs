@@ -17,15 +17,17 @@ namespace findbook.WebUI.Controllers
         private IXYRepository xyr;
         private IZYRepository zyr;
         private IUsersRepository ur;
+        private IBookCommentsRepository bcr;
 
         public HomeController(IBooksRepository bookRepository, IWantedRepository wantedRepository, 
             IXYRepository xyRepository, IZYRepository zyRepository, 
-            IUsersRepository userRepository) {
+            IUsersRepository userRepository, IBookCommentsRepository bookCommentRepository) {
             br = bookRepository;
             wr = wantedRepository;
             xyr = xyRepository;
             zyr = zyRepository;
             ur = userRepository;
+            bcr = bookCommentRepository;
         }
 
         public ActionResult Index() {
@@ -61,16 +63,27 @@ namespace findbook.WebUI.Controllers
             return View(Books);
         }
 
-        public ActionResult Find() {
+        public ActionResult Find(string userID) {
             FindView fv = new FindView() {
                 //显示购买数量最多和销售数量最多的用户
-                Users = ur.Users.Take(4),
-
+                Users = ur.Users.Where(u => u.userID != userID)
+                                .OrderBy(u => u.userRegDate)
+                                .Take(6),
 
                 //显示相同学院或专业的用户的动态
+                //图书上传
+                Books = br.Books.Where(b => b.upUserID != userID)
+                                .OrderByDescending(b => b.upTime)
+                                .Take(6),
+
+                //图书评论
+                BookComments = bcr.BookComments.Where(bc => bc.userID != userID)
+                                               .OrderByDescending(bc => bc.cTime)
+                                               .Take(6)
+                
             };
 
-            return View();
+            return View(fv);
         }
 
     }

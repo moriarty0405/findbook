@@ -105,14 +105,18 @@
 			    @*<a href="#" class="">消息</a>*@
                 @{
                     if (authenticated) {
-                        <a href="Home/Find" class="">发现</a>
+                        @Html.RouteLink("发现", new {
+                           Controller = "Home",
+                           Action = "Find",
+                           userID = userID
+                        })
                         
                         @*<a href="#">私信</a>*@
                         @Html.RouteLink("消息", new {
-                           Controller = "SysMessage",
-                           Action = "UnRead",
-                           userID = userID
-                        }, new { @id = "sysMes" })
+                       Controller = "SysMessage",
+                       Action = "UnRead",
+                       userID = userID
+                   }, new { @id = "sysMes" })
 
 
                         <a href="#" class="" id="jiaoyi">交易</a>
@@ -121,10 +125,10 @@
                             <ul>
                                 <li>
                                     @Html.RouteLink("我买的", new {
-                                        Controller = "Purchase",
-                                        Action = "UnPurchase",
-                                        userID = userID
-                                    })
+                                   Controller = "Purchase",
+                                   Action = "UnPurchase",
+                                   userID = userID
+                               })
                                 </li>
                                 <li><a href="#" target="_blank">我卖的</a></li>
                             </ul>

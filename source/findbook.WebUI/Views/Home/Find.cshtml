@@ -1,5 +1,7 @@
-﻿@{
-    ViewBag.Title = "Find";
+﻿@model findbook.WebUI.Models.Account.FindView
+
+@{
+    ViewBag.Title = "发现";
 }
 
 <div class="content">
@@ -11,13 +13,13 @@
 		</div>
 		<div class="find_area">
 			<ul>
-				<li>
+				@*<li>
 					<div class="find_touxiang"><a href="#" target="_blank"><img src="images/author.jpg" alt=""/></a></div>
 					<div class="find_info">
 						<div class="find_info_name"><a href="#" target="_blank">Jone</a></div>
 						<div class="find_info_detail">
 							<p>找到了<a href="#" target="_blank" class="book_name">大学英语4</a></p>
-							<p><img src="images/img_roll1.jpg"/></p>
+							<p><img src="../../Content/Images/web/img_roll1.jpg"/></p>
 							<p class="find_info_sixin_ta"><a href="#" target="_blank">私信Ta</a>&nbsp;&nbsp;&nbsp;<a href="#" target="_blank">到Ta的主页看看</a></p>
 						</div>
 					</div>
@@ -33,19 +35,11 @@
 						</div>
 					</div>
 					<div class="clear"></div>
-				</li>
-				<li>
-					<div class="find_touxiang"><a href="#" target="_blank"><img src="images/author.jpg" alt=""/></a></div>
-					<div class="find_info">
-						<div class="find_info_name"><a href="#" target="_blank">Jone</a></div>
-						<div class="find_info_detail">
-							<p>上传了<a href="#" target="_blank" class="book_name">大学英语4</a></p>
-							<p><img src="images/img_roll1.jpg"/></p>
-							<p class="find_info_sixin_ta"><a href="#" target="_blank">私信Ta</a>&nbsp;&nbsp;&nbsp;<a href="#" target="_blank">到Ta的主页看看</a></p>
-						</div>
-					</div>
-					<div class="clear"></div>
-				</li>
+				</li>*@
+
+				@foreach (var m in Model.Books) {
+                    Html.RenderPartial("Find_postBooks", m);
+                }
 			</ul>
 		</div>
 	</div>
@@ -55,34 +49,11 @@
 		<div class="hot_user_title"><h3>热门用户</h3></div>
 		<div class="hot_user_users">
 			<ul>
-				<li>
-					<div class="hot_user_users_touxiang"><a href="#" target="_blank"><img src="images/author.jpg"/></a></div>
-					<div class="hot_user_users_info">
-						<p><a href="#" target="_blank" class="hot_user_users_info_name">Jone</a></p>
-						<p><span>管理学院</span>&nbsp;&nbsp;&nbsp;<span>信管...</span></p>
-						<p class="hot_user_users_info_name"><a href="#" target="_blank">私信</a></p>
-					</div>
-					<div class="clear"></div>
-				</li>
-				<li>
-					<div class="hot_user_users_touxiang"><a href="#" target="_blank"><img src="images/author.jpg"/></a></div>
-					<div class="hot_user_users_info">
-						<p><a href="#" target="_blank" class="hot_user_users_info_name">Jone</a></p>
-						<p><span>管理学院</span>&nbsp;&nbsp;&nbsp;<span>信管...</span></p>
-						<p class="hot_user_users_info_name"><a href="#" target="_blank">私信</a></p>
-					</div>
-					<div class="clear"></div>
-				</li>
-				<li>
-					<div class="hot_user_users_touxiang"><a href="#" target="_blank"><img src="images/author.jpg"/></a></div>
-					<div class="hot_user_users_info">
-						<p><a href="#" target="_blank" class="hot_user_users_info_name">Jone</a></p>
-						<p><span>管理学院</span>&nbsp;&nbsp;&nbsp;<span>信管...</span></p>
-						<p class="hot_user_users_info_name"><a href="#" target="_blank">私信</a></p>
-					</div>
-					<div class="clear"></div>
-				</li>
+				@foreach (var m in Model.Users) {
+                    Html.RenderPartial("Find_popularUsers", m);
+                }
 			</ul>
 		</div>
 	</div>
 </div>
+

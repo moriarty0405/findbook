@@ -1,0 +1,27 @@
+﻿@model findbook.Domain.Entities.Users
+
+@{
+    string userHref = "/Page/" + Model.userID;
+    string userImgPath = "../../Content/Images/users/" + Model.userID + ".jpg";    
+}
+
+<li>
+	<div class="hot_user_users_touxiang"><a href="@userHref"><img src="@userImgPath"/></a></div>
+	<div class="hot_user_users_info">
+		<p><a href="@userImgPath" class="hot_user_users_info_name">@Model.userName</a></p>
+		<p><span>@Model.userXY</span>&nbsp;&nbsp;&nbsp;
+        
+            @{
+                string zy = Model.userZY;
+                
+                if (zy.Length > 4) {
+                    zy = zy.Substring(0, 2) + "...";
+                }
+                      
+            }
+        <span>@zy</span></p> 
+        
+		<p class="hot_user_users_info_name"><a href="#" target="_blank">私信</a></p>
+	</div>
+	<div class="clear"></div>
+</li>
