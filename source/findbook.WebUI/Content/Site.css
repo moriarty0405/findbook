@@ -152,11 +152,17 @@ height:180px;
 border:1px solid #eee;
 padding:10px;
 width:140px;
-height:200px;
+height:180px;
 margin:10px 60px 10px 10px;
 float:left;
 overflow:hidden;
 }
+.c23 img
+{
+   border:0;
+width:140px;
+height:180px;
+} 
 .c24{
 padding-top:10px;
 font-size:14px;
@@ -173,12 +179,9 @@ padding-right:10px;
 color:#21de0c;
 padding:0 4px;
 }
-.c28 a{
+.c28_div{
 text-decoration:none;
 color:#21de0c;
-}
-.c28 a:hover{
-text-decoration: underline;
 }
 .c29 label{
 color:#21de0c
@@ -215,6 +218,27 @@ cursor:pointer;
 opacity:0.8;
 }
 .c30 input[type=button]:active{
+box-shadow:0 1px 2px #999 inset;
+-moz-box-shadow:0 1px 2px #999 inset;
+-webtik-box-shadow:0 1px 2px #999 inset;
+}
+.c30_want input[type=button]{
+border:0;
+background:#21de0c;
+padding:7.5px 22px;
+color:#fff;
+font-weight:bold;
+margin-top:10px;
+box-shadow:0 1px 2px #999;
+-moz-box-shadow:0 1px 2px #999;
+-webtik-box-shadow:0 1px 2px #999;
+font-size:14px;
+}
+.c30_want input[type=button]:hover{
+cursor:pointer;
+opacity:0.8;
+}
+.c30_want input[type=button]:active{
 box-shadow:0 1px 2px #999 inset;
 -moz-box-shadow:0 1px 2px #999 inset;
 -webtik-box-shadow:0 1px 2px #999 inset;

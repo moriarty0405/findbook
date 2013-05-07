@@ -9,15 +9,20 @@
 
     //判断是否为卖家
     isSeller = (userID == Model.sUserID) ? true : false;
-    
+
     string bookImgPath = "../../Content/Images/books/" + Model.bookID + ".jpg";
     string bookHref = "/Book/" + Model.bookID;
 
-    string sUserImgPath = "../../Content/Images/books/" + Model.sUserID + ".jpg";
+    string sUserImgPath = "../../Content/Images/users/" + Model.sUserID + ".jpg";
     string userHref = "/Page/" + Model.sUserID;
 
-    string pUserImgPath = "../../Content/Images/books/" + Model.pUserID + ".jpg";
+    string pUserImgPath = "../../Content/Images/users/" + Model.pUserID + ".jpg";
     string pUserHref = "/Page/" + Model.pUserID;
+
+    string infoID = "info" + Model.dID;
+    string hudID = "hud" + Model.dID;
+
+    string totalPrice = (Model.price * Model.number).ToString("0.0");
 }
 
 <li>
@@ -38,14 +43,43 @@
         
 		@{
             if (isSeller) {
-                <div class="c28">买家:<a href="@pUserHref">@Model.pUserName</a></div>
+                <div class="c28 hovering" id="@hudID">买家:<a href="@pUserHref">@Model.pUserName</a></div>
+            
+                @*/*hover出现信息*/*@
+                <div class="hover_personal_info" id="@infoID">
+	                <div style="float: left;">
+		                <a href="@pUserHref"><img src="@pUserImgPath" width=40px height=40px/></a>	
+	                </div>
+	                <div class="hover_a_name">
+		                <a href="@pUserHref" class="">@Model.pUserName</a><br />
+		                <label>简介：</label><label>这是我的简介这是我的简介这是我的简介...</label>
+	                </div>
+	                <div class="sixin_ta"><a href="#" target="_blank">私信</a></div>
+                </div>
             } else {
-                <div class="c28">卖家:<a href="@userHref">@Model.sUserName</a></div>
+                <div class="c28 hovering" id="@hudID">卖家:<a href="@userHref">@Model.sUserName</a></div>
+                
+                @*/*hover出现信息*/*@
+                <div class="hover_personal_info" id="@infoID">
+	                <div style="float: left;">
+		                <a href="@userHref"><img src="@sUserImgPath" width=40px height=40px/></a>	
+	                </div>
+	                <div class="hover_a_name">
+		                <a href="@userHref" class="">@Model.sUserName</a><br />
+		                <label>简介：</label><label>这是我的简介这是我的简介这是我的简介...</label>
+	                </div>
+	                <div class="sixin_ta"><a href="#" target="_blank">私信</a></div>
+                </div>
             }    
         }
         
 		<div>成交时间:<label>@Model.dTime</label></div>
         <div>购买数量:<label>@Model.number</label>本</div>
+        <div class="c26">
+            <label>
+                <strong>总计￥@totalPrice</strong>
+            </label>
+        </div>
         <div>订单状态:<label>@Model.dealTran(@Model.ZT)</label></div>
 	</div>
 	<div class="c30">
@@ -65,9 +99,9 @@
                 }
 
             } else {
-                 if (Model.ZT == "1") {
+                if (Model.ZT == "1") {
                     <input type="button" value="申请退货"/>
-                 }
+                }
             }    
         }
        

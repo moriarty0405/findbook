@@ -43,19 +43,19 @@
         }    
     }
 	<p class="hudong">
-        <div class="hudong1" id="@hudID">
+        <div class="hudong1 hovering" id="@hudID">
             <a href="@userHref">
             <img src="@userImgPath" width="30px" height="30px"/>
             </a>
 		    @*<a href="@userHref" class="author_name">@Model.upUserNickName</a>*@
-        <div style="float:left; padding-top:12px;">
-            @Html.RouteLink(Model.upUserNickName, new {
-                        Controller = "Page",
-                        Action = "List",
-                        userID = Model.upUserID
+            <div style="float:left; padding-top:12px;">
+                @Html.RouteLink(Model.upUserNickName, new {
+                            Controller = "Page",
+                            Action = "List",
+                            userID = Model.upUserID
 
-                       })
-        </div>
+                           })
+            </div>
         </div>
         <div class="comment_up">
 		    <span>@Model.cNumber</span><a href="@href">评论</a>
@@ -68,8 +68,8 @@
 			<a href="@userHref"><img src="@userImgPath" width=40px height=40px/></a>	
 		</div>
 		<div class="hover_a_name">
-			<a href="#" class="">Jone</a><br />
-			<label>简介：</label><label>这是我的简介这是我的简介这是我的简介...</label>
+			<a href="@userHref" class="">@Model.upUserNickName</a><br />
+			<label>简介：</label><label>抱着一颗求知欲，走向完美的知识世界...</label>
 		</div>
 		<div class="sixin_ta"><a href="#" target="_blank">私信</a></div>
 	</div>	

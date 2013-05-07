@@ -63,10 +63,10 @@ $(document).ready(function () {
     });
 
 
-    //hover到用户后显示详细信息
+    //首页相关界面中，hover到用户后显示详细信息
     $(".hover_personal_info").hide();
 
-    $(".hudong1").mouseover(function () {
+    $(".hovering").mouseover(function () {
         var hudId = $(this).attr('id');
         var len = hudId.length;
         var infoID = "#info" + hudId.substring(3, len);
@@ -74,7 +74,7 @@ $(document).ready(function () {
         $(infoID).show();
     });
 
-    $(".hudong1").mouseout(function () {
+    $(".hovering").mouseout(function () {
         var hudId = $(this).attr('id');
         var len = hudId.length;
         var infoID = "#info" + hudId.substring(3, len);

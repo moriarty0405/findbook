@@ -33,7 +33,10 @@
 		</div>
 		<div class="book_img_show">		
 			@*<img src=@bookImgPath width="320px" height="250px" />*@
-            @Html.ActionLinkWithImage(bookImgPath, "List", "Book", new { bookID = Model.Books.bookID })	
+            @Html.ActionLinkWithImage(bookImgPath, "List", "Book", new { bookID = Model.Books.bookID })
+            <div class="c30_want">
+		        <input type="button" value="想买"/>
+	        </div>
 		</div>
 		<div class="author_info">
 			<p>

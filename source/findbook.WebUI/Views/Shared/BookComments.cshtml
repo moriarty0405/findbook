@@ -2,17 +2,35 @@
            
 @{
     string userImgPath = "../../Content/Images/users/" + Model.userID + ".jpg";
-    }
+    string userHref = "/Page/" + Model.userID;
+    
+    string infoID = "info" + Model.bCommentID;
+    string hudID = "hud" + Model.bCommentID;
+}
            
 <li>
 	<img class="hr1" src="../../Content/Images/web/hr.gif" width="580px"/>
-	<div class="user_comment_img">
+	<div class="user_comment_img hovering" id="@hudID" style=" position:relative;">
         <div class="c100">
-		@*<a href="#" target="_blank">*@
-        @*<img src=@userImgPath width="40px" height="40px"/></a>*@
-        @Html.ActionLinkWithImage(userImgPath, "List", "Page", new { userID = Model.userID })
+		
+            @Html.ActionLinkWithImage(userImgPath, "List", "Page", new { userID = Model.userID })
+        </div>
+        
+        @*/*hover出现信息*/*@
+        <div class="hover_personal_info hover_personal_info_02" id="@infoID">
+	        <div style="float: left;">
+		        <a href="@userHref"><img src="@userImgPath" width=40px height=40px/></a>	
+	        </div>
+	        <div class="hover_a_name">
+		        <a href="@userHref" class="">@Model.userName</a><br />
+		        <label>简介：</label><label>这是我的简介这是我的简介这是我的简介...</label>
+	        </div>
+	        <div class="sixin_ta"><a href="#" target="_blank">私信</a></div>
         </div>		
 	</div>
+
+    
+
 	<div class="user_comment_content">
 		@*<a href="#" target="_blank">@Model.userName</a>*@
         @Html.RouteLink(@Model.userName, new {
