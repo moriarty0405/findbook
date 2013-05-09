@@ -4,12 +4,29 @@
     ViewBag.Title = "发布求购";
     Layout = "~/Views/Shared/_InfoLayout.cshtml";
 }
+<link href="../../Content/jquery.validity.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="@Url.Content("~/Scripts/validity.js")"></script>
 
 <script type="text/javascript">
     $(function () {
-        $("#Want").addClass("active")
+        $("#Want").addClass("active");
+
+        $("form").validity(function () {
+            $("#bookName")
+                        .require('请输入课本名<br/><span class="must_symbal">*必填</span>')
+
+            $("#author")
+                        .require('请输入作者<br/><span class="must_symbal">*必填</span>')
+
+            $("#pub")
+                   .require('请输入出版社<br/><span class="must_symbal">*必填</span>')
+
+            $("#num")
+                   .match("number", "请输入有效数字")
+        });
     })     
 </script>
+
 
 <div class="tab-pane active" id="tab2">
 	<div class="post_qiugou">

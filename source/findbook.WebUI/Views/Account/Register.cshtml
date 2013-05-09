@@ -3,6 +3,28 @@
 @{
     ViewBag.Title = "注册";
 }
+<link href="../../Content/jquery.validity.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="@Url.Content("~/Scripts/validity.js")"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $("form").validity(function () {
+            $("#UserName")
+                        .require('请输入用户名<br/><span class="must_symbal">*必填</span>')
+
+            $("#NewPassword")
+                        .require('请输入密码<br/><span class="must_symbal">*必填</span>')
+
+            $("#ConfirmPassword")
+                        .require('请输入确认密码<br/><span class="must_symbal">*必填</span>')
+
+            $("#Email")
+                        .require('请输入注册邮箱<br/><span class="must_symbal">*必填</span>')
+                        .match('email', "请输入符合格式要求的email")
+
+        });
+    });
+</script>
 
 <div class="content">
 	<div class="loginbg">
@@ -19,11 +41,11 @@
 			            </p>
 			            <p>
 				            @Html.LabelFor(m => m.NewPassword)
-                            @Html.PasswordFor(m => m.NewPassword)
+                            @Html.PasswordFor(m => m.NewPassword, new { @class = "password_text"})
 			            </p>
 				        <p>
 				            @Html.LabelFor(m => m.ConfirmPassword)
-                            @Html.PasswordFor(m => m.ConfirmPassword)
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "password_text"})
 			            </p>
 				        <p>
 				            @Html.LabelFor(m => m.Email)

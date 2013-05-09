@@ -9,22 +9,22 @@
 <div class="content">
 	<div class="tabbable" id="myTab">
         <div class="tabbable_div">
-	  <ul class="nav nav-tabs">
-		<li id="UnPurchase">
-            @Html.RouteLink("未完成", new {
-                                    Controller = "Purchase",
-                                    Action = "UnPurchase",
-                                    userID = userID
-                                    })
-        </li>
-		<li id="Purchased">
-            @Html.RouteLink("已完成", new {
-                                    Controller = "Purchase",
-                                    Action = "Purchased",
-                                    userID = userID
-                                    })
-        </li>
-	  </ul>
+	      <ul class="nav nav-tabs">
+		    <li id="UnPurchase">
+                @Html.RouteLink("未完成", new {
+                                        Controller = "Purchase",
+                                        Action = "UnPurchase",
+                                        userID = userID
+                                        })
+            </li>
+		    <li id="Purchased">
+                @Html.RouteLink("已完成", new {
+                                        Controller = "Purchase",
+                                        Action = "Purchased",
+                                        userID = userID
+                                        })
+            </li>
+	      </ul>
       </div>
 	  <div class="tab-content">
 		@RenderBody()

@@ -5,10 +5,34 @@
     Layout = "~/Views/Shared/_InfoLayout.cshtml";
 }
 
+<link href="../../Content/jquery.validity.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="@Url.Content("~/Scripts/validity.js")"></script>
+
 @*设置navigator中的标签为active*@
 <script type="text/javascript">
-    $(function () { 
-        $("#UpLoad").addClass("active")
+    $(function () {
+        $("#UpLoad").addClass("active");
+
+        $("form").validity(function () {
+            $("#bookName")
+                        .require('请输入课本名<br/><span class="must_symbal">*必填</span>')
+
+            $("#author")
+                        .require('请输入作者<br/><span class="must_symbal">*必填</span>')
+
+            $("#pub")
+                   .require('请输入出版社<br/><span class="must_symbal">*必填</span>')
+
+            $("#bookSale")
+                   .match("number", "请输入有效数字")
+
+            $("#bookPrice")
+                   .match("number", "请输入有效价格")
+
+            $("#bookIntr")
+                   .match("bookIntr", "请输入有效价格")
+                   .nonHtml()
+        });
     })     
 </script>
 

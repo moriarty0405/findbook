@@ -9,40 +9,43 @@
 
 <div class="content">
 	<div class="tabbable" id="myTab"> <!-- Only required for left/right tabs -->
-	  <ul class="nav nav-tabs">
-		<li id="UpLoad">
-            @*<a href="#tab1" data-toggle="tab">发布课本</a>*@
-            @Html.RouteLink("上传图书", new {
-                                    Controller = "Info",
-                                    Action = "UpLoad",
-                                    userID = userID
-                                    })
-        </li>
-		<li id="Want">
-            @*<a href="#tab2" data-toggle="tab">发布求购</a>*@
-            @Html.RouteLink("发布求购", new {
-                                    Controller = "Info",
-                                    Action = "Want",
-                                    userID = userID
-                                    })
-        </li>
-		<li id="Profile">
-            @*<a href="#tab3" data-toggle="tab">个人资料</a>*@
-            @Html.RouteLink("我的资料", new {
-                                    Controller = "Info",
-                                    Action = "Profile",
-                                    userID = userID
-                                    })
-        </li>
-		<li id="PassWord">
-            @*<a href="#tab4" data-toggle="tab">修改密码</a>*@
-            @Html.RouteLink("修改密码", new {
-                                    Controller = "Info",
-                                    Action = "PassWord",
-                                    userID = userID
-                                    })
-        </li>
-	  </ul>
+        <div class="tabbable_div">
+            <ul class="nav nav-tabs">
+		        <li id="UpLoad">
+                    @*<a href="#tab1" data-toggle="tab">发布课本</a>*@
+                    @Html.RouteLink("上传图书", new {
+                                            Controller = "Info",
+                                            Action = "UpLoad",
+                                            userID = userID
+                                            })
+                </li>
+		        <li id="Want">
+                    @*<a href="#tab2" data-toggle="tab">发布求购</a>*@
+                    @Html.RouteLink("发布求购", new {
+                                            Controller = "Info",
+                                            Action = "Want",
+                                            userID = userID
+                                            })
+                </li>
+		        <li id="Profile">
+                    @*<a href="#tab3" data-toggle="tab">个人资料</a>*@
+                    @Html.RouteLink("我的资料", new {
+                                            Controller = "Info",
+                                            Action = "Profile",
+                                            userID = userID
+                                            })
+                </li>
+		        <li id="PassWord">
+                    @*<a href="#tab4" data-toggle="tab">修改密码</a>*@
+                    @Html.RouteLink("修改密码", new {
+                                            Controller = "Info",
+                                            Action = "PassWord",
+                                            userID = userID
+                                            })
+                </li>
+	          </ul>
+        </div>
+	  
 	  <div class="tab-content">
 		@RenderBody()
 	  </div>
