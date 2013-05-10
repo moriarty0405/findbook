@@ -48,15 +48,69 @@
 		     <li><a href="#">·&nbsp;&nbsp;管理学院</a>
 		 		    <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;经济学院</a>
 			     <ul>
-				     <li><a href="#">信息管理与信息系统</a></li>
-				     <li><a href="#">工商管理</a></li>
-				     <li><a href="#">财务管理</a></li>
-				     <li><a href="#">会计</a></li>
-				     <li><a href="#">劳动与社会保障</a></li>
-				     <li><a href="#">国际经济与贸易</a></li>
-				     <li><a href="#">经济学</a></li>
-				     <li><a href="#">金融学</a></li>
-				     <li><a href="#">电子商务</a></li>
+                     <li>
+                        @Html.RouteLink("信息管理与信息系统", new {
+                            Controller = "Search",
+                            Action = "Show",
+                            kw = "信管"
+                        })
+                    </li>
+				     <li>
+                        @Html.RouteLink("工商管理", new {
+                            Controller = "Search",
+                            Action = "Show",
+                            kw = "管理"
+                        })
+                     </li>
+				     <li>
+                        @Html.RouteLink("财务管理", new {
+                            Controller = "Search",
+                            Action = "Show",
+                            kw = "管理"
+                        })
+                     </li>
+				     <li>
+                        @Html.RouteLink("会计", new {
+                            Controller = "Search",
+                            Action = "Show",
+                            kw = "管理"
+                        })
+                     </li>
+				     <li>
+                        @Html.RouteLink("劳动与社会保障", new {
+                            Controller = "Search",
+                            Action = "Show",
+                            kw = "管理"
+                        })
+                     </li>
+				     <li>
+                        @Html.RouteLink("国际金融与贸易", new {
+                            Controller = "Search",
+                            Action = "Show",
+                            kw = "管理"
+                        })
+                     </li>
+				     <li>
+                        @Html.RouteLink("经济学", new {
+                            Controller = "Search",
+                            Action = "Show",
+                            kw = "管理"
+                        })
+                     </li>
+				     <li>
+                        @Html.RouteLink("金融学", new {
+                            Controller = "Search",
+                            Action = "Show",
+                            kw = "管理"
+                        })
+                     </li>
+				     <li>
+                        @Html.RouteLink("电子商务", new {
+                            Controller = "Search",
+                            Action = "Show",
+                            kw = "管理"
+                        })
+                     </li>
 			     </ul>
 		     </li>
 		    <li><a href="#">·&nbsp;&nbsp;经济学院</a>
@@ -195,7 +249,7 @@
 				<img src="../../Content/Images/web/upload_icon.png" width="16px" height="16px"/>
 				<span class="guide_tittle">最新上传</span>
 				<span class="guide_description">-----翻找出你想要的课堂书籍-----</span>
-				<a href="#" class="seemore" target="_blank" >更多>></a>
+				<a href="/Home/Free" class="seemore">更多>></a>
 			</div>
 		</div>
 		<div class="guide_content">
@@ -215,7 +269,7 @@
 				<img src="../../Content/Images/web/like_icon.png" width="16px" height="16px" />
 				<span class="guide_tittle">热门推荐</span>
 				<span class="guide_description">-----同学们给你推荐的课堂书籍-----</span>
-				<a href="#" class="seemore" target="_blank">更多>></a>
+				<a href="/Home/Recommend" class="seemore">更多>></a>
 			</div>
 		</div>
 		<div class="guide_content">

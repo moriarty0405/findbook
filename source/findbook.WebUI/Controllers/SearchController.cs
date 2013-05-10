@@ -31,7 +31,6 @@ namespace findbook.WebUI.Controllers {
             br = bookRepository;
         }
 
-        [HttpPost]
         public ActionResult Show(string kw = "", string orderType = "0") {
             if (string.IsNullOrEmpty(kw)) {
                 kw = HttpContext.Request["kw"].ToString(); 

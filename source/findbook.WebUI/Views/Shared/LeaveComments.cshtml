@@ -6,6 +6,26 @@
     
     string infoID = "info" + Model.leaComID;
     string hudID = "hud" + Model.leaComID;
+
+    //拼接成私信发送对象ID
+    string privateTargetID = "lmID" + Model.leaComID + Model.lUserName;
+
+    bool authenticated = Context.User.Identity.IsAuthenticated;
+    bool mySelf = false;
+
+    string userID = "";
+
+    if (authenticated) {
+        //从cookie中获取userID
+        HttpCookie cookie = Request.Cookies["user"];
+
+        userID = cookie["userID"].ToString();
+
+        //将信息写入session中
+        Session["logOnUserID"] = userID;
+
+        mySelf = userID.Equals(Model.lUserID);
+    }
 }
 
 <li style=" position:relative;">
@@ -27,17 +47,29 @@
 		            <a href="@userHref" class="">@Model.lUserName</a><br />
 		            <label>简介：</label><label>这是我的简介这是我的简介这是我的简介...</label>
 	            </div>
-	            <div class="sixin_ta"><a href="#" target="_blank" class="logOnBox">私信</a></div>
+	            @{
+                    if (mySelf) {
+                        <div class="sixin_ta">
+                            @Html.RouteLink("主页", new {
+                                Controller = "Page",
+                                Action = "List",
+                                userID = userID
+                            })
+                        </div>
+                      } else {
+                        <div class="sixin_ta"><a href="#" id="@privateTargetID" class="logOnBox sendPrivate">私信</a></div>
+                      }
+                  }
             </div>  	
 	</div>
 
 	<div class="user_comment_content">
 		@*<a href="#" target="_blank">@Model.lUserName</a>*@
         @Html.RouteLink(@Model.lUserName, new {
-                                    Controller = "Page",
-                                    Action = "List",
-                                    userID = Model.lUserID
-                                    })
+       Controller = "Page",
+       Action = "List",
+       userID = Model.lUserID
+   })
 		<p class="comment_content">@Model.lBody</p>
 		<p class="comment_content_time">@Model.DateDiff(Model.lcTime)</p>
 	</div>

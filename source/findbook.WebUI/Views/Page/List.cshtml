@@ -9,8 +9,9 @@
     string userImgPath = "../../Content/Images/users/" + Model.Users.userID + ".jpg";
     string userID = "";
     string userName = "";
-    
-    
+
+    //拼接成私信发送对象ID
+    string privateTargetID = "pagID" + Model.Users.userID + Model.Users.userName;
     
     //用户处于登陆状态
     if (authenticated) {
@@ -103,7 +104,7 @@
 			    </p>
             } else { 
                 <p class="c17">
-				    <a href="#" class="logOnBox"><img src="../../Content/Images/web/contact_ico.png" width="16px" height="16px"/>&nbsp;给Ta发私信</a>
+				    <a href="#" class="logOnBox sendPrivate" id="@privateTargetID"><img src="../../Content/Images/web/contact_ico.png" width="16px" height="16px"/>&nbsp;给Ta发私信</a>
 			    </p>
             }
 			

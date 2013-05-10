@@ -22,6 +22,9 @@
     string infoID = "info" + Model.dID;
     string hudID = "hud" + Model.dID;
 
+    //拼接成私信发送对象ID
+    string privateTargetID = "";
+    
     string totalPrice = (Model.price * Model.number).ToString("0.0");
 }
 
@@ -43,6 +46,8 @@
         
 		@{
             if (isSeller) {
+                privateTargetID = Model.dID + Model.pUserName;
+                
                 <div class="c28 hovering" id="@hudID">买家:<a href="@pUserHref">@Model.pUserName</a></div>
             
                 @*/*hover出现信息*/*@
@@ -54,9 +59,11 @@
 		                <a href="@pUserHref" class="">@Model.pUserName</a><br />
 		                <label>简介：</label><label>这是我的简介这是我的简介这是我的简介...</label>
 	                </div>
-	                <div class="sixin_ta"><a href="#" target="_blank">私信</a></div>
+	                <div class="sixin_ta"><a href="#" id="@privateTargetID" class="sendPrivate">私信</a></div>
                 </div>
             } else {
+                privateTargetID = Model.dID + Model.sUserName;
+                
                 <div class="c28 hovering" id="@hudID">卖家:<a href="@userHref">@Model.sUserName</a></div>
                 
                 @*/*hover出现信息*/*@
@@ -68,7 +75,7 @@
 		                <a href="@userHref" class="">@Model.sUserName</a><br />
 		                <label>简介：</label><label>这是我的简介这是我的简介这是我的简介...</label>
 	                </div>
-	                <div class="sixin_ta"><a href="#" target="_blank">私信</a></div>
+	                <div class="sixin_ta"><a href="#" id="@privateTargetID" class="sendPrivate">私信</a></div>
                 </div>
             }    
         }

@@ -4,12 +4,20 @@
     ViewBag.Title = "图书信息";
 
     string userID = "";
+    string userName = "";
+
+    //拼接成私信发送对象ID
+    string privateTargetID = "book" + Model.Books.bookID + Model.Books.upUserNickName;
+
+    //用户判断是否是自己的主页
+    bool authenticated = Context.User.Identity.IsAuthenticated;
     
-    //从cookie中获取userID
-    HttpCookie cookie = Request.Cookies["user"];
-    
-    if (cookie != null) {
+    if (authenticated) {
+        //从cookie中获取userID
+        HttpCookie cookie = Request.Cookies["user"];
+        
         userID = cookie["userID"].ToString();
+        userName = cookie["userName"].ToString();
     }
 
     //判断是否是进入自己的图书界面
@@ -74,7 +82,7 @@
 			</p>
 				<img class="hr1" src="../../Content/Images/web/hr.gif" width="210px"/>
 			<p>
-				<a href="#" class="logOnBox"><img src="../../Content/Images/web/contact_ico.png" width="16px" height="16px"/>&nbsp;给Ta发私信</a>
+				<a href="#" class="logOnBox sendPrivate" id="@privateTargetID"><img src="../../Content/Images/web/contact_ico.png" width="16px" height="16px"/>&nbsp;给Ta发私信</a>
 			</p>
 				<img class="hr1" src="../../Content/Images/web/hr.gif" width="210px"/>
 			<p>

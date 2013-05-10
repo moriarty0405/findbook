@@ -6,6 +6,26 @@
     
     string infoID = "info" + Model.bCommentID;
     string hudID = "hud" + Model.bCommentID;
+
+    //拼接成私信发送对象ID
+    string privateTargetID = "bp" + Model.bCommentID + Model.userName;
+
+    bool authenticated = Context.User.Identity.IsAuthenticated;
+    bool mySelf = false;
+    
+    string userID = "";
+    
+    if (authenticated) {
+        //从cookie中获取userID
+        HttpCookie cookie = Request.Cookies["user"];
+
+        userID = cookie["userID"].ToString();
+
+        //将信息写入session中
+        Session["logOnUserID"] = userID;
+
+        mySelf = userID.Equals(Model.userID);
+    }
 }
            
 <li>
@@ -25,7 +45,21 @@
 		        <a href="@userHref" class="">@Model.userName</a><br />
 		        <label>简介：</label><label>这是我的简介这是我的简介这是我的简介...</label>
 	        </div>
-	        <div class="sixin_ta"><a href="#" target="_blank" class="logOnBox">私信</a></div>
+	        
+            @{
+                if (mySelf) {
+                    <div class="sixin_ta">
+                        @Html.RouteLink("主页", new {
+                            Controller = "Page",
+                            Action = "List",
+                            userID = userID
+                        })
+                    </div>
+                } else {
+                    <div class="sixin_ta"><a href="#" id="@privateTargetID" class="logOnBox sendPrivate">私信</a></div>
+                }
+              }
+
         </div>		
 	</div>
 

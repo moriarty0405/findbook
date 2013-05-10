@@ -11,11 +11,28 @@
     string txtID = "txt" + Model.bookID;
     string hudID = "hud" + Model.upUserID + Model.bookID;
     string infoID = "info" + Model.upUserID + Model.bookID;
-    
-}
 
-@{
-    string bookPrice = "￥" + Model.bookPrice.ToString("0.0");    
+    //拼接成私信发送对象ID
+    string privateTargetID = "bgID" + Model.bookID + Model.upUserNickName;
+
+    string bookPrice = "￥" + Model.bookPrice.ToString("0.0");
+
+    bool authenticated = Context.User.Identity.IsAuthenticated;
+
+    string userID = "";
+    bool mySelf = false;
+
+    if (authenticated) {
+        //从cookie中获取userID
+        HttpCookie cookie = Request.Cookies["user"];
+
+        userID = cookie["userID"].ToString();
+
+        //将信息写入session中
+        Session["logOnUserID"] = userID;
+
+        mySelf = userID.Equals(Model.upUserID);
+    }
 }
 
 <li class="detail">
@@ -71,6 +88,19 @@
 			<a href="@userHref" class="">@Model.upUserNickName</a><br />
 			<label>简介：</label><label>抱着一颗求知欲，走向完美的知识世界...</label>
 		</div>
-		<div class="sixin_ta"><a href="#" class="logOnBox">私信</a></div>
+        @{
+            if (mySelf) {
+                <div class="sixin_ta">
+                    @Html.RouteLink("主页", new {
+                            Controller = "Page",
+                            Action = "List",
+                            userID = userID
+                           })
+                </div>
+            } else {
+                <div class="sixin_ta"><a href="#" id="@privateTargetID" class="logOnBox sendPrivate">私信</a></div>
+            }
+        }
+		
 	</div>	
 </li>
