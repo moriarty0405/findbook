@@ -238,7 +238,6 @@
     <Content Include="Scripts\jquery-1.5.1.min.js" />
     <Content Include="Scripts\jquery-1.6.3.min.js" />
     <Content Include="Scripts\jquery.featureCarousel.js" />
-    <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.lightbox_me.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />

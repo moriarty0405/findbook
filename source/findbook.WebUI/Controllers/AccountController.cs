@@ -66,6 +66,53 @@ namespace findbook.WebUI.Controllers
 
             return View(model);
         }
+
+        [HttpPost]
+        public ActionResult LogOnBox() {
+            string userName = HttpContext.Request["userName"].ToString();
+            string password = HttpContext.Request["password"].ToString();
+            bool rememberMe = true;
+            //string strRememberMe = HttpContext.Request["remember"].ToString();
+
+            //if (strRememberMe == "on") {
+            //    rememberMe = true;
+            //}
+
+            #region 向cookie中写入信息
+            Users user = ur.GetByNameAndPassword(userName, password);
+
+            if (user != null) {
+                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
+                    1,
+                    user.userName,
+                    DateTime.Now,
+                    DateTime.Now.Add(FormsAuthentication.Timeout),
+                    rememberMe,
+                    user.userRole
+                );
+                HttpCookie cookie = new HttpCookie(
+                    FormsAuthentication.FormsCookieName,
+                    FormsAuthentication.Encrypt(ticket));
+
+                Response.Cookies.Add(cookie);
+
+                //向cookie中写入用户信息
+                HttpCookie u = new HttpCookie("user");
+                u["userID"] = user.userID;
+                u["userName"] = user.userName;
+
+                Response.Cookies.Add(u);
+
+                Session["logOnUserID"] = user.userID;
+                Session["logOnUserName"] = user.userName;
+            }
+#endregion
+
+            //跳转到原先的界面
+            string url = HttpContext.Request.UrlReferrer.ToString();
+
+            return Redirect(url);
+        }
         #endregion
 
         public ActionResult LogOff() {

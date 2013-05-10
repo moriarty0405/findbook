@@ -35,7 +35,7 @@
 			@*<img src=@bookImgPath width="320px" height="250px" />*@
             @Html.ActionLinkWithImage(bookImgPath, "List", "Book", new { bookID = Model.Books.bookID })
             <div class="c30_want">
-		        <input type="button" value="想买"/>
+		        <input type="button" value="想买" class="logOnBox"/>
 	        </div>
 		</div>
 		<div class="author_info">
@@ -74,7 +74,7 @@
 			</p>
 				<img class="hr1" src="../../Content/Images/web/hr.gif" width="210px"/>
 			<p>
-				<a href="#"><img src="../../Content/Images/web/contact_ico.png" width="16px" height="16px"/>&nbsp;给Ta发私信</a>
+				<a href="#" class="logOnBox"><img src="../../Content/Images/web/contact_ico.png" width="16px" height="16px"/>&nbsp;给Ta发私信</a>
 			</p>
 				<img class="hr1" src="../../Content/Images/web/hr.gif" width="210px"/>
 			<p>
@@ -129,7 +129,7 @@
                 @if (!myPage) { 
                     using (Ajax.BeginForm("List", new { Controller = "Book", Action = "List", bookID = Model.Books.bookID, userID = userID }, new AjaxOptions { UpdateTargetId = "target" })) {
 					    <textarea name="cBody" rows="6" cols="93"></textarea>
-					    <input type="submit" value="评论"></input>
+					    <input type="submit" value="评论" class="logOnBox"></input>
                     }
                 }			
 			</div>

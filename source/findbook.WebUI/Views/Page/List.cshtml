@@ -2,19 +2,20 @@
 
 @{
     //用户判断是否是自己的主页
-    bool logIn = false;
+    bool authenticated = Context.User.Identity.IsAuthenticated;
+    
     bool myPage = false;
 
     string userImgPath = "../../Content/Images/users/" + Model.Users.userID + ".jpg";
     string userID = "";
     string userName = "";
     
-    //从cookie中获取userID
-    HttpCookie cookie = Request.Cookies["user"];
+    
     
     //用户处于登陆状态
-    if (cookie != null) {
-        logIn = true;
+    if (authenticated) {
+        //从cookie中获取userID
+        HttpCookie cookie = Request.Cookies["user"];
         
         userID = cookie["userID"].ToString();
         userName = cookie["userName"].ToString();
@@ -102,9 +103,7 @@
 			    </p>
             } else { 
                 <p class="c17">
-                    @*弹框*@
-                    @*如果用户已登录则弹框，为登陆则提示登陆*@
-				    <a href="#"><img src="../../Content/Images/web/contact_ico.png" width="16px" height="16px"/>&nbsp;给Ta发私信</a>
+				    <a href="#" class="logOnBox"><img src="../../Content/Images/web/contact_ico.png" width="16px" height="16px"/>&nbsp;给Ta发私信</a>
 			    </p>
             }
 			
@@ -133,7 +132,13 @@
 			<div class="fangwenshu">访问数:<span>@Model.Pages.visitTimes</span></div>
 			<div class="c15"><span>@Model.Pages.pageDesc</span></div>
 			<div class="tags">
-				<p class="c16">Ta的标签</p>
+                @{
+                        if (myPage) {
+                           <p class="c16">我的标签</p> 
+                        } else {
+                            <p class="c16">Ta的标签</p>
+                        }
+                    }
 				<div class="tag">
                     <p>计算机</p><p>Java</p><p>JavaScript</p><p>oracle</p><p>数据库</p><p>数据挖掘</p><p>学习ing</p><p>Kobe</p><p>NBA</p><p>湖人</p>
                 </div>
@@ -170,7 +175,7 @@
                     if (myPage) {
                         //自己看自己
                         host = "给我的留言";
-                    } else if (logIn){
+                    } else if (authenticated) {
                         //其他登陆用户看自己
                         host = "给Ta留言";
                     }
@@ -183,8 +188,8 @@
 
             <ul id="LeaveComments">
 			    @foreach (var m in Model.LeaveComments) {
-                    Html.RenderPartial("LeaveComments", m);
-                }
+                       Html.RenderPartial("LeaveComments", m);
+                   }
 		    </ul>
         
             <div class="pager">
@@ -194,10 +199,10 @@
 
 			<!--留言-->
 			<div class="comment_box">
-				@using (Ajax.BeginForm("List", new { Controller = "Page", Action = "List", userID = Model.Users.userID, userName = Model.Users.userName }, new AjaxOptions{})) {
+				@using (Ajax.BeginForm("List", new { Controller = "Page", Action = "List", userID = Model.Users.userID, userName = Model.Users.userName }, new AjaxOptions { })) {
                     if (!myPage) { 
                         <textarea name="lBody" rows="6" cols="93"></textarea>
-					    <input type="submit" value="留言"/>
+					    <input type="submit" value="留言" class="logOnBox"/>
                     }
                 }
 

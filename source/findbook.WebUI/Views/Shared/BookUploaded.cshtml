@@ -3,15 +3,22 @@
 @{
     string bookImgPath = "../../Content/Images/books/" + Model.bookID + ".jpg";
     string userID = "";
+
+    //用户判断是否是自己的主页
+    bool authenticated = Context.User.Identity.IsAuthenticated;
+    bool myPage = false;
     
-    //从cookie中获取userID
-    HttpCookie cookie = Request.Cookies["user"];
-    if (cookie != null) {
+   
+    if (authenticated) {
+        //从cookie中获取userID
+        HttpCookie cookie = Request.Cookies["user"];
         userID = cookie["userID"].ToString();
+        
+        myPage = userID.Equals(Model.upUserID);
     }
 }
 
-<script type="text/javascript">
+@*<script type="text/javascript">
     //为每一个超链接绑定click事件，点击后，消息标记为已读
     $(function () {
         $("recommend").live("click", function () {
@@ -26,7 +33,7 @@
             }
         })
     })
-</script>
+</script>*@
 
 <li>
     <div class="c105">
@@ -47,10 +54,16 @@
 			<p>出版社:<span>@Model.pub</span></p>
 		<p class="time">@Model.DateDiff(Model.upTime)</p>
 		<p class="c04">
-			<span>@Model.cNumber</span><a href="#">评论</a>
-            <span>@Model.recNumber</span><a href="#">推荐</a>
+			<span>@Model.cNumber</span>
+            @Html.RouteLink("我要评论", new {
+                                    Controller = "Book",
+                                    Action = "List",
+                                    bookID = Model.bookID
+                                    })
+
+            <span>@Model.recNumber</span><a href="#" class="logOnBox">推荐</a>
             @{
-                if (userID.Equals(Model.upUserID)) {
+                if (myPage) {
                     <span class="c19">
                         <a href="#">修改</a>
                         <a href="#">删除</a>

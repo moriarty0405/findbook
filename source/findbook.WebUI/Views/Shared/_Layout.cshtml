@@ -37,27 +37,6 @@
         })
     </script>
 
-    <script type="text/javascript">
-        $(function () {
-            function launch() {
-                $('#fukuang_login').lightbox_me({ centered: true, onLoad: function () { 
-                $('#fukuang_login').find('input:first').focus() } });
-            }
-
-            $('#logOnBox').click(function (e) {
-                $("#fukuang_login").lightbox_me({ centered: true, onLoad: function () {
-                    $("#fukuang_login").find("input:first").focus();
-                } 
-                });
-
-                e.preventDefault();
-            });
-
-
-            $('table tr:nth-child(even)').addClass('stripe');
-        });
-    </script>
-
     @{
         bool authenticated = Context.User.Identity.IsAuthenticated;
         
@@ -74,6 +53,41 @@
         }
                                     
     }
+
+       <script type="text/javascript">
+           $(function () {
+               function launch() {
+                   $('#fukuang_login').lightbox_me({ centered: true, onLoad: function () {
+                       $('#fukuang_login').find('input:first').focus()
+                   }
+                   });
+               }
+
+               var isAuthenticated = "@authenticated";
+
+               //如果用户未登陆，则点击弹窗登陆窗口
+               if (isAuthenticated == "False") {
+                   $('.logOnBox').click(function (e) {
+                       $("#fukuang_login").lightbox_me({ centered: true, onLoad: function () {
+                           $("#fukuang_login").find("input:first").focus();
+                       }});
+
+                       e.preventDefault();
+                   });
+               } else {
+                    //用户登陆，点击私信链接，弹出窗口
+                   $('.try-2').click(function (e) {
+                       $("#sixin_div").lightbox_me({ centered: true, onLoad: function () {
+                           $("#sixin_div").find("textarea").focus();
+                       }});
+
+                       e.preventDefault();
+                   });
+               }
+
+               $('table tr:nth-child(even)').addClass('stripe');
+           });
+       </script>
 
 @*使用Comet轮询，显示未读消息数*@
 @*使用有问题，网页速度减慢很多*@
@@ -237,27 +251,25 @@
     <!--=================点击出现登陆浮框=================-->
     <div class="fukuang_login" id="fukuang_login" style="display:none;">
        <div class="guanbi"><a class="close sprited" id="close_x">[关闭]</a></div>
-	    <form method="post" action="#" name="login">
+	    <form method="post" action="/Account/LogOnBox" name="login">
 		    <span>登录</span>
 		    <p>
-		        <label for="email">用户名</label>
-		        <input type="text" name="email" id="email" placeholder="请输入用户名" required="required" autofocus>
+		        <label for="userName">用户名</label>
+		        <input type="text" name="userName" id="userName" placeholder="请输入用户名" required="required" autofocus>
 		    </p>
 		    <p>
 		        <label for="password">密码</label>
 		        <input type="password" name="password" id="password" placeholder="请输入密码" required="required">
 		    </p>
 		    <p>
-		        <input type="checkbox" name="remember" id="remember">
+		        <input type="checkbox" name="remember" id="remember" checked="checked">
 		        <label for="remember">下次自动登录</label>
 		    </p>
 		    <p>
 		        <a href="#">忘记密码?</a>&nbsp;&nbsp;&nbsp;
-		        @*@Html.RouteLink("注册", new {
+		        @Html.RouteLink("注册", new {
                                Controller = "Account",
-                               Action = "Register"})*@
-
-                <a href="#" style="color:green;">注册</a>
+                               Action = "Register"})
 
 		        <input type="submit" name="go" id="go" value="登录">
 		    </p>

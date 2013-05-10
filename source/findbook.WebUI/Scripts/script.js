@@ -3,7 +3,7 @@ function turnoff(obj){
     document.getElementById(obj).style.display="none";
 }
 
-$(document).ready(function () {
+$(function () {
     //¶¥²¿´óÍ¼¹ö¶¯
     //Set Default State of each portfolio piece
     $(".paging").show();
