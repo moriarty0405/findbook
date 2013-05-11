@@ -78,13 +78,21 @@
                } else {
                    //用户登陆，点击私信链接，弹出窗口
                    $('.sendPrivate').click(function (e) {
-                       var targetID = $(this).attr("id");
-                       var len = targetID.length;
-                       
+                       var id = $(this).attr("id");
+
+                       //获取useID
+                       var targetID = $(this).attr("href");
+
+                       var len = id.length;
+
                        //得到私信发送对象的名称
-                       var targetName = targetID.substring(12, len);
+                       var targetName = id.substring(12, len);                                          
 
                        $("#privateTargetBefore").after('<span class="c06 privateTargetName">' + targetName + '</span>');
+                       $("#privateBody").after('<input id="privateTargetID" type="hidden" name="userID" value="' + targetID + '" />'
+                                                + '<input id="privateTargetUserName" type="hidden" name="userName" value="' + targetName + '" />');
+
+                                              
 
                        $("#sixin_div").lightbox_me({ centered: true, onLoad: function () {
                            $("#sixin_div").find("textarea").focus();
@@ -293,8 +301,8 @@
         <div class="guanbi"><a class="close sprited" id="close_x">[关闭]</a></div>
         <p><span class="c05" id="privateTargetBefore">发私信给&nbsp;</span>:</p>
         <div class="comment_box" style="padding-top:8px;">
-            <form method="post" action="">
-	            <textarea rows="6" cols="69"></textarea>
+            <form method="post" action="/Private/SendPrivateBox">
+	            <textarea id="privateBody" name="privateBody" rows="6" cols="69"></textarea>
 	            <input type="submit" value="发送"></input>
             </form>
         </div>

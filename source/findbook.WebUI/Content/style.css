@@ -12,6 +12,7 @@ ul,ol{list-style:none;}
 button,input,select,textarea{font-size:100%;}
 table{border-collapse:collapse;border-spacing:0;}
 body{word-break:break-all; background: url(Images/web/cream_dust.png) 0 0 repeat;}
+img{border:0}
 /*--去掉页面滚动条
 body {
     overflow: hidden;

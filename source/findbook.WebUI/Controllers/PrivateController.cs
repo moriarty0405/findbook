@@ -82,5 +82,30 @@ namespace findbook.WebUI.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [HttpPost]
+        public ActionResult SendPrivateBox() {
+            //发送用户为当前用户，故可从session中获取user信息
+            string sUserID = Session["logOnUserID"].ToString();
+            string sUserName = Session["logOnUserName"].ToString();
+
+            //从表单中获取接收用户信息
+            string rUserID = HttpContext.Request["userID"];
+            string rUserName = HttpContext.Request["userName"];
+
+            //从textarea中获得私信提取
+            string pmBody = HttpContext.Request["privateBody"];
+
+            //跳转到原先的界面
+            string url = HttpContext.Request.UrlReferrer.ToString();
+
+            //调用存储过程
+            if (pr.SendPrivate(sUserID, sUserName, rUserID, rUserName, pmBody)) {
+
+                return Redirect(url);
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }

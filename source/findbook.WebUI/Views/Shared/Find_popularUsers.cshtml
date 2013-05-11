@@ -2,7 +2,10 @@
 
 @{
     string userHref = "/Page/" + Model.userID;
-    string userImgPath = "../../Content/Images/users/" + Model.userID + ".jpg";    
+    string userImgPath = "../../Content/Images/users/" + Model.userID + ".jpg";
+
+    //拼接成私信发送对象ID
+    string privateTargetID = "pagID" + Model.userID + Model.userName;    
 }
 
 <li>
@@ -21,7 +24,7 @@
             }
         <span>@zy</span></p> 
         
-		<p class="hot_user_users_info_name"><a href="#" target="_blank">私信</a></p>
+		<p class="hot_user_users_info_name"><a href="@Model.userID" id="@privateTargetID" class="sendPrivate">私信</a></p>
 	</div>
 	<div class="clear"></div>
 </li>
