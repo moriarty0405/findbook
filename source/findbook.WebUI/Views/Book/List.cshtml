@@ -27,9 +27,9 @@
     string userImgPath = "../../Content/Images/users/" + Model.Books.upUserID + ".jpg";
 }
 
-<script src="../../Scripts/MicrosoftAjax.js" type="text/javascript"></script>  
+@*<script src="../../Scripts/MicrosoftAjax.js" type="text/javascript"></script>  
 <script src="../../Scripts/MicrosoftMvcAjax.js" type="text/javascript"></script>
-<script src="../../Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>  
+<script src="../../Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script> *@ 
 
 <div class="content">
 	<!--课本展示-->
@@ -43,7 +43,7 @@
 			@*<img src=@bookImgPath width="320px" height="250px" />*@
             @Html.ActionLinkWithImage(bookImgPath, "List", "Book", new { bookID = Model.Books.bookID })
             <div class="c30_want">
-		        <input type="button" value="想买" class="logOnBox"/>
+		        <input type="button" value="想买" id="@Model.Books.bookID" class="logOnBox justBuyIt"/>
 	        </div>
 		</div>
 		<div class="author_info">
@@ -104,7 +104,7 @@
 			</p>
 				<img class="hr1" src="../../Content/Images/web/hr.gif" width="210px"/>
 			<p>
-				售价:￥<span class="price_info">@Model.Books.bookPrice.ToString("0.0")</span>
+				售价:<span class="price_info">￥@Model.Books.bookPrice.ToString("0.0")</span>
 			</p>
 		</div>
 		<div class="popular_info">
@@ -135,8 +135,8 @@
 			<!--评论-->
 			<ul id="target">
 				@foreach (var m in Model.BookComments) {
-        Html.RenderPartial("BookComments", m);
-    }
+                    Html.RenderPartial("BookComments", m);
+                }
 			</ul>
 
             <div class="pager">

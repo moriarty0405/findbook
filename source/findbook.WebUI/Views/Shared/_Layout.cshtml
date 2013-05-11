@@ -41,15 +41,19 @@
         bool authenticated = Context.User.Identity.IsAuthenticated;
         
         string userID = "";
+        string userName = "";
 
         if (authenticated) {
             //从cookie中获取userID
             HttpCookie cookie = Request.Cookies["user"];
 
             userID = cookie["userID"].ToString();
+            userName = cookie["userName"].ToString();
             
             //将信息写入session中
             Session["logOnUserID"] = userID;
+            Session["logOnUserName"] = userName;
+            
         }
                                     
     }
@@ -109,6 +113,23 @@
            });
        </script>
 
+       <script type="text/javascript">
+           $(function () {
+               var mesNum = 0;
+               var isAuthenticated = "@authenticated";
+
+               if (isAuthenticated == "True") {
+                    mesNum = @findbook.Domain.Entities.SystemMessages.MesNumber(userID);
+
+                    if (mesNum != 0) {
+                        //将消息数显示到消息文字上
+                        $('.top_nav').append('<div class="message_inform" id="message_inform"><label>' + mesNum
+                                + '</label></div>');
+                    }
+               }
+           })
+       </script>
+
 @*使用Comet轮询，显示未读消息数*@
 @*使用有问题，网页速度减慢很多*@
 @*<script type="text/javascript">
@@ -118,7 +139,7 @@
                 //如果收到的消息数不为0
                 if (data.mesNum) {
                     //将消息数显示到消息文字上
-                    $('top_nav').append('<div class=message_inform"><label>' + data.mesNum
+                    $('.top_nav').append('<div class=message_inform"><label>' + data.mesNum
                                 + "</label></div>");
                 }
                 long_polling();

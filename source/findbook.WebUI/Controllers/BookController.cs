@@ -3,6 +3,9 @@ using System.Web.Mvc;
 using findbook.Domain.Abstract;
 using findbook.WebUI.Models;
 using System.Web;
+using System.Configuration;
+using System.Data.SqlClient;
+using System;
 
 namespace findbook.WebUI.Controllers
 {
@@ -63,6 +66,51 @@ namespace findbook.WebUI.Controllers
             }
             
             return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult Agree(string bcID) {
+            int agreement = 0;
+
+            string connstr = ConfigurationManager.ConnectionStrings["EFDbContext"].ConnectionString;
+            using (SqlConnection mycon = new SqlConnection(connstr)) {
+                mycon.Open();
+
+                using (SqlCommand cmd = mycon.CreateCommand()) {
+                    //先更新
+                    string updateSql = String.Format("update BookComments set agreement = agreement + 1 where bCommentID = '{0}'", bcID);
+                    cmd.CommandText = updateSql;
+                    cmd.ExecuteNonQuery();
+
+                    //再查询
+                    String selectSql = String.Format("select agreement from BookComments where bCommentID = '{0}'", bcID);
+                    cmd.CommandText = selectSql;
+                    agreement = (int)cmd.ExecuteScalar();
+                }
+            }
+
+            //跳转到原先的界面
+            string url = HttpContext.Request.UrlReferrer.ToString();
+
+            return Redirect(url);
+        }
+
+        public ActionResult Recommend(string bookID) {
+            string connstr = ConfigurationManager.ConnectionStrings["EFDbContext"].ConnectionString;
+            using (SqlConnection mycon = new SqlConnection(connstr)) {
+                mycon.Open();
+
+                using (SqlCommand cmd = mycon.CreateCommand()) {
+
+                    String updateSql = String.Format("update Books set recNumber = recNumber + 1 where bookID = '{0}'", bookID);
+                    cmd.CommandText = updateSql;
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            //跳转到原先的界面
+            string url = HttpContext.Request.UrlReferrer.ToString();
+
+            return Redirect(url);
         }
 
     }

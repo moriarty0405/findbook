@@ -607,6 +607,7 @@ color:#21de0c;
 }
 .book_info p{
 color:#999;
+font-size:13px;
 }
 .book_img_show
 {
@@ -621,6 +622,7 @@ padding-right:22px;
 float:left;
 position:relative;
 margin-right:25px;
+margin-bottom:15px;
 }
 .c106 img{
 width:40px;
@@ -631,7 +633,7 @@ float:left;
 line-height:20px;
 margin-bottom:8px;
 color:#999;
-font-size:12px;
+font-size:14px;
 }
 .hr1{
 margin-bottom:8px;
@@ -866,6 +868,8 @@ text-decoration: underline;
 }
 .remain{
 color:#21de0c;
+font-weight:bold;
+font-size:18px;
 }
 .c04 span{
 color:#21de0c;
@@ -890,7 +894,8 @@ color:#21de0c;
 text-decoration: underline;
 }
 .c19{
-margin-left:50px;
+float:right;
+margin-right:2px;
 display:none;
 }
 .personal_upload ul li:hover .c19{
@@ -1030,12 +1035,34 @@ font-size:14px;
 margin-bottom:8px;
 }
 .tag p{
-display: inline;
-padding:5px 8px;
-margin-right:8px;
-color:#999;
-text-decoration:underline;
+	background: #21de0c;
+	padding:2px 10px 2px 16px;
+	margin-right: 5px;
+    margin-bottom: 5px;
+    overflow: hidden;
+	color:#999;
+	line-height:35px;
+	color: white;
+	font-weight:bold;
+	border-radius: 4px;
+	cursor: pointer;
+	-webkit-transition: 0.14s linear;
+    -moz-transition: 0.14s linear;
+    -o-transition: 0.14s linear;
+    transition: 0.14s linear;
+    -webkit-backface-visibility: hidden;
+    position: relative;
+    vertical-align: middle;
+    display: inline-block;
 }
+
+.tag p:hover 
+{
+      background-color: #fdb933;
+      padding-left: 12px;
+      padding-right: 20px; 
+}
+      
 /*∑¢≤ºÕº È*/
 .post_book{
 margin:0 auto;
@@ -1341,8 +1368,8 @@ padding-left: 6px;
 .message_inform{
 float: left;
 position: relative;
-left:-16px;
-top:4px;
+left:-68px;
+top:2px;
 background: url(../../Content/Images/web/message_inform.png) no-repeat;
 width:15px;
 height:15px;

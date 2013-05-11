@@ -43,5 +43,24 @@ namespace findbook.Domain.Entities {
 
             return 0;
         }
+
+        public static int MesNumber(string userID) {
+            int mesNum = 0;
+
+            //获取用户的未读消息数
+            string connstr = ConfigurationManager.ConnectionStrings["EFDbContext"].ConnectionString;
+            using (SqlConnection mycon = new SqlConnection(connstr)) {
+                mycon.Open();
+
+                using (SqlCommand cmd = mycon.CreateCommand()) {
+
+                    String selectSql = String.Format("select count(1) from SystemMessages where sta = '0' and userID = '{0}'", userID);
+                    cmd.CommandText = selectSql;
+                    mesNum = (int)cmd.ExecuteScalar();
+                }
+            }
+
+            return mesNum;
+        }
     }
 }

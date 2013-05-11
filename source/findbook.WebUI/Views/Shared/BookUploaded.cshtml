@@ -7,6 +7,8 @@
     //用户判断是否是自己的主页
     bool authenticated = Context.User.Identity.IsAuthenticated;
     bool myPage = false;
+
+    string recommendHref = "/Book/Recommend/" + Model.bookID;
     
    
     if (authenticated) {
@@ -61,7 +63,7 @@
                                     bookID = Model.bookID
                                     })
 
-            <span>@Model.recNumber</span><a href="#" class="logOnBox">推荐</a>
+            <span>@Model.recNumber</span><a href="@recommendHref" class="logOnBox">推荐</a>
             @{
                 if (myPage) {
                     <span class="c19">

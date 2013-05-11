@@ -28,6 +28,12 @@ namespace findbook.WebUI
 
             routes.MapRoute(
                 "",
+                "Page/Agree/{lcID}",
+                new { controller = "Page", action = "Agree", lcID = "" }
+            );
+
+            routes.MapRoute(
+                "",
                 "Page/{userID}/{page}",
                 new { controller = "Page", action = "List", userID = "" }
             );
@@ -57,13 +63,25 @@ namespace findbook.WebUI
             );
 
             routes.MapRoute(
+                "Book",
+                "Book/Recommend/{bookID}",
+                new { controller = "Book", action = "Recommend", bookID = "" }
+            );
+
+            routes.MapRoute(
+                "",
+                "Book/Agree/{bcID}",
+                new { controller = "Book", action = "Agree", bcID = "" }
+            );
+
+            routes.MapRoute(
                 "",
                 "Book/{bookID}/{page}",
                 new { controller = "Book", action = "List", bookID = "" }
             );
 
             routes.MapRoute(
-                "Book",
+                "",
                 "Book/{bookID}",
                 new { controller = "Book", action = "List", bookID = "" }
             );

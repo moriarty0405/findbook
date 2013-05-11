@@ -8,24 +8,26 @@
 
 <div class="content">
 	<div class="tabbable" id="myTab"> <!-- Only required for left/right tabs -->
-	  <ul class="nav nav-tabs">
-		<li id="UnRead">
-            @*<a href="#tab1" data-toggle="tab">发布课本</a>*@
-            @Html.RouteLink("未读的消息", new {
-                                    Controller = "SysMessage",
-                                    Action = "UnRead",
-                                    userID = userID
-                                    })
-        </li>
-		<li id="Read">
-            @*<a href="#tab2" data-toggle="tab">发布求购</a>*@
-            @Html.RouteLink("已读的消息", new {
-                                    Controller = "SysMessage",
-                                    Action = "Read",
-                                    userID = userID
-                                    })
-        </li>
-	  </ul>
+        <div class="tabbable_div">
+            <ul class="nav nav-tabs">
+		        <li id="UnRead">
+                    @*<a href="#tab1" data-toggle="tab">发布课本</a>*@
+                    @Html.RouteLink("未读的消息", new {
+                                            Controller = "SysMessage",
+                                            Action = "UnRead",
+                                            userID = userID
+                                            })
+                </li>
+		        <li id="Read">
+                    @*<a href="#tab2" data-toggle="tab">发布求购</a>*@
+                    @Html.RouteLink("已读的消息", new {
+                                            Controller = "SysMessage",
+                                            Action = "Read",
+                                            userID = userID
+                                            })
+                </li>
+	          </ul>
+        </div>
 	  <div class="tab-content">
 		@RenderBody()
 	  </div>

@@ -78,7 +78,7 @@ namespace findbook.WebUI.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public JsonResult Agree(string lcID) {
+        public ActionResult Agree(string lcID) {
             int agreement = 0;
 
             string connstr = ConfigurationManager.ConnectionStrings["EFDbContext"].ConnectionString;
@@ -87,20 +87,21 @@ namespace findbook.WebUI.Controllers
 
                 using (SqlCommand cmd = mycon.CreateCommand()) {
                     //先更新
-                    string updateSql = String.Format("update LeaveComments set agreement = agreement + 1 where lcID = '{0}'", lcID);
+                    string updateSql = String.Format("update LeaveComments set agreement = agreement + 1 where leaComID = '{0}'", lcID);
                     cmd.CommandText = updateSql;
                     cmd.ExecuteNonQuery();
 
                     //再查询
-                    String selectSql = String.Format("select agreement from LeaveComments where lcID = '{0}'", lcID);
+                    String selectSql = String.Format("select agreement from LeaveComments where leaComID = '{0}'", lcID);
                     cmd.CommandText = selectSql;
                     agreement = (int)cmd.ExecuteScalar();
                 }
             }
 
+            //跳转到原先的界面
+            string url = HttpContext.Request.UrlReferrer.ToString();
 
-            return Json(new { a = agreement },
-                JsonRequestBehavior.AllowGet);
+            return Redirect(url); 
         }
     }
 }
