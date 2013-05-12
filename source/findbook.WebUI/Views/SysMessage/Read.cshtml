@@ -24,6 +24,9 @@
                 }
 			</ul>
 		</div>
+        <div class="pager">
+            @Html.PageLinks(Model.smpg, x => Url.Action("Read", new { page = x }))
+        </div>
 	</div>
 </div>
 

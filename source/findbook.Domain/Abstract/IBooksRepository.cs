@@ -10,7 +10,7 @@ namespace findbook.Domain.Abstract {
 
         void UpLoadBook(string bookName, string upUserID, string upUserNickName, string tagID, string bookInro, int bookSale, decimal bookPrice, string author, string pub, string bookXY, string bookZY);
 
-        void SaveBook(Books book, Books deleteBook);
+        void SaveBook();
 
         void DeleteBook(Books book);
     }    

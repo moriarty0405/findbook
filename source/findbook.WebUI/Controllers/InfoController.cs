@@ -58,8 +58,23 @@ namespace findbook.WebUI.Controllers {
         }
 
         [HttpPost]
-        public ActionResult Profile() {
+        public ActionResult Profile(Users user) {
             if (ModelState.IsValid) {
+                Users originalUser = ur.Users
+                            .FirstOrDefault(u => u.userID.Equals(user.userID));
+
+                //根据model中的信息修改数据库对应的信息
+                originalUser.userNickName = user.userNickName;
+                originalUser.userSex = user.userSex;
+                originalUser.XQ = user.XQ;
+                originalUser.userXY = user.userXY;
+                originalUser.userZY = user.userZY;
+                originalUser.userGrade = user.userGrade;
+                originalUser.userQQ = user.userQQ;
+                originalUser.userPhone = user.userPhone;
+                originalUser.userMail = user.userMail;
+                originalUser.intro = user.intro;
+
                 ur.SaveUser();
 
                 string url = HttpContext.Request.UrlReferrer.ToString();

@@ -123,12 +123,18 @@ namespace findbook.WebUI.Controllers
         [HttpPost]
         public ActionResult Edit(Books model) {
             if (ModelState.IsValid) {
-                Books modelDelete = br.Books
+                Books originalModel = br.Books
                                 .FirstOrDefault(b => b.bookID.Equals(model.bookID));
 
-                model.upTime = modelDelete.upTime;
+                //根据model中的信息修改数据库对应的信息
+                originalModel.bookName = model.bookName;
+                originalModel.author = model.author;
+                originalModel.pub = model.pub;
+                originalModel.remNumber = model.remNumber;
+                originalModel.bookPrice = model.bookPrice;
+                originalModel.bookIntr = model.bookIntr;
 
-                br.SaveBook(model, modelDelete);
+                br.SaveBook();
 
                 string url = HttpContext.Request.UrlReferrer.ToString();
 

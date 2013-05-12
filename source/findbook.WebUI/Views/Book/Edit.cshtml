@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "修改图书信息";
+
+    string bookImgPath = "../../Content/Images/books/" + Model.bookID + ".jpg";
 }
 
 <div class="post_book">
@@ -13,7 +15,7 @@
 					<tr>
                         <td class="c14">课本图片:</td>
                         <td>
-                            <img src="../../Content/Images/books/book.jpg" width="200px" height="170px" />
+                            <img src="@bookImgPath" width="200px" height="170px" />
                             <input type="file" />
                         </td>
                     </tr>
@@ -36,9 +38,9 @@
                         </td>
                     </tr>
 					<tr>
-                    <td class="c14">数量:</td>
+                    <td class="c14">余量:</td>
                         <td>
-                            @Html.TextBoxFor(m => m.bookSale)
+                            @Html.TextBoxFor(m => m.remNumber)
                         </td>
                     </tr>
 					<tr>

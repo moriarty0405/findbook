@@ -74,15 +74,33 @@
             } else {
                 $(".fukuang_want input").val(value_int + 1);
             }
+
+            var price=$(".fukuang_price").html();
+		  	var count=$(".fukuang_want input").val();
+		   	var total=parseFloat(price)*parseFloat(count);
+				
+		   	$(".total_price_count").html(parseFloat(total).toPrecision(3));
         });
     });
     $(function () {
         $(".down").click(function () {
             if ($(".fukuang_want input").val() == "0") {
+                var price=$(".fukuang_price").html();
+		  		var count=$(".fukuang_want input").val();
+		   		var total=parseFloat(price)*parseFloat(count);
+				
+		   		$(".total_price_count").html(parseFloat(total).toPrecision(3));
+
                 return;
             }
             var value_up = $(".fukuang_want input").val();
             $(".fukuang_want input").val(eval(parseInt(value_up) - 1));
+
+            var price=$(".fukuang_price").html();
+		  	var count=$(".fukuang_want input").val();
+		   	var total=parseFloat(price)*parseFloat(count);
+				
+		   	$(".total_price_count").html(parseFloat(total).toPrecision(3));
         });
     });
 </script> 
@@ -220,18 +238,18 @@
 			<p>出版社:<span>@Model.Books.pub</span></p>
 			<p>作者:<span>@Model.Books.author</span></p>
 			<p>还剩<span class="fukuang_remain">@Model.Books.remNumber</span>本</p>
-			<p>售价<span class="fukuang_price">￥@Model.Books.bookPrice.ToString("0.0")</span></p>
+			<p>售价￥<span class="fukuang_price">@Model.Books.bookPrice.ToString("0.0")</span></p>
 		</div>
 		<div class="comment_box" style="padding-top:2px;">
 			<form action="/Purchase/PurchaseBox" method="post">
 				<div class="fukuang_want">
-					<input type="text" value="1" name="wantBookNum" id="bookIDBefore"/>
+					<input type="text" value="0" name="wantBookNum" id="bookIDBefore"/>
 					<span class="up"></span>
 					<div style="float:right;margin-top:6px;">本</div>
 					<span class="down"></span>
 				</div>
 				<div class="clear"></div>
-				<div class="total_price">总价<span class="total_price_count">23</span>元</div>
+				<div class="total_price">总价<span class="total_price_count">0</span>元</div>
 				<input type="submit" value="发送"></input>
 			</form>
 		</div>

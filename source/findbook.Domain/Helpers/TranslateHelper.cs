@@ -31,5 +31,17 @@ namespace findbook.Domain.Helpers {
             return result;
         }
 
+        public string sexTran(string sex) {
+            string result = "";
+
+            switch (sex) {
+                case "0": result = "男"; break;
+                case "1": result = "女"; break;
+                    
+            }
+
+            return result;
+        }
+
     }
 }

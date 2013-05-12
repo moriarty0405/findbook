@@ -46,14 +46,14 @@ namespace findbook.WebUI
 
             routes.MapRoute(
                 "UnSysMessage",
-                "UnReadMes/{userID}",
-                new { controller = "SysMessage", action = "UnRead", userID = "" }
+                "UnReadMes/{userID}/{page}",
+                new { controller = "SysMessage", action = "UnRead", userID = "", page = "" }
             );
 
             routes.MapRoute(
                 "RSysMessage",
-                "ReadMes/{userID}",
-                new { controller = "SysMessage", action = "Read", userID = "" }
+                "ReadMes/{userID}/{page}",
+                new { controller = "SysMessage", action = "Read", userID = "", page = "" }
             );
 
             routes.MapRoute(

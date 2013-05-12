@@ -89,9 +89,7 @@ namespace findbook.Domain.Concrete {
             context.Database.ExecuteSqlCommand("exec [dbo].[sp_post_book] @bookName, @upUserID, @upUserNickName, @tagID, @bookIntr, @bookSale, @bookPrice, @author, @pub, @bookXY, @bookZY", parameters);
         }
 
-        public void SaveBook(Books book, Books deleteBook) {
-            DeleteBook(deleteBook);
-            context.Books.Add(book);
+        public void SaveBook() {
             context.SaveChanges();
         }
 

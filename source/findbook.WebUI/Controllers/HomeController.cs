@@ -33,10 +33,12 @@ namespace findbook.WebUI.Controllers
         public ActionResult Index() {
             IndexView iv = new IndexView() {
                 Wanted = wr.Wanted,
-                NewBook = br.Books.OrderByDescending(b => b.upTime)
+                NewBook = br.Books.Where(b => b.remNumber > 0)
+                                  .OrderByDescending(b => b.upTime)
                                   .Take(12),
 
-                PopularBook = br.Books.OrderByDescending(b => b.cNumber)
+                PopularBook = br.Books.Where(b => b.remNumber > 0)
+                                      .OrderByDescending(b => b.cNumber)
                                       .Take(12),
 
                 //获取学院和专业信息
@@ -50,14 +52,14 @@ namespace findbook.WebUI.Controllers
         }
 
         public ActionResult Free() {
-            IEnumerable<Books> Books = br.Books.Where(b => b.bookPrice == 0)
+            IEnumerable<Books> Books = br.Books.Where(b => b.bookPrice == 0 && b.remNumber > 0)
                                                .OrderByDescending(b => b.upTime);
 
             return View(Books);
         }
 
         public ActionResult Recommend() {
-            IEnumerable<Books> Books = br.Books.Where(b => b.recNumber > 0 || b.cNumber > 0)
+            IEnumerable<Books> Books = br.Books.Where(b => (b.recNumber > 0 || b.cNumber > 0) && b.remNumber > 0)
                                                .OrderByDescending(b => b.upTime);
 
             return View(Books);

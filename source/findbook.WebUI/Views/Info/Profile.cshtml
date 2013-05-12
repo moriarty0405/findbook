@@ -39,9 +39,9 @@
 					</tr>
 					<tr>
 						<td class="c09">性别:</td><td class="c10">
-                            @Html.RadioButtonFor(m => m.userSex, "男")
+                            @Html.RadioButtonFor(m => m.userSex, "0")
                             <span>男</span>
-                            @Html.RadioButtonFor(m => m.userSex, "女")
+                            @Html.RadioButtonFor(m => m.userSex, "1")
                             <span>女</span>
                         </td>
 					</tr>
@@ -70,8 +70,8 @@
 					<tr>
 						<td class="c09">年级:</td>
                         <td class="c10">
-							@Html.DropDownListFor(m => m.userZY,
-                                new SelectList(new[] { "大一", "大二", "大三", "大四", "其他" }),
+							@Html.DropDownListFor(m => m.userGrade,
+                                new SelectList(new[] { "2012", "2011", "2010", "2009", "其他" }),
                                 new { @class = "select_padding" })
 						</td>
 					</tr>
@@ -90,7 +90,7 @@
 					<tr>
 						<td class="c09">邮箱:</td>
                         <td class="c10">
-                            <input type="text" value="111@111.com"/>
+                            @Html.TextBoxFor(m => m.userMail)
                         </td>
 					</tr>
 					<tr>

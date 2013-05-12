@@ -24,11 +24,14 @@
 			<ul>
 				@foreach (var m in Model.SystemMessages) {
                     Html.RenderPartial("UnReadSysMes", m);
-        
                     
                 }
 			</ul>
 		</div>
+
+        <div class="pager">
+            @Html.PageLinks(Model.smpg, x => Url.Action("UnRead", new { page = x }))
+        </div>
 	</div>
 </div>
 

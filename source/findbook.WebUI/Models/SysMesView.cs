@@ -12,6 +12,9 @@ namespace findbook.WebUI.Models {
         //用户调用MarkReaded方法
         public SystemMessages sm { get; set; }
 
+        //对系统信息的分页
+        public PageInfo smpg { get; set; }
+
 
     }
 }
