@@ -9,7 +9,6 @@
     bool myPage = false;
 
     string recommendHref = "/Book/Recommend/" + Model.bookID;
-    
    
     if (authenticated) {
         //从cookie中获取userID
@@ -18,9 +17,43 @@
         
         myPage = userID.Equals(Model.upUserID);
     }
+
+    string delID = "del" + Model.bookID;
+    string boxID = "box" + Model.bookID;
+    string querenID = "que" + Model.bookID;
+    string quxiaoID = "qux" + Model.bookID;
 }
 
-<li>
+<!--删除确认信息div-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".queren_tishi").hide();
+        $(".delete").click(function () {
+            var delID = $(this).attr("id");
+            var len = delID.length;
+            var boxID = "#box" + delID.substring(3, len);
+
+            $(boxID).animate({ opacity: 'show' }, { duration: 500 });
+        });
+
+        $(".queren_btn").click(function () {
+            var querenID = $(this).attr("id");
+            var len = querenID.length;
+            var boxID = "#box" + querenID.substring(3, len);
+
+            $(boxID).hide();
+        });
+        $(".quxiao_btn").click(function () {
+            var quxiaoID = $(this).attr("id");
+            var len = quxiaoID.length;
+            var boxID = "#box" + quxiaoID.substring(3, len);
+
+            $(boxID).hide();
+        });
+    });
+</script>
+
+<li style="position:relative">
     <div class="c105">
     @*<img id="image" src=@bookImgPath width="220" height="180"  border="0px" display:block; />*@
     @Html.ActionLinkWithImage(bookImgPath, "List", "Book", new { bookID = Model.bookID })</div>
@@ -54,10 +87,19 @@
                 if (myPage) {
                     <span class="c19">
                         <a href="@modifyHref">修改</a>
-                        <a href="@deleteHref">删除</a>
+                        <a class="delete" id="@delID">删除</a>
                     </span>
                 }
-            }		
+            }
+            <div class="queren_tishi" id="@boxID">
+	            <p class="queren_info">确定要删除这条课本信息吗？</p>
+	                <div class="queren_btn">
+		                <form>
+			                <a href="@deleteHref"><input type="button" value="确定" class="queren_btn" id="@querenID"/></a>
+			                <input type="button" value="取消" class="quxiao_btn" id="@quxiaoID"/>
+		                </form>
+	                </div>
+            </div>		
 		</p>
 	</div>	
 </li>
