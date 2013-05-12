@@ -222,6 +222,28 @@ box-shadow:0 1px 2px #999 inset;
 -moz-box-shadow:0 1px 2px #999 inset;
 -webtik-box-shadow:0 1px 2px #999 inset;
 }
+
+.c30 input[type=submit]{
+border:0;
+background:#21de0c;
+padding:5px 18px;
+color:#fff;
+font-weight:bold;
+margin-top:10px;
+box-shadow:0 1px 2px #999;
+-moz-box-shadow:0 1px 2px #999;
+-webtik-box-shadow:0 1px 2px #999;
+}
+.c30 input[type=submit]:hover{
+cursor:pointer;
+opacity:0.8;
+}
+.c30 input[type=submit]:active{
+box-shadow:0 1px 2px #999 inset;
+-moz-box-shadow:0 1px 2px #999 inset;
+-webtik-box-shadow:0 1px 2px #999 inset;
+}
+
 .c30_want input[type=button]{
 border:0;
 background:#21de0c;
@@ -234,6 +256,7 @@ box-shadow:0 1px 2px #999;
 -webtik-box-shadow:0 1px 2px #999;
 font-size:14px;
 }
+
 .c30_want input[type=button]:hover{
 cursor:pointer;
 opacity:0.8;

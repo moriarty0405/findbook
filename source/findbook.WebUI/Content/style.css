@@ -435,7 +435,7 @@ opacity: 0.7;
 -webkit-opacity:0.7;*/
 position: absolute;
 left:0px;
-bottom:50px;
+bottom:45px;
 margin:0px 10px 15px 10px;
 padding:0 0 0 10px;
 border-top:2px solid #21de0c;
@@ -1701,4 +1701,78 @@ display:none;
 }
 .comment_box textarea{
 padding:4px;
+}
+
+/*¸¡¿ò¿Î±¾ÐÅÏ¢*/
+.fukuang_bookinfo{
+width:240px;
+background:#fff;
+z-index:2000;
+padding:10px 14px 10px 14px;
+border:1px solid #999;
+opacity:0.9;
+-moz-opacity:0.9;
+-webkit-opacity:0.9;
+display:none;
+}
+.fukuang_bookinfo h3{
+color:#21de0c;
+font-size:16px;
+}
+.book_title{
+border-bottom:1px solid #ccc;
+padding-bottom:2px;
+margin-bottom:2px;
+}
+.fukuang_info{
+font-size:14px;
+}
+.fukuang_info p{
+padding-bottom:1px;
+}
+.fukuang_remain,.fukuang_price{
+font-size:18px;
+color:#21de0c;
+font-weight:bold;
+}
+.fukuang_want{
+font-size:14px;
+position:relative;
+width:99px;
+}
+.fukuang_want input[type=text]{
+padding:6px 4px;
+float:left;
+position: relative;
+width:50px;
+}
+.up{
+float:left;
+margin-left:2px;
+width: 16px;
+height: 16px;
+overflow: hidden;
+cursor: pointer;
+border: 1px solid #a7a6ab;
+background:url(Images/web/up.jpg) center top no-repeat;
+}
+.down{
+float:left;
+margin-left:2px;
+width: 16px;
+height: 16px;
+overflow: hidden;
+cursor: pointer;
+border: 1px solid #a7a6ab;
+margin-top:2px;
+background:url(Images/web/down.jpg) center top no-repeat;
+}
+.total_price{
+font-size:14px;
+padding-top:4px;
+}
+.total_price_count{
+font-size:18px;
+color:#21de0c;
+font-weight:bold;
 }

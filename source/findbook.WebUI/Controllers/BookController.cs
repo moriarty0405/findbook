@@ -6,6 +6,7 @@ using System.Web;
 using System.Configuration;
 using System.Data.SqlClient;
 using System;
+using findbook.Domain.Entities;
 
 namespace findbook.WebUI.Controllers
 {
@@ -108,6 +109,39 @@ namespace findbook.WebUI.Controllers
             }
 
             //跳转到原先的界面
+            string url = HttpContext.Request.UrlReferrer.ToString();
+
+            return Redirect(url);
+        }
+
+        public ActionResult Edit(string bookID) {
+            Books book = br.Books.FirstOrDefault(b => b.bookID.Equals(bookID));
+
+            return View(book);   
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Books model) {
+            if (ModelState.IsValid) {
+                Books modelDelete = br.Books
+                                .FirstOrDefault(b => b.bookID.Equals(model.bookID));
+
+                model.upTime = modelDelete.upTime;
+
+                br.SaveBook(model, modelDelete);
+
+                string url = HttpContext.Request.UrlReferrer.ToString();
+
+                return Redirect(url);
+            }
+
+            return View();
+        }
+
+        public ActionResult Delete(string bookID) {
+            Books book = br.Books.FirstOrDefault(b => b.bookID.Equals(bookID));
+            br.DeleteBook(book);
+
             string url = HttpContext.Request.UrlReferrer.ToString();
 
             return Redirect(url);

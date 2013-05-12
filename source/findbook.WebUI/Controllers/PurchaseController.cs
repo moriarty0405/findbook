@@ -59,7 +59,8 @@ namespace findbook.WebUI.Controllers
             List<Books> books = br.Books.ToList();
             List<Purchases> purchases = (pr.Purchases
                                       .Where(p => p.sUserID == userID
-                                          && p.sta != "2")).ToList();
+                                          && p.sta != "3")).ToList();
+                                            //不在此界面中显示已完成的交易                            
 
             var pb = (from d in purchases join b in books
                                            on d.bookID equals b.bookID
@@ -122,8 +123,9 @@ namespace findbook.WebUI.Controllers
             //查找用户的购买信息,其中不包括已完成的交易，按时间顺序降序排列
             List<Books> books = br.Books.ToList();
             List<Purchases> purchases = (pr.Purchases
-                                      .Where(p => p.pUserID == userID 
-                                          && p.sta != "2")).ToList();
+                                      .Where(p => p.pUserID == userID
+                                          && p.sta != "3" && p.sta != "1")).ToList();
+                                        //不在此界面中显示，已完成交易和已取消交易的图书
 
             var pb = (from d in purchases join b in books
                                            on d.bookID equals b.bookID
@@ -150,7 +152,39 @@ namespace findbook.WebUI.Controllers
 
         #endregion
 
+        [HttpPost]
+        public ActionResult PurchaseBox() { 
+            //从session中获取用户信息
+            string pUserID = Session["logOnUserID"].ToString();
 
+            //从request中获取购买图书信息
+            string bookID = HttpContext.Request["wantBookID"].ToString();
+            int bookNum =  Int32.Parse(HttpContext.Request["wantbookNum"].ToString());
+
+            //调用存储过程
+            if (pr.Purchase(bookID, pUserID, bookNum)) {
+                //跳转到原先的界面
+                string url = HttpContext.Request.UrlReferrer.ToString();
+
+                return Redirect(url);
+            }
+
+            return RedirectToAction("Index", "Home"); 
+
+        }
+
+        [HttpPost]
+        public ActionResult PurchasePro(string pID, string type) { 
+            //调用存储过程
+            if (pr.Deal(pID, type)) {
+                //跳转到原先的界面
+                string url = HttpContext.Request.UrlReferrer.ToString();
+
+                return Redirect(url);
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
 
     }
 }

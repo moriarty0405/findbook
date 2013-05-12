@@ -62,7 +62,9 @@ namespace findbook.WebUI.Controllers {
             if (ModelState.IsValid) {
                 ur.SaveUser();
 
-                return RedirectToAction("List", "Page");
+                string url = HttpContext.Request.UrlReferrer.ToString();
+
+                return Redirect(url);
             }
 
             return View();

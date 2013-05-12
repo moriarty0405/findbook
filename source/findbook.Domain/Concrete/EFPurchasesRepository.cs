@@ -49,5 +49,29 @@ namespace findbook.Domain.Concrete {
 
             return status;
         }
+
+        public bool Deal(string pID, string type) {
+            bool status = false;
+
+            SqlParameter[] parameters = new SqlParameter[2];
+
+            parameters[0] = new SqlParameter {
+                DbType = DbType.String,
+                ParameterName = "pID",
+                Value = pID
+            };
+
+            parameters[1] = new SqlParameter {
+                DbType = DbType.String,
+                ParameterName = "type",
+                Value = type
+            };
+
+            context.Database.ExecuteSqlCommand("exec dbo.sp_book_deal @pID, @type", parameters);
+
+            status = true;
+
+            return status;
+        }
     }
 }

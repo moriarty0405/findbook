@@ -118,16 +118,26 @@
         @{
             if (isSeller) {
                 if (Model.sta == "0") {
-                    <input type="button" value="确认出售"/><br />
+                    using(Html.BeginForm("PurchasePro", "Purchase", new { pID = @Model.pID, type = "2"}, FormMethod.Post)) {
+                         <input type="submit" value="确认出售"/><br />                 
+                    }
+
                 }
 
             } else {
-                if (Model.sta == "1") {
-                    <input type="button" value="收到图书"/><br />
+                if (Model.sta == "0") {
+                    using(Html.BeginForm("PurchasePro", "Purchase", new { pID = @Model.pID, type = "1"}, FormMethod.Post)) {
+                         <input type="submit" value="取消交易"/><br />                 
+                    }
+                }
+
+                if (Model.sta == "2") {
+                    using(Html.BeginForm("PurchasePro", "Purchase", new { pID = @Model.pID, type = "3"}, FormMethod.Post)) {
+                         <input type="submit" value="收到图书"/><br />                 
+                    }
                 }
             } 
          }
-        <input type="button" value="取消交易"/>
 	</div>
 	<div class="clear"></div>
 </li>

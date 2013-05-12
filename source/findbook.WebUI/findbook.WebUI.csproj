@@ -179,6 +179,7 @@
     <Content Include="Content\Images\web\comment_ico.png" />
     <Content Include="Content\Images\web\contact_ico.png" />
     <Content Include="Content\Images\web\cream_dust.png" />
+    <Content Include="Content\Images\web\down.jpg" />
     <Content Include="Content\Images\web\footerbg.png" />
     <Content Include="Content\Images\web\free.png" />
     <Content Include="Content\Images\web\gender.png" />
@@ -200,6 +201,7 @@
     <Content Include="Content\Images\web\searchBtn1.png" />
     <Content Include="Content\Images\web\speaker_icon.png" />
     <Content Include="Content\Images\web\top_description_bg.jpg" />
+    <Content Include="Content\Images\web\up.jpg" />
     <Content Include="Content\Images\web\upload_icon.png" />
     <Content Include="Content\jquery.validity.css" />
     <Content Include="Content\style.css" />
@@ -397,6 +399,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Purchase\Deal.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Book\Edit.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

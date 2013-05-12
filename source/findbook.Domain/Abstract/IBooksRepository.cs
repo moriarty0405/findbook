@@ -9,5 +9,9 @@ namespace findbook.Domain.Abstract {
         IQueryable<Books> Books { get; }
 
         void UpLoadBook(string bookName, string upUserID, string upUserNickName, string tagID, string bookInro, int bookSale, decimal bookPrice, string author, string pub, string bookXY, string bookZY);
+
+        void SaveBook(Books book, Books deleteBook);
+
+        void DeleteBook(Books book);
     }    
 }

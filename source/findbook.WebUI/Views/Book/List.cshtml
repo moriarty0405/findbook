@@ -25,11 +25,67 @@
 
     string bookImgPath = "../../Content/Images/books/" + Model.Books.bookID + ".jpg";
     string userImgPath = "../../Content/Images/users/" + Model.Books.upUserID + ".jpg";
+
+    string bookID = Model.Books.bookID;
 }
 
 @*<script src="../../Scripts/MicrosoftAjax.js" type="text/javascript"></script>  
 <script src="../../Scripts/MicrosoftMvcAjax.js" type="text/javascript"></script>
-<script src="../../Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script> *@ 
+<script src="../../Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script> *@
+
+<script type="text/javascript">
+    $(function () {
+        var isAuthenticated = "@authenticated";
+
+        if (isAuthenticated == "True") {
+            function launch() {
+                $('#fukuang_bookinfo').lightbox_me({ centered: true, onLoad: function () { $('#fukuang_bookinfo').find('textarea').focus() } });
+            }
+
+            $('.justBuyIt').click(function (e) {
+                var bookID = "@bookID";
+
+                $("#bookIDBefore").after('<input type="hidden" value="' + bookID + '" name="wantBookID" id="hiddenBookID"/>');
+
+                $("#fukuang_bookinfo").lightbox_me({ centered: true, onLoad: function () {
+                    $("#fukuang_bookinfo").find("textarea").focus();
+                }
+                });
+
+                e.preventDefault();
+            });
+
+
+            $('table tr:nth-child(even)').addClass('stripe');
+        }
+    });
+</script>
+
+<!--增减课本数量-->
+<script type="text/javascript">
+    $(function () {
+        $(".up").click(function () {
+            var value_up = $(".fukuang_want input").val();
+            var value_int = eval(parseInt(value_up));
+
+            //能够增加的数量小于等于现有图书的剩余数量
+            if (value_int == @Model.Books.remNumber) {
+                return ;
+            } else {
+                $(".fukuang_want input").val(value_int + 1);
+            }
+        });
+    });
+    $(function () {
+        $(".down").click(function () {
+            if ($(".fukuang_want input").val() == "0") {
+                return;
+            }
+            var value_up = $(".fukuang_want input").val();
+            $(".fukuang_want input").val(eval(parseInt(value_up) - 1));
+        });
+    });
+</script> 
 
 <div class="content">
 	<!--课本展示-->
@@ -153,4 +209,31 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+<!--=================点击出现书本信息浮框=================-->
+<div class="fukuang_bookinfo" id="fukuang_bookinfo">
+		<div class="guanbi"><a class="close sprited" id="close_x">[关闭]</a></div>
+		<div class="book_title"><p><h3>@Model.Books.bookName</h3></p></div>
+		<div class="fukuang_info">
+			<p><span>@Model.Books.bookXY</span>-<span>@Model.Books.bookZY</span></p>
+			<p>出版社:<span>@Model.Books.pub</span></p>
+			<p>作者:<span>@Model.Books.author</span></p>
+			<p>还剩<span class="fukuang_remain">@Model.Books.remNumber</span>本</p>
+			<p>售价<span class="fukuang_price">￥@Model.Books.bookPrice.ToString("0.0")</span></p>
+		</div>
+		<div class="comment_box" style="padding-top:2px;">
+			<form action="/Purchase/PurchaseBox" method="post">
+				<div class="fukuang_want">
+					<input type="text" value="1" name="wantBookNum" id="bookIDBefore"/>
+					<span class="up"></span>
+					<div style="float:right;margin-top:6px;">本</div>
+					<span class="down"></span>
+				</div>
+				<div class="clear"></div>
+				<div class="total_price">总价<span class="total_price_count">23</span>元</div>
+				<input type="submit" value="发送"></input>
+			</form>
+		</div>
+		<div><a href="#" target="_blank">什么是想要？</a></div>
 </div>

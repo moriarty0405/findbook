@@ -20,23 +20,6 @@
     }
 }
 
-@*<script type="text/javascript">
-    //为每一个超链接绑定click事件，点击后，消息标记为已读
-    $(function () {
-        $("recommend").live("click", function () {
-            var x = 1;
-
-            //页面是否首次加载
-            var isPostBack = "<%=IsPostBack%>";
-
-            //不是首次加载
-            if (isPostBack) {
-                x = "<%=@Model.Recommend(Model.bookID)%>";
-            }
-        })
-    })
-</script>*@
-
 <li>
     <div class="c105">
     @*<img id="image" src=@bookImgPath width="220" height="180"  border="0px" display:block; />*@
@@ -65,10 +48,13 @@
 
             <span>@Model.recNumber</span><a href="@recommendHref" class="logOnBox">推荐</a>
             @{
+                string modifyHref = "/Book/Edit/" + Model.bookID;
+                string deleteHref = "/Book/Delete/" + Model.bookID;
+                   
                 if (myPage) {
                     <span class="c19">
-                        <a href="#">修改</a>
-                        <a href="#">删除</a>
+                        <a href="@modifyHref">修改</a>
+                        <a href="@deleteHref">删除</a>
                     </span>
                 }
             }		

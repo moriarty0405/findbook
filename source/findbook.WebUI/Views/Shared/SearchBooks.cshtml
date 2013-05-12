@@ -16,14 +16,14 @@
 		<div class="c26"><label><strong>￥@Model.bookPrice.ToString("0.0")</strong></label>目前还剩<label class="c27">@Model.remNumber</label>本</div>
 		<div><label>@Model.bookXY</label>-<label>@Model.bookZY</label></div>
 		<div class="c28">上传者:<a href="@userHref">@Model.upUserNickName</a></div>
-		<div class="c29"><label>@Model.cNumber</label><a href="@bookHref">评论</a><label>@Model.recNumber</label><a href="#" class="logOnBox">推荐</a></div>
+		<div class="c29"><label>@Model.cNumber</label><a href="@bookHref">评论</a><label>@Model.recNumber</label><a>推荐</a></div>
 		<div><label>@Model.DateDiff(Model.upTime)</label></div>
 	</div>
 	<div class="c30">
 		<div>
             <a href="@bookHref">查看详细资料</a>
         </div>
-		<input type="button" value="想买" class="logOnBox justBuyIt" id="@Model.bookID"/>
+		<a href="@userHref"><input type="button" value="进入卖家主页"/></a>
 	</div>
 	<div class="clear"></div>
 </li>

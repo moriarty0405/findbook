@@ -122,6 +122,11 @@
                     mesNum = @findbook.Domain.Entities.SystemMessages.MesNumber(userID);
 
                     if (mesNum != 0) {
+                        //数字大于9则显示9
+                        if (mesNum > 9) {
+                            mesNum = 9;
+                        }
+                         
                         //将消息数显示到消息文字上
                         $('.top_nav').append('<div class="message_inform" id="message_inform"><label>' + mesNum
                                 + '</label></div>');
@@ -198,7 +203,7 @@
                    }, new { @id = "sysMes" })
 
 
-                        <a href="#" class="" id="jiaoyi">交易</a>
+                        <a class="" id="jiaoyi">交易</a>
                         
                         <div class="my_purchase">
                             <ul>

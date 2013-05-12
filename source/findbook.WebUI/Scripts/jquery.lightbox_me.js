@@ -122,10 +122,11 @@
                 $(".privateTargetName").remove();
                 $("#privateTargetID").remove();
                 $("#privateTargetUserName").remove();
+                $("#hiddenBookID").remove();
 
                 if (opts.destroyOnClose) {
                     $self.add($overlay).remove();
-                   
+
                 } else {
                     $self.add($overlay).hide();
                 }
