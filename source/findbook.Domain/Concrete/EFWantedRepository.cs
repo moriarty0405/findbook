@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using findbook.Domain.Abstract;
 using findbook.Domain.Entities;
+using findbook.Domain.Abstract;
 using System.Data.SqlClient;
 using System.Data;
 
 namespace findbook.Domain.Concrete {
-    public class EFWantedRepository : IWantedRepository{
+    public class EFWantedRepository : IWantedRepository {
         private EFDbContext context = new EFDbContext();
-
+        
         public IQueryable<Wanted> Wanted {
             get { return context.Wanted; }
         }
@@ -63,5 +63,6 @@ namespace findbook.Domain.Concrete {
 
             return status;
         }
+
     }
 }

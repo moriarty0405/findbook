@@ -65,18 +65,18 @@
 <script type="text/javascript">
     $(function () {
         $(".up").click(function () {
-            var value_up = $(".fukuang_want input").val();
+            var value_up = $("#bookIDBefore").val();
             var value_int = eval(parseInt(value_up));
 
             //能够增加的数量小于等于现有图书的剩余数量
             if (value_int == @Model.Books.remNumber) {
                 return ;
             } else {
-                $(".fukuang_want input").val(value_int + 1);
+                $("#bookIDBefore").val(value_int + 1);
             }
 
             var price=$(".fukuang_price").html();
-		  	var count=$(".fukuang_want input").val();
+		  	var count=$("#bookIDBefore").val();
 		   	var total=parseFloat(price)*parseFloat(count);
 				
 		   	$(".total_price_count").html(parseFloat(total).toPrecision(3));
@@ -84,20 +84,20 @@
     });
     $(function () {
         $(".down").click(function () {
-            if ($(".fukuang_want input").val() == "0") {
+            if ($("#bookIDBefore").val() == "0") {
                 var price=$(".fukuang_price").html();
-		  		var count=$(".fukuang_want input").val();
+		  		var count=$("#bookIDBefore").val();
 		   		var total=parseFloat(price)*parseFloat(count);
 				
 		   		$(".total_price_count").html(parseFloat(total).toPrecision(3));
 
                 return;
             }
-            var value_up = $(".fukuang_want input").val();
-            $(".fukuang_want input").val(eval(parseInt(value_up) - 1));
+            var value_up = $("#bookIDBefore").val();
+            $("#bookIDBefore").val(eval(parseInt(value_up) - 1));
 
             var price=$(".fukuang_price").html();
-		  	var count=$(".fukuang_want input").val();
+		  	var count=$("#bookIDBefore").val();
 		   	var total=parseFloat(price)*parseFloat(count);
 				
 		   	$(".total_price_count").html(parseFloat(total).toPrecision(3));
@@ -116,9 +116,11 @@
 		<div class="book_img_show">		
 			@*<img src=@bookImgPath width="320px" height="250px" />*@
             @Html.ActionLinkWithImage(bookImgPath, "List", "Book", new { bookID = Model.Books.bookID })
-            <div class="c30_want">
-		        <input type="button" value="想买" id="@Model.Books.bookID" class="logOnBox justBuyIt"/>
-	        </div>
+            @if (!myPage) { 
+                <div class="c30_want">
+		            <input type="button" value="想买" id="@Model.Books.bookID" class="logOnBox justBuyIt"/>
+	            </div>
+            }
 		</div>
 		<div class="author_info">
 			<p>
@@ -130,10 +132,10 @@
                 <div class="c107">
 				@*<a href="#" class="author_name">Jone</a>*@
                 @Html.RouteLink(Model.Books.upUserNickName, new {
-                                    Controller = "Page",
-                                    Action = "List",
-                                    userID = userID
-                                    })
+               Controller = "Page",
+               Action = "List",
+               userID = userID
+           })
 
 				<span class="time">
                     @{
@@ -155,12 +157,12 @@
 				<img src="../../Content/Images/web/phone_icon.png" width="16px" height="16px" />15323429300(可保密)
 			</p>
             @{
-                    if (!myPage) {
+                if (!myPage) {
                         <img class="hr1" src="../../Content/Images/web/hr.gif" width="210px"/>
 			            <p>
 				            <a href="@Model.Books.upUserID" class="logOnBox sendPrivate" id="@privateTargetID"><img src="../../Content/Images/web/contact_ico.png" width="16px" height="16px"/>&nbsp;给Ta发私信</a>
 			            </p>
-                    }
+                }
                 }
 				<img class="hr1" src="../../Content/Images/web/hr.gif" width="210px"/>
 			<p>

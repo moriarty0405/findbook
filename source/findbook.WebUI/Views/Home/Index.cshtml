@@ -343,6 +343,11 @@
 				</tr>
 			</tbody>
 		</table>
+        <ul>
+                @*@foreach(var m in Model.Wanted) {
+                    Html.RenderPartial("Want", m);
+                }*@
+        </ul>
 	</marquee>
 </div>
 </div>

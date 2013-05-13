@@ -17,8 +17,6 @@ namespace findbook.Domain.Concrete {
 
         public DbSet<SystemMessages> SystemMessages { get; set; }
 
-        public DbSet<Wanted> Wanted { get; set; }
-
         public DbSet<Privates> Privates { get; set; }
 
         public DbSet<SRecords> SRecords { get; set; }
@@ -34,5 +32,7 @@ namespace findbook.Domain.Concrete {
         public DbSet<Purchases> Purchases { get; set; }
 
         public DbSet<Deals> Deals { get; set; }
+
+        public DbSet<Wanted> Wanted { get; set; }
     }
 }
