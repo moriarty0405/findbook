@@ -132,10 +132,10 @@
                 <div class="c107">
 				@*<a href="#" class="author_name">Jone</a>*@
                 @Html.RouteLink(Model.Books.upUserNickName, new {
-               Controller = "Page",
-               Action = "List",
-               userID = userID
-           })
+                       Controller = "Page",
+                       Action = "List",
+                       userID = Model.Books.upUserID
+                   })
 
 				<span class="time">
                     @{

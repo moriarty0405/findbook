@@ -8,10 +8,10 @@ using System.Data.SqlClient;
 using System.Data;
 
 namespace findbook.Domain.Concrete {
-    public class EFWantedRepository : IWantedRepository {
+    public class EFWantsRepository : IWantsRepository {
         private EFDbContext context = new EFDbContext();
         
-        public IQueryable<Wanted> Wanted {
+        public IQueryable<Wants> Wants {
             get { return context.Wanted; }
         }
 

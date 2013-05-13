@@ -12,7 +12,7 @@ namespace findbook.Domain.Helpers {
             switch (sta) { 
                 case "0" : result = "发出购买申请"; break;
                 case "1" : result = "取消交易"; break;
-                case "2": result = "取消交易"; break;
+                case "2": result = "口头成交 "; break;
                 case "3": result = "交易完成"; break;
             }
 

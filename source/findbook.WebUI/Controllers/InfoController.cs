@@ -9,13 +9,13 @@ using findbook.WebUI.Models;
 namespace findbook.WebUI.Controllers {
     public class InfoController : Controller {
         private IBooksRepository br;
-        private IWantedRepository wr;
+        private IWantsRepository wr;
         private IUsersRepository ur;
         private IPwModifyRepository pr;
 
 
         public InfoController(IBooksRepository bookRepository, IUsersRepository userRepository,
-            IPwModifyRepository pwModifyRepository, IWantedRepository wantedRepository) {
+            IPwModifyRepository pwModifyRepository, IWantsRepository wantedRepository) {
 
             br = bookRepository;
             wr = wantedRepository;
@@ -111,7 +111,7 @@ namespace findbook.WebUI.Controllers {
         }
 
         [HttpPost]
-        public ActionResult Want(string userID, Wanted model) {
+        public ActionResult Want(string userID, Wants model) {
             //从cookie中获取userName
             HttpCookie cookie = Request.Cookies["user"];
             string userName = cookie["userName"].ToString();

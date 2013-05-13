@@ -5,8 +5,8 @@ using System.Text;
 using findbook.Domain.Entities;
 
 namespace findbook.Domain.Abstract {
-    public interface IWantedRepository {
-        IQueryable<Wanted> Wanted { get; }
+    public interface IWantsRepository {
+        IQueryable<Wants> Wants { get; }
 
         bool PostWanted(string bookName, string author, string pub, int num, string userID, string userName);
     }

@@ -13,13 +13,13 @@ namespace findbook.WebUI.Controllers
 {
     public class HomeController : Controller {
         private IBooksRepository br;
-        private IWantedRepository wr;
+        private IWantsRepository wr;
         private IXYRepository xyr;
         private IZYRepository zyr;
         private IUsersRepository ur;
         private IBookCommentsRepository bcr;
 
-        public HomeController(IBooksRepository bookRepository, IWantedRepository wantedRepository, 
+        public HomeController(IBooksRepository bookRepository, IWantsRepository wantedRepository, 
             IXYRepository xyRepository, IZYRepository zyRepository, 
             IUsersRepository userRepository, IBookCommentsRepository bookCommentRepository) {
             br = bookRepository;
@@ -32,7 +32,7 @@ namespace findbook.WebUI.Controllers
 
         public ActionResult Index() {
             IndexView iv = new IndexView() {
-                Wanted = wr.Wanted,
+                Wants = wr.Wants.OrderByDescending(w => w.wTime),
                 NewBook = br.Books.Where(b => b.remNumber > 0)
                                   .OrderByDescending(b => b.upTime)
                                   .Take(12),

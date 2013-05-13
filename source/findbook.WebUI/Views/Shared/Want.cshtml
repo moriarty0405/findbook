@@ -1,7 +1,18 @@
-﻿@model findbook.Domain.Entities.Wanted
+﻿@model findbook.Domain.Entities.Wants
+@{
+    string userHref = "/Page/" + Model.userID;
+
+    //拼接成私信发送对象ID
+    string privateTargetID = "wt" + Model.WantedID + Model.userName;    
+}
 
 <li>
-    <span class="askfor_purchase_author_name">@Model.userName</span>求购
-    <span class="askfor_purchase_book">@Model.bookName</span>
-    <span class="askfor_purchase_account">@Model.num</span>本
+    <span class="askfor_purchase_author_name">发布者:
+        <a href="@userHref">@Model.userName</a>
+    </span>
+    <span class="askfor_purchase_book">求购:《@Model.bookName》</span>
+    <span>出版社：@Model.pub</span>
+    <span>作者：@Model.author</span>
+    <span class="askfor_purchase_account">数量：@Model.num</span>本
+    <a id="@privateTargetID" class="logOnBox sendPrivate">我有这本书</a>
 </li>

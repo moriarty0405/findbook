@@ -27,7 +27,7 @@ namespace findbook.WebUI.Infrastructure {
             ninjectKernel.Bind<ILeaveCommentsRepository>().To<EFLeaveCommentsRepository>();
             ninjectKernel.Bind<IPwModifyRepository>().To<EFPwModifyRepository>();
             ninjectKernel.Bind<ISystemMessagesRepository>().To<EFSystemMessagesRepository>();
-            ninjectKernel.Bind<IWantedRepository>().To<EFWantedRepository>();
+            ninjectKernel.Bind<IWantsRepository>().To<EFWantsRepository>();
             ninjectKernel.Bind<IPrivatesRepository>().To<EFPrivatesRepository>();
             //ninjectKernel.Bind<ISKeysRepository>().To<EFSKeysRepository>();
             ninjectKernel.Bind<ISRecordsRepository>().To<EFSRecordsRepository>();

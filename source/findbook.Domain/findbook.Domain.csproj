@@ -75,7 +75,7 @@
     <Compile Include="Abstract\ISKeysRepository.cs" />
     <Compile Include="Abstract\ISystemMessagesRepository.cs" />
     <Compile Include="Abstract\IUsersRepository.cs" />
-    <Compile Include="Abstract\IWantedRepository.cs" />
+    <Compile Include="Abstract\IWantsRepository.cs" />
     <Compile Include="Abstract\IXYRepository.cs" />
     <Compile Include="Abstract\IZYRepository.cs" />
     <Compile Include="Concrete\EFBookCommentsRepository.cs" />
@@ -91,7 +91,7 @@
     <Compile Include="Concrete\EFSystemMessagesRepository.cs" />
     <Compile Include="Concrete\EFUsersRepository.cs" />
     <Compile Include="Concrete\EFPwModifyRepository.cs" />
-    <Compile Include="Concrete\EFWantedRepository.cs" />
+    <Compile Include="Concrete\EFWantsRepository.cs" />
     <Compile Include="Concrete\EFGPrivatesRepository.cs" />
     <Compile Include="Concrete\EFXYRepository.cs" />
     <Compile Include="Concrete\EFZYRepository.cs" />
@@ -108,7 +108,7 @@
     <Compile Include="Entities\SRecords.cs" />
     <Compile Include="Entities\SystemMessages.cs" />
     <Compile Include="Entities\Users.cs" />
-    <Compile Include="Entities\Wanted.cs" />
+    <Compile Include="Entities\Wants.cs" />
     <Compile Include="Entities\XY.cs" />
     <Compile Include="Entities\ZY.cs" />
     <Compile Include="Helpers\MessageHelper.cs" />

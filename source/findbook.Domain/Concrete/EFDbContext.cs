@@ -33,6 +33,6 @@ namespace findbook.Domain.Concrete {
 
         public DbSet<Deals> Deals { get; set; }
 
-        public DbSet<Wanted> Wanted { get; set; }
+        public DbSet<Wants> Wanted { get; set; }
     }
 }

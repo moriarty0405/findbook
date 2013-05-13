@@ -5,7 +5,7 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 
 namespace findbook.Domain.Entities {
-    public class Wanted {
+    public class Wants {
         [Key]
         public string WantedID { get; set; }
 

@@ -6,7 +6,7 @@ using findbook.Domain.Entities;
 
 namespace findbook.WebUI.Models {
     public class IndexView {
-        public IEnumerable<Wanted> Wanted { get; set; }
+        public IEnumerable<Wants> Wants { get; set; }
 
         public IEnumerable<Books> NewBook { get; set; }
 
