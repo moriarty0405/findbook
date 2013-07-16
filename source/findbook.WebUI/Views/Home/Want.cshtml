@@ -1,0 +1,28 @@
+﻿@model IEnumerable<findbook.Domain.Entities.Wants>
+
+@{
+    ViewBag.Title = "求购区";
+}
+
+<div class="content">
+	<div class="empty"></div>
+	<div class="innercontent">
+		<!--最新上传-->
+		<div class="fenkuai" style="float:left;">
+			<div class="guide">
+				<div class="guide_tittle_div">
+					<img src="../../Content/Images/web/upload_icon.png" width="16px" height="16px"/>
+					<span class="guide_tittle">捉急求购</span>
+					<span class="guide_description">-----同学们捉急求购的课堂书籍-----</span>
+				</div>
+			</div>
+			<div class="guide_content">
+				<ul class="qiugou_main_ul">
+					@foreach(var m in Model) {
+                        Html.RenderPartial("Want_Main", m);
+                    }
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

@@ -137,8 +137,9 @@ namespace findbook.WebUI.Controllers
                 status = 1;
 
                 if (status == 1) {
-                        FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
-                        return RedirectToAction("LogOn", "Account");
+                    //FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
+
+                    return RedirectToAction("LogOn", "Account");
                 } else {
                         //ModelState.AddModelError("", ErrorCodeToString(createStatus));
                 }

@@ -15,7 +15,10 @@
     //拼接成私信发送对象ID
     string privateTargetID = "bgID" + Model.bookID + Model.upUserNickName;
 
-    string bookPrice = "￥" + Model.bookPrice.ToString("0.0");
+    string bookSale = "";
+    if (Model.bookSale > 0) {
+        bookSale = "已售" + Model.bookSale + "本";
+    }
 
     bool authenticated = Context.User.Identity.IsAuthenticated;
 
@@ -41,7 +44,7 @@
 	<a href="@href" title="@Model.bookName">
     <img class="book_img" id="@imgID" src="@bookImgPath" width="220" height="180"  border="0px"alt="@Model.bookName" display:block; /></a>
 	<div class="text" id="@txtID">
-		<div class="price">@bookPrice</div>
+		<div class="price">@bookSale</div>
 		<p>
         @*<a href="@href" title="@Model.bookName">@Model.bookName</a>*@
         @Html.RouteLink(Model.bookName, new {
@@ -104,5 +107,6 @@
             }
         }
 		
-	</div>	
+	</div>
+    <div class="price_top">￥<span>@Model.bookPrice.ToString("0.00")</span></div>	
 </li>

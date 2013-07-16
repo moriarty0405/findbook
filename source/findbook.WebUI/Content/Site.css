@@ -84,9 +84,10 @@ width: 708px;
 	float: left;
 	position: relative;
 }
+
 /*--Window/Masking Styles--*/
 .window {
-	height:480px;	width: 708px;
+	height:380px;	width: 708px;
 	overflow: hidden; /*--Hides anything outside of the set width/height--*/
 	position: relative;
 }
@@ -145,22 +146,23 @@ border-bottom:1px solid #eee;
 }
 .book_area ul li img{
 border:0;
-width:140px;
+width:190px;
 height:180px;
 }
 .c23{
 border:1px solid #eee;
 padding:10px;
-width:140px;
+width:190px;
 height:180px;
 margin:10px 60px 10px 10px;
 float:left;
 overflow:hidden;
+background-color: #fff;
 }
 .c23 img
 {
    border:0;
-width:140px;
+width:190px;
 height:180px;
 } 
 .c24{
@@ -270,9 +272,10 @@ box-shadow:0 1px 2px #999 inset;
 .c31{
 border:1px solid #eee;
 padding:10px;
-width:140px;
+width:190px;
 margin:10px 60px 10px 10px;
 float:left;
+background-color: #fff;
 }
 .c32{
 padding-top:10px;
@@ -296,4 +299,133 @@ text-decoration: underline;
     color:#21de0c;
     font-size:18px;
     font-weight:bold;
+}
+
+.aboutus_nav{
+float:left;
+width:120;
+position:fixed;
+}
+.aboutus_nav ul li{
+padding-bottom:10px;
+}
+.aboutus_nav ul li a{
+color:#666;
+text-decoration:none;
+}
+.aboutus_nav ul li a:hover{
+text-decoration: underline;
+}
+.aboutus_info{
+padding-left:80px;
+}
+p.about_title{
+font-weight:bold;
+font-size:14px;
+padding-bottom:6px;
+}
+p.about_info{
+line-height:24px;
+padding-bottom:20px;
+}
+
+div.qiugou_01{
+padding:10px 10px 10px 18px;
+font-size:15px;
+font-family:"微软雅黑";
+color:#666;
+position:relative;
+}
+.qiugou_biaoqian{
+background:#21de0c;
+color:#fff;
+padding:0 2.5px;
+}
+.qiugou_color{
+color:#21de0c;
+padding-right:8px;
+padding-left:8px;
+}
+.qiugou_01 ul li{
+padding-bottom:10px;
+margin-bottom:16px;
+position:relative;
+width:48%;
+margin-right:18px;
+border-bottom:1px dashed #eee;
+float:left;
+}
+
+.qiugou_biaoqian{
+background:#21de0c;
+color:#fff;
+padding:0 2.5px;
+}
+.qiugou_color{
+color:#21de0c;
+padding-right:4px;
+padding-left:4px;
+}
+.qiugou_short{
+font-family:"微软雅黑";
+font-size:15px;
+color:#333;
+}
+ul.qiugou_main_ul li{
+padding-bottom:2px;
+padding-top:12px;
+padding-left:10px;
+border-bottom:1px dashed #ddd;
+position:relative;
+}
+/*下拉样式*/
+.qiugou_xiala{
+width:124px;
+position:absolute;
+top:10px;
+right:4px;
+background:url(Images/web/xiala.jpg) no-repeat right top;
+cursor:pointer;
+padding:15px 0 0 0;
+z-index:1000;
+}
+.qiugou_xiala:hover{
+background:url(Images/web/xiala2.jpg) no-repeat right top;
+}
+.qiugou_xiala:hover ul.qiugou_xiala_ul{
+display:block;
+}
+ul.qiugou_xiala_ul{
+display:none;
+}
+ul.qiugou_xiala_ul li{
+padding-bottom:0;
+margin-bottom:0px;
+background:#faf7f7;
+border:1px solid #d9d8d8;
+padding:0 4px;
+float:left;
+}
+ul.qiugou_xiala_ul li:hover{
+background:#eee;
+}
+ul.qiugou_xiala_ul li a{
+font-size:12px;
+text-decoration:none;
+color:#999;
+}
+/*时间*/
+.qiugou_time{
+color:#999;
+padding-top:6px;
+padding-left:22px;
+}
+.qiugou_time a{
+color:#999;
+text-decoration:none;
+margin:0 0 0 10px;
+}
+.qiugou_time a:hover{
+color:#666;
+text-decoration:none;
 }

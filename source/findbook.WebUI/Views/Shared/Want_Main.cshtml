@@ -1,0 +1,64 @@
+﻿@model findbook.Domain.Entities.Wants
+
+@{
+    string userHref = "/Page/" + Model.userID;
+
+    //拼接成私信发送对象ID
+    string privateTargetID = "wt" + Model.WantedID + Model.userName;
+
+    bool authenticated = Context.User.Identity.IsAuthenticated;
+
+    string userID = "";
+    bool mySelf = false;
+
+    if (authenticated) {
+        //从cookie中获取userID
+        HttpCookie cookie = Request.Cookies["user"];
+
+        userID = cookie["userID"].ToString();
+
+        //将信息写入session中
+        Session["logOnUserID"] = userID;
+
+        mySelf = userID.Equals(Model.userID);
+    }    
+}
+
+<li>
+	<!--下拉列表-->
+	<div class="qiugou_xiala">
+		<ul class="qiugou_xiala_ul">
+			@{
+                //不能自己跟自己发送私信
+                if (!mySelf) {
+                    <li><a id="@privateTargetID" href="@Model.userID" class="logOnBox sendPrivate">私信Ta&nbsp;&nbsp;&nbsp;</a></li>
+                    <li><a href="@userHref">Ta的主页</a></li>
+                } else {
+                    <li><a href="@userHref">进入我的主页</a></li>
+                }
+            }
+		</ul>
+	</div>
+	<div class="qiugou_short">
+		<span class="qiugou_biaoqian">求</span>
+        <span class="qiugou_color">@Model.userName</span>求购
+        <span class="qiugou_color">@Model.bookName</span>课本
+        <span class="qiugou_color">@Model.num</span>本：
+		<span>《@Model.bookName》</span>出版社
+        <span>【@Model.pub】</span>作者
+        <span>【@Model.author】</span>
+	</div>
+	<div class="qiugou_time">
+		<span>@Model.wTime</span>
+		
+        @{
+            //不能自己跟自己发送私信
+            if (!mySelf) {
+                <span><a id="@privateTargetID" href="@Model.userID" class="logOnBox sendPrivate">私信Ta&nbsp;&nbsp;&nbsp;</a></span>
+                <span><a href="@userHref">Ta的主页</a></span>
+            } else {
+                <span><a href="@userHref">进入我的主页</a></span>
+            }
+        }
+	</div>
+</li>

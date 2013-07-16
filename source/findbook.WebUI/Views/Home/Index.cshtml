@@ -193,26 +193,6 @@
 				     <li><a href="#">劳动与社会保障</a></li>
 			     </ul>
 		     </li>
-		    <li><a href="#">·&nbsp;&nbsp;政治学院</a>
-		    <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;化工学院</a>
-			     <ul>
-				     <li><a href="#">信息管理与信息系统</a></li>
-				     <li><a href="#">工商管理</a></li>
-				     <li><a href="#">财务管理</a></li>
-				     <li><a href="#">会计</a></li>
-				     <li><a href="#">劳动与社会保障</a></li>
-			     </ul>
-		     </li>
-             <li><a href="#">·&nbsp;&nbsp;政治学院</a>
-		    <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;化工学院</a>
-			     <ul>
-				     <li><a href="#">信息管理与信息系统</a></li>
-				     <li><a href="#">工商管理</a></li>
-				     <li><a href="#">财务管理</a></li>
-				     <li><a href="#">会计</a></li>
-				     <li><a href="#">劳动与社会保障</a></li>
-			     </ul>
-		     </li>
 	    </ul>
 	</div>
 	<div class="img_roll">
@@ -290,15 +270,17 @@
 				<img src="../../Content/Images/web/askfor_icon.png" width="16px" height="16px" />
 				<span class="guide_tittle">捉急求购</span>
 				<span class="guide_description">-----同学们捉急求购的课堂书籍-----</span>
-				<!--<a href="#" class="seemore" target="_blank">更多>></a>-->
+				<a href="/Home/Want" class="seemore" target="_blank">更多>></a>
 			</div>
 	</div>
-	<marquee scrollAmount="3" direction="up">
-        <ul>
+    <div>
+        <div class="qiugou_01">
+		    <ul>
                 @foreach(var m in Model.Wants) {
-                    Html.RenderPartial("Want", m);
+                    Html.RenderPartial("Want_Index", m);
                 }
-        </ul>
-	</marquee>
+            </ul>
+        </div>
+    </div>
 </div>
 </div>

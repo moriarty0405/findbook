@@ -31,14 +31,19 @@ namespace findbook.WebUI.Controllers
         }
 
         public ActionResult Index() {
-            IndexView iv = new IndexView() {
-                Wants = wr.Wants.OrderByDescending(w => w.wTime),
-                NewBook = br.Books.Where(b => b.remNumber > 0)
-                                  .OrderByDescending(b => b.upTime)
-                                  .Take(12),
+            IEnumerable<Books> newBook = br.Books.Where(b => b.remNumber > 0)
+                                                  .OrderByDescending(b => b.upTime)
+                                                  .Take(12);
 
+            IndexView iv = new IndexView() {
+                Wants = wr.Wants.OrderByDescending(w => w.wTime)
+                                .Take(10),
+                NewBook = newBook,
+
+                //查找不在最新上传图书的记录
                 PopularBook = br.Books.Where(b => b.remNumber > 0)
                                       .OrderByDescending(b => b.cNumber)
+                                      .Except(newBook)
                                       .Take(12),
 
                 //获取学院和专业信息
@@ -86,6 +91,16 @@ namespace findbook.WebUI.Controllers
             };
 
             return View(fv);
+        }
+
+        public ActionResult About() {
+            return View();
+        }
+
+        public ActionResult Want() {
+            IEnumerable<Wants> wts = wr.Wants.OrderByDescending(w => w.wTime);
+            
+            return View(wts);
         }
 
     }

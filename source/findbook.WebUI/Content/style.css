@@ -477,6 +477,18 @@ color: #21de0c;
 font-size:24px;
 margin-right:5px;
 }
+
+.price_top
+{
+    position:absolute; 
+    color:#fff; 
+    background:#21de0c; 
+    top:10px;
+    left:10px;
+    padding:2px 6px; 
+    font-size:20px;
+}
+
 .free{
 position: absolute;
 left:178px;
@@ -1357,7 +1369,7 @@ padding-left: 6px;
 }
 .tab-content
 {
-    width:800px;
+    width:840px;
     margin:0 auto;
     position: relative;
     top:-85px;
