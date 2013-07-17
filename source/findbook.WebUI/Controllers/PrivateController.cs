@@ -35,7 +35,11 @@ namespace findbook.WebUI.Controllers
             int pageSize = 6;
             
             //发送用户为当前用户，故可从session中获取userName
-            string sUserID = Session["logOnUserID"].ToString();
+            //string sUserID = Session["logOnUserID"].ToString();
+            HttpCookie cookie = Request.Cookies["user"];
+
+            string sUserID = cookie["userID"].ToString();
+
 
             //传入选中用户对当前用户的私信,按时间排列, 并获取分页后记录
             PrivateView pv = new PrivateView() {
@@ -61,7 +65,11 @@ namespace findbook.WebUI.Controllers
         [HttpPost]
         public ActionResult SendPrivate(string sUserID, string rUserID) {
             //发送用户为当前用户，故可从session中获取userName
-            string sUserName = Session["logOnUserName"].ToString();
+            //string sUserName = Session["logOnUserName"].ToString();
+
+            //从cookie中获取userID
+            HttpCookie cookie = Request.Cookies["user"];
+            string sUserName = cookie["userName"].ToString();
 
             //从session中获取接收用户的userName
             string rUserName = HttpContext.Session["rUserName"].ToString();
@@ -85,8 +93,14 @@ namespace findbook.WebUI.Controllers
         [HttpPost]
         public ActionResult SendPrivateBox() {
             //发送用户为当前用户，故可从session中获取user信息
-            string sUserID = Session["logOnUserID"].ToString();
-            string sUserName = Session["logOnUserName"].ToString();
+            //string sUserID = Session["logOnUserID"].ToString();
+            //string sUserName = Session["logOnUserName"].ToString();
+
+            //从cookie中获取userID
+            HttpCookie cookie = Request.Cookies["user"];
+
+            string sUserID = cookie["userID"].ToString();
+            string sUserName = cookie["userName"].ToString();
 
             //从表单中获取接收用户信息
             string rUserID = HttpContext.Request["userID"];
@@ -105,6 +119,24 @@ namespace findbook.WebUI.Controllers
             }
 
             return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult DeleteGroup(string gpId) {
+            GPrivates gp = gpr.GPrivates.FirstOrDefault(g => g.GPID.Equals(gpId));
+            gpr.Delete(gp);
+
+            string url = HttpContext.Request.UrlReferrer.ToString();
+
+            return Redirect(url);
+        }
+
+        public ActionResult Delete(string pmID) {
+            Privates pri = pr.Privates.FirstOrDefault(p => p.pmID.Equals(pmID));
+            pr.Delete(pri);
+
+            string url = HttpContext.Request.UrlReferrer.ToString();
+
+            return Redirect(url);
         }
 
     }

@@ -7,5 +7,7 @@ using findbook.Domain.Entities;
 namespace findbook.Domain.Abstract {
     public interface IGPrivatesRepository {
         IQueryable<GPrivates> GPrivates { get; }
+
+        void Delete(GPrivates GPrivate);
     }
 }

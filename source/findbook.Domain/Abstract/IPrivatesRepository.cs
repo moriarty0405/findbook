@@ -9,5 +9,7 @@ namespace findbook.Domain.Abstract {
         IQueryable<Privates> Privates { get; }
 
         bool SendPrivate(string sUserID, string sUserName, string rUserID, string rUserName, string pmBody);
+
+        void Delete(Privates Private);
     }
 }

@@ -59,5 +59,10 @@ namespace findbook.Domain.Concrete {
             status = true;
             return status;
         }
+
+        public void Delete(Privates p) {
+            context.Privates.Remove(p);
+            context.SaveChanges();
+        }
     }
 }

@@ -94,8 +94,15 @@ namespace findbook.Domain.Concrete {
         }
 
         public void DeleteBook(Books book) {
-            context.Books.Remove(book);
-            context.SaveChanges();
+            SqlParameter[] parameters = new SqlParameter[1];
+
+            parameters[0] = new SqlParameter {
+                DbType = DbType.String,
+                ParameterName = "bookID",
+                Value = book.bookID
+            };
+
+            context.Database.ExecuteSqlCommand("exec [dbo].[sp_delete_books] @bookID", parameters);
         }
     }
 }

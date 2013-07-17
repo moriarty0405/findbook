@@ -17,17 +17,14 @@
 
         userID = cookie["userID"].ToString();
 
-        //将信息写入session中
-        Session["logOnUserID"] = userID;
-
         mySelf = userID.Equals(Model.userID);
     }    
 }
 
 <li>
 	<!--下拉列表-->
-	<div class="qiugou_xiala">
-		<ul class="qiugou_xiala_ul">
+	<div class="qiugou_xiala1">
+		<ul class="qiugou_xiala_ul1">
 			@{
                 //不能自己跟自己发送私信
                 if (!mySelf) {

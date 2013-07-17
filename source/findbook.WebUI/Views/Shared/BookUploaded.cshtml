@@ -6,7 +6,7 @@
 
     //用户判断是否是自己的主页
     bool authenticated = Context.User.Identity.IsAuthenticated;
-    bool myPage = false;
+    bool myPage = false; 
 
     string recommendHref = "/Book/Recommend/" + Model.bookID;
    
@@ -101,5 +101,6 @@
 	                </div>
             </div>		
 		</p>
-	</div>	
+	</div>
+    <div class="price_top">￥<span>@Model.bookPrice.ToString("0.00")</span></div>	
 </li>

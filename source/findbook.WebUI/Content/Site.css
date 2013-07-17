@@ -87,7 +87,7 @@ width: 708px;
 
 /*--Window/Masking Styles--*/
 .window {
-	height:380px;	width: 708px;
+	height:396px;	width: 708px;
 	overflow: hidden; /*--Hides anything outside of the set width/height--*/
 	position: relative;
 }
@@ -378,16 +378,16 @@ padding-left:10px;
 border-bottom:1px dashed #ddd;
 position:relative;
 }
-/*下拉样式*/
+
+/*首页下拉样式*/
 .qiugou_xiala{
-width:124px;
+width:60px;
 position:absolute;
-top:10px;
-right:4px;
+top:6px;
+right:0px;
 background:url(Images/web/xiala.jpg) no-repeat right top;
 cursor:pointer;
 padding:15px 0 0 0;
-z-index:1000;
 }
 .qiugou_xiala:hover{
 background:url(Images/web/xiala2.jpg) no-repeat right top;
@@ -404,7 +404,7 @@ margin-bottom:0px;
 background:#faf7f7;
 border:1px solid #d9d8d8;
 padding:0 4px;
-float:left;
+width:50px;
 }
 ul.qiugou_xiala_ul li:hover{
 background:#eee;
@@ -414,6 +414,44 @@ font-size:12px;
 text-decoration:none;
 color:#999;
 }
+
+/*求购区下拉样式*/
+.qiugou_xiala1{
+width:124px;
+position:absolute;
+top:10px;
+right:4px;
+background:url(Images/web/xiala.jpg) no-repeat right top;
+cursor:pointer;
+padding:15px 0 0 0;
+z-index:1000;
+}
+.qiugou_xiala1:hover{
+background:url(Images/web/xiala2.jpg) no-repeat right top;
+}
+.qiugou_xiala1:hover ul.qiugou_xiala_ul1{
+display:block;
+}
+ul.qiugou_xiala_ul1{
+display:none;
+}
+ul.qiugou_xiala_ul1 li{
+padding-bottom:0;
+margin-bottom:0px;
+background:#faf7f7;
+border:1px solid #d9d8d8;
+padding:0 4px;
+float:left;
+}
+ul.qiugou_xiala_ul1 li:hover{
+background:#eee;
+}
+ul.qiugou_xiala_ul1 li a{
+font-size:12px;
+text-decoration:none;
+color:#999;
+}
+
 /*时间*/
 .qiugou_time{
 color:#999;

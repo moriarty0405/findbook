@@ -33,8 +33,6 @@
 
         userID = cookie["userID"].ToString();
 
-        //将信息写入session中
-        Session["logOnUserID"] = userID;
 
         mySelf = userID.Equals(Model.upUserID);
     }

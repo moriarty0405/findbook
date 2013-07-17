@@ -18,19 +18,21 @@
                         .require('请输入课本名<br/><span class="must_symbal">*必填</span>')
 
             $("#author")
-                        .require('请输入作者<br/><span class="must_symbal">*必填</span>')
+                   .require('请输入作者<br/><span class="must_symbal">*必填</span>')
 
             $("#pub")
                    .require('请输入出版社<br/><span class="must_symbal">*必填</span>')
 
             $("#bookSale")
-                   .match("number", "请输入有效数字")
+                   .require('请输入有效数字<br/><span class="must_symbal">*必填</span>')
+                   .match("number", '请输入有效数字<br/><span class="must_symbal">*必填</span>')
 
             $("#bookPrice")
-                   .match("number", "请输入有效价格")
+                   .require('请输入有效数字<br/><span class="must_symbal">*必填</span>')
+                   .match("number", '请输入有效数字<br/><span class="must_symbal">*必填</span>')
 
             $("#bookIntr")
-                   .match("bookIntr", "请输入有效价格")
+                   .require('请输入课本简介<br/><span class="must_symbal">*必填</span>')
                    .nonHtml()
         });
     })     

@@ -155,7 +155,10 @@ namespace findbook.WebUI.Controllers
         [HttpPost]
         public ActionResult PurchaseBox() { 
             //从session中获取用户信息
-            string pUserID = Session["logOnUserID"].ToString();
+            //string pUserID = Session["logOnUserID"].ToString();
+            HttpCookie cookie = Request.Cookies["user"];
+
+            string pUserID = cookie["userID"].ToString();
 
             //从request中获取购买图书信息
             string bookID = HttpContext.Request["wantBookID"].ToString();

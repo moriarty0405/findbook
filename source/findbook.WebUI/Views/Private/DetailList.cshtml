@@ -4,11 +4,11 @@
     ViewBag.Title = "私信";
 
     ////从cookie中获取userID
-    //HttpCookie cookie = Request.Cookies["user"];
-    //string userID = cookie["userID"].ToString();
+    HttpCookie cookie = Request.Cookies["user"];
+    string userID = cookie["userID"].ToString();
 
     //从Session中获取userID
-    string userID = Session["logOnUserID"].ToString();
+    //string userID = Session["logOnUserID"].ToString();
 
     var User = Model.Privates.FirstOrDefault();
     string rUserID = User.rUserID;
