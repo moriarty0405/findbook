@@ -46,6 +46,7 @@ namespace findbook.WebUI.Controllers
                     HttpCookie u = new HttpCookie("user");
                     u["userID"] = user.userID;
                     u["userName"] = user.userName;
+                    u.Expires = DateTime.Now.AddDays(10);
 
                     Response.Cookies.Add(u);
 
@@ -100,6 +101,7 @@ namespace findbook.WebUI.Controllers
                 HttpCookie u = new HttpCookie("user");
                 u["userID"] = user.userID;
                 u["userName"] = user.userName;
+                u.Expires = DateTime.Now.AddDays(10);
 
                 Response.Cookies.Add(u);
 
@@ -139,7 +141,7 @@ namespace findbook.WebUI.Controllers
                 if (status == 1) {
                     //FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
 
-                    return RedirectToAction("LogOn", "Account");
+                    return RedirectToAction("Success", "Account");
                 } else {
                         //ModelState.AddModelError("", ErrorCodeToString(createStatus));
                 }
@@ -149,5 +151,9 @@ namespace findbook.WebUI.Controllers
             return View(model);
         }
         #endregion
+
+        public ActionResult Success() {
+            return View();
+        }
     }
 }

@@ -1,6 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html  xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <link href="../../Content/Images/web/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"/>
+   
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
     <title>@ViewBag.Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -180,7 +182,7 @@
                        userID = userID
                    }, new { @id = "sysMes" })
 
-
+                   <div style="position:relative; float:left;" class="jiaoyi_list">
                         <a class="" id="jiaoyi">交易</a>
                         
                         <div class="my_purchase">
@@ -201,6 +203,7 @@
                                 </li>
                             </ul>
                         </div> 
+                    </div>
                     }
                  }
                 
@@ -215,7 +218,7 @@
 
                 @if (authenticated) {
                     string imgPath = "../../Content/Images/users/" + userID + ".jpg";
-                    <span class="user_login">
+                    <div class="user_login">
 				        <a href="#" target="_blank" ><img src=@imgPath width="25px" height="25px" border="0"/><span style="padding-bottom:10px;">@Context.User.Identity.Name</span></a>
 				        <ul class="user_login_ul">
 					        <li>
@@ -246,7 +249,7 @@
 
 					        <li>@Html.ActionLink("退出", "LogOff", "Account")</li>
 				        </ul>
-			        </span>
+			        </div>
                 } else {
                     <a href="../Account/LogOn">登录</a><p class="pipe">|</p><a href="../Account/Register">注册</a>
                 }
